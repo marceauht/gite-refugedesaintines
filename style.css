@@ -1,0 +1,935 @@
+:root{
+  --cream: #F7F3EB;
+  --sage:  #90beab;
+  --black: #0b0b0b;
+  --muted: #6b6b6b;
+  --white: #ffffff;
+  --shadow: 0 6px 18px rgba(11,11,11,0.06);
+  --radius: 12px;
+  --container: 1100px;
+}
+
+/* Reset minimal */
+*{box-sizing:border-box}
+html{
+    scroll-behavior:smooth
+}
+
+body{
+  margin: 0;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: var(--black);
+  background: var(--cream);
+  -webkit-font-smoothing :antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+/* Layout */
+.container{
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 20px
+}
+
+/* Skip link */
+.skip-link{
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden
+}
+
+.skip-link:focus{
+    left: 10px; 
+    top: 10px;
+    width: auto;
+    height: auto;
+    padding: 8px 12px;
+    background: #000;
+    color: #fff;
+    border-radius: 6px
+}
+
+/* Header */
+.site-header{
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #90beab;
+    z-index: 9999;
+    padding: 18px 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.brand{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.brand-logo{
+    height: 75px;
+    width: auto;
+    filter: none;
+}
+
+.brand-text{
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-text .logo{
+    font-family: "Playfair Display", serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: #000;
+}
+
+.brand-text .sub{
+    font-size: 14px;
+    color: #000;
+}
+
+.header-inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.section {
+  scroll-margin-top: 90px;
+}
+
+/* Nav */
+.nav a{
+    display: inline-block;
+    margin: 0 0;
+    text-decoration: none;
+    color: var(--black);
+    font-weight: 500;
+    font-size: 16px;
+    padding: 6px 14px;
+    border-radius: 25px;
+    background-color: #F7F3EB;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.nav a:hover{
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.nav-toggle{
+  display:none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+/* Bouton hamburger caché par défaut sur desktop */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Hero */
+.hero{
+    position: relative;
+    width: 100%;
+    min-height: 75vh;
+    background-image: url('images/hero.JPG');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #F7F3EB;
+    scroll-margin-top: 120px;
+}
+
+.hero::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.35);
+    z-index: 1;
+}
+
+.hero-content{
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1{
+    font-family: "Playfair Display", serif;
+    font-size: 40px;
+    margin-bottom: 16px;
+    font-weight: bold;
+    line-height: 0.5;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero p{
+    font-size: 20px;
+    margin-bottom: 24px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-buttons .btn {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 10px 20px;
+  background-color: #F7F3EB; /* fond crème */
+  color: var(--black);
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 500;
+  transition: transform 0.2s;
+}
+
+.hero-buttons .btn:hover {
+  transform: scale(1.05); /* effet hover */
+}
+
+/* Sections */
+
+.section{
+    padding : 44px 0;
+}
+
+.section h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 36px;
+  margin: 0 0 24px 0;
+  line-height: 1.2;
+}
+
+/* --- Carte expandable dédiée --- */
+.expandable-card {
+  background: var(--cream);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 900px;
+  margin: 30px auto;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative; /* pour z-index si besoin */
+  z-index: 1;
+}
+
+/* Titre cliquable */
+.expandable-card .expandable-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--black);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  user-select: none;
+  line-height: 1.2;
+  margin: 0; /* élimine conflits H2 */
+}
+
+/* Flèche */
+.expandable-card .arrow-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: inline-block;
+  transition: transform 0.4s ease;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+
+/* Contenu caché */
+.expandable-card .expandable-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  padding: 0 24px;
+  transition: max-height 0.8s ease, opacity 0.4s ease, padding 0.4s ease;
+}
+
+/* Contenu visible */
+.expandable-card.expanded .expandable-content {
+  max-height: 1000px; /* adapter selon contenu */
+  opacity: 1;
+  padding: 20px 24px 30px 24px;
+}
+
+/* Rotation flèche quand ouvert */
+.expandable-card.expanded .arrow-icon {
+  transform: rotate(90deg);
+}
+
+/* Nettoyage margin des H2/P à l'intérieur pour éviter conflit */
+.expandable-card .expandable-content h2,
+.expandable-card .expandable-content h3,
+.expandable-card .expandable-content p {
+  margin: 0 0 12px 0;
+}
+
+
+/* GALLERIES (images et avis) */
+.gallery-wrapper {
+  position: relative;
+  overflow: visible;
+  max-width: 1200px;
+  margin: 30px auto;
+}
+
+.gallery-scroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.gallery-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* IMAGES */
+.gallery-scroll figure { 
+  margin: 0;
+  flex-shrink: 0;
+}
+.gallery-scroll img {
+  height: 350px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+.gallery-scroll img:hover { transform: scale(1.05); }
+
+/* AVIS */
+.avis-card {
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  min-width: 280px;
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+.avis-card .author {
+  font-weight: 600;
+  color: #555;
+  margin-top: 8px;
+}
+
+.review-platform img {
+  height: 24px;
+  width: auto;
+}
+
+/* BOUTONS DE SCROLL */
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.scroll-btn.left { left: -50px; }
+.scroll-btn.right { right: -50px; }
+
+/* Equip list */
+.equip-wrapper {
+  max-width: var(--container);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.equip-list{
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  justify-content: center;
+}
+
+.equip-list li{
+  background:var(--white);
+  padding:8px 12px;
+  border-radius:999px;
+  box-shadow:var(--shadow);
+  font-size:14px
+}
+
+.equip-btn a {
+  display: inline-block;
+  color: var(--black);
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 999px; 
+  transition: transform 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.equip-btn a:hover {
+  color: var(--sage);
+  transform: scale(1.05);
+}
+
+
+/* Popup overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(11,11,11,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Popup content */
+.popup-content {
+  background: var(--white);
+  padding: 24px;
+  max-width: 700px;
+  max-height: 80vh;
+  overflow-y: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  margin: 0 auto;
+}
+
+/* Close button */
+.popup-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* Popup list */
+.popup-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.popup-list li {
+  background: var(--cream);
+  padding: 8px 12px;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  font-size: 14px;
+}
+
+.popup-content p:last-of-type {
+  margin-bottom: 24px;
+}
+
+/* Map */
+.map{
+  width: 100%;
+  height: 400px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Accordion */
+.accordion {
+  margin-top: 18px;
+}
+
+.acc-item {
+  margin-bottom: 12px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: var(--white);
+  transition: max-height 0.5s ease, padding 0.5s ease;
+}
+
+/* Button with flex and arrow */
+.acc-toggle {
+  width: 100%;
+  text-align: left;
+  padding: 14px 16px;
+  border: none;
+  background: var(--white);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Arrow icon inside button */
+.acc-toggle::after {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url('images/arrow-right-solid-full.svg') no-repeat center center;
+  background-size: contain;
+  transition: transform 0.3s ease;
+}
+
+/* Panel content */
+.acc-panel {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 16px;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
+  font-size: 14px;
+}
+
+/* Expanded state */
+.acc-item.expanded .acc-panel {
+  max-height: 1000px; /* adapter selon contenu */
+  opacity: 1;
+  padding: 12px 16px;
+}
+
+/* Rotate arrow when expanded */
+.acc-item.expanded .acc-toggle::after {
+  transform: rotate(90deg);
+}
+
+/* Cards */
+.cards{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.card {
+  background: var(--white);
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+
+  display: flex;           
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center;     
+  text-align: center; 
+}
+
+.card h3 {
+  margin: 0 0 12px 0;      
+  line-height: 1.2;
+}
+
+.card p {
+  margin: 0 0 16px 0;      
+}
+
+.card .link-more {
+  display: inline-block;
+  color: var(--black);     
+  text-decoration: none;   
+  font-weight: 500;        
+  transition: transform 0.2s, color 0.2s;  
+}
+
+.card .link-more:hover {
+  transform: scale(1.05);
+  color: var(--sage);
+}
+
+/* --- Popup recommandations (mise en page 2 colonnes) --- */
+.popup-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 700px;
+  margin-top: 20px;
+}
+
+/* Bloc individuel dans la grille */
+.popup-item {
+  background: var(--cream);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Titre du lieu */
+.popup-item h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 6px;
+  color: var(--black);
+}
+
+/* Localisation & type */
+.popup-item p {
+  font-size: 14px;
+  margin: 0 0 6px;
+  color: var(--muted);
+}
+
+/* Lien Google Maps */
+.popup-item a {
+  font-size: 14px;
+  color: var(--black);
+  text-decoration: none;
+  font-weight: 500;
+  transition: transform 0.2s, color 0.2s;
+  display: inline-block;
+}
+
+.popup-item a:hover {
+  transform: scale(1.05);
+  color: var(--sage);
+}
+
+/* Contact */
+.contact-container {
+  display: flex;
+  gap: 30px;
+  align-items: stretch;
+}
+
+.contact-left,
+.contact-right {
+  flex: 1; /* 50% chacun */
+}
+
+.contact-separator {
+  width: 1px;
+  background-color: var(--muted);
+}
+
+/* Formulaire */
+.contact-form {
+  display: grid;
+  gap: 16px;
+  max-width: 520px;
+  margin-top: 20px;
+}
+
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(11,11,11,0.1);
+  background: #fff;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--sage);
+  box-shadow: 0 0 0 3px rgba(144, 201, 184, 0.2);
+  outline: none;
+}
+
+.contact-form button.btn {
+  background: var(--sage);
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.contact-form button.btn:hover {
+  transform: scale(1.05);
+  background: #10806e; /* Variante un peu plus foncée pour hover */
+}
+
+.form-status {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+
+/* Boutons Airbnb / Booking */
+.contact-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+
+.contact-right a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 0px;
+  padding-right: 28px;
+  border-radius: 60px;
+  text-decoration: none;
+  color: #fff;
+  width: 100%;
+  width: auto;
+  justify-content: center;
+  transition: transform 0.2s;
+  white-space: nowrap;
+}
+
+.contact-right a img {
+  height: 58px;
+}
+
+.btn-airbnb {
+  background-color: #F44336;
+}
+
+.btn-airbnb:hover {
+  transform: scale(1.05);
+}
+
+.btn-booking {
+  background-color: #003381;
+}
+
+.btn-booking:hover {
+  transform: scale(1.05);
+}
+
+/* Footer */
+.site-footer{
+  padding:24px 0;
+  background:transparent;
+  color:var(--muted);
+  font-size:14px
+}
+
+/* --- RESPONSIVE --- */
+
+/* Medium screens (tablets) */
+@media (max-width: 1024px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .nav a {
+    margin: 5px 8px;
+    font-size: 15px;
+    padding: 5px 10px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .contact-separator {
+    display: none;
+  }
+
+  .contact-right a {
+    width: 100%;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 768px) {
+  .nav {
+    display: none; /* On affichera le menu hamburger */
+  }
+
+  .nav-toggle {
+    display: block;
+    cursor: pointer;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .equip-list {
+    flex-direction: column;
+  }
+
+  .expandable-card .expandable-title {
+    font-size: 22px;
+    padding: 16px 20px;
+  }
+
+  .expandable-card .expandable-content {
+    padding: 16px 20px 24px 20px;
+  }
+
+  .gallery-scroll img {
+    height: 250px;
+  }
+
+  .popup-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
+
+  .contact-right a img {
+    height: 50px;
+  }
+}
+
+/* Extra small screens (small phones) */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 24px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .cards {
+    gap: 10px;
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  .expandable-card .expandable-title {
+    font-size: 20px;
+    padding: 14px 16px;
+  }
+
+  .expandable-card .expandable-content {
+    padding: 12px 16px 20px 16px;
+  }
+
+  .gallery-scroll img {
+    height: 200px;
+  }
+
+  .equip-list li {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+
+  .contact-form button.btn {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+}
+
+/* Menu mobile caché par défaut */
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+
+  .nav.open {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--cream);
+    padding: 10px 20px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  /* Optionnel : transformation du hamburger en X */
+  .nav-toggle.active::before {
+    content: "✕"; /* simple X */
+  }
+}
+
+
