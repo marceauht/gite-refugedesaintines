@@ -805,35 +805,105 @@ body{
   }
 }
 
-/* Small screens (phones) */
+/* Responsive (mobile) */
 @media (max-width: 768px) {
-  .nav {
-    display: none; /* On affichera le menu hamburger */
+  /* --- HEADER --- */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: relative;
   }
 
-  .nav-toggle {
-    display: block;
-    cursor: pointer;
-  }
-
-   .brand-logo {
-    max-width: 80px;
+  .brand-logo {
+    max-width: 70px;
   }
 
   .brand-text .logo {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .brand-text .sub {
     font-size: 0.7rem;
   }
 
+  /* --- BOUTON HAMBURGER --- */
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001;
+    -webkit-tap-highlight-color: transparent; /* Supprime le fond bleu sur mobile */
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--green);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* Animation croix */
+  .nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+  }
+  .nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+  }
+
+  /* --- MENU DÉROULANT --- */
+  .nav {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background: var(--cream);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    z-index: 999;
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .nav a {
+    text-decoration: none;
+    color: var(--green);
+    font-size: 1rem;
+    transition: color 0.3s;
+  }
+
+  .nav a:hover {
+    color: var(--dark-green);
+  }
+
+  /* --- AUTRES ADAPTATIONS MOBILES --- */
   .hero h1 {
-    font-size: 28px;
+    font-size: 26px;
   }
 
   .hero p {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .cards {
@@ -845,12 +915,12 @@ body{
   }
 
   .expandable-card .expandable-title {
-    font-size: 22px;
-    padding: 16px 20px;
+    font-size: 20px;
+    padding: 14px 18px;
   }
 
   .expandable-card .expandable-content {
-    padding: 16px 20px 24px 20px;
+    padding: 14px 18px 22px 18px;
   }
 
   .gallery-scroll img {
@@ -870,30 +940,5 @@ body{
   }
 }
 
-/* Menu mobile caché par défaut */
-@media (max-width: 768px) {
-  .nav {
-    display: none;
-  }
-
-  .nav.open {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background: var(--cream);
-    padding: 10px 20px;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    z-index: 999;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-
-  /* Optionnel : transformation du hamburger en X */
-  .nav-toggle.active::before {
-    content: "✕"; /* simple X */
-  }
-}
 
 
