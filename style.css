@@ -53,7 +53,8 @@ body{
     border-radius: 6px
 }
 
-/* Header */
+/* Header Général*/
+
 .site-header{
     position: sticky;
     top: 0;
@@ -65,18 +66,30 @@ body{
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
+/* Conteneur Header */
+
+.header-inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+/* Logo */
+
+.brand-logo{
+    max-width: 70px;
+    height: auto;
+}
+
+/* Brand text */
+
 .brand{
     display: flex;
     align-items: center;
     gap: 12px;
     text-decoration: none;
     cursor: pointer;
-}
-
-.brand-logo{
-    height: 75px;
-    width: auto;
-    filter: none;
 }
 
 .brand-text{
@@ -96,17 +109,7 @@ body{
     color: #000;
 }
 
-.header-inner{
-    display: flex;
-    align-items: center;
-    justify-content: space-between
-}
-
-.section {
-  scroll-margin-top: 90px;
-}
-
-/* Nav */
+/* Menu Desktop */
 .nav a{
     display: inline-block;
     margin: 0 0;
@@ -136,14 +139,37 @@ body{
   gap: 0.8rem;
 }
 
-/* Bouton hamburger caché par défaut sur desktop */
+/* Bouton hamburger */
+
 .nav-toggle {
-  display: none;
+  display: none; /* Desktop caché */
+  flex-direction: column;
+  justify-content: space-between ;
+  width: 28px;
+  height: 20px;
   background: none;
   border: none;
-  font-size: 1.1rem;
-  font-weight: 600;
   cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 3px;
+  background: var(--black);
+  border-radius: 2px;
+  transition: all 0.3 ease;
+}
+
+/* Tranformation en croix */
+
+.nav-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
 }
 
 /* Hero */
@@ -763,182 +789,3 @@ body{
   color:var(--muted);
   font-size:14px
 }
-
-/* --- RESPONSIVE --- */
-
-/* Medium screens (tablets) */
-@media (max-width: 1024px) {
-  .header-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .nav a {
-    margin: 5px 8px;
-    font-size: 15px;
-    padding: 5px 10px;
-  }
-
-  .hero h1 {
-    font-size: 32px;
-  }
-
-  .hero p {
-    font-size: 18px;
-  }
-
-  .cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .contact-container {
-    flex-direction: column;
-  }
-
-  .contact-separator {
-    display: none;
-  }
-
-  .contact-right a {
-    width: 100%;
-  }
-}
-
-/* Responsive (mobile) */
-@media (max-width: 768px) {
-  /* --- HEADER --- */
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    position: relative;
-  }
-
-  .brand-logo {
-    max-width: 70px;
-  }
-
-  .brand-text .logo {
-    font-size: 1.1rem;
-  }
-
-  .brand-text .sub {
-    font-size: 0.7rem;
-  }
-
-  /* --- BOUTON HAMBURGER --- */
-  .nav-toggle {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 28px;
-    height: 20px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1001;
-    -webkit-tap-highlight-color: transparent; /* Supprime le fond bleu sur mobile */
-  }
-
-  .nav-toggle span {
-    display: block;
-    width: 100%;
-    height: 3px;
-    background: var(--green);
-    border-radius: 2px;
-    transition: all 0.3s ease;
-  }
-
-  /* Animation croix */
-  .nav-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translateY(8px);
-  }
-  .nav-toggle.active span:nth-child(2) {
-    opacity: 0;
-  }
-  .nav-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translateY(-8px);
-  }
-
-  /* --- MENU DÉROULANT --- */
-  .nav {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    background: var(--cream);
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: 20px 0;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    z-index: 999;
-  }
-
-  .nav.open {
-    display: flex;
-  }
-
-  .nav a {
-    text-decoration: none;
-    color: var(--green);
-    font-size: 1rem;
-    transition: color 0.3s;
-  }
-
-  .nav a:hover {
-    color: var(--dark-green);
-  }
-
-  /* --- AUTRES ADAPTATIONS MOBILES --- */
-  .hero h1 {
-    font-size: 26px;
-  }
-
-  .hero p {
-    font-size: 15px;
-  }
-
-  .cards {
-    grid-template-columns: 1fr;
-  }
-
-  .equip-list {
-    flex-direction: column;
-  }
-
-  .expandable-card .expandable-title {
-    font-size: 20px;
-    padding: 14px 18px;
-  }
-
-  .expandable-card .expandable-content {
-    padding: 14px 18px 22px 18px;
-  }
-
-  .gallery-scroll img {
-    height: 250px;
-  }
-
-  .popup-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-form {
-    width: 100%;
-  }
-
-  .contact-right a img {
-    height: 50px;
-  }
-}
-
-
-
