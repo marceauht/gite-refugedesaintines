@@ -1,4 +1,3 @@
-// --- FONCTION INIT MAP (globale pour Google Maps) ---
 function initMap() {
   const mapElement = document.querySelector('.map');
   if (!mapElement) return;
@@ -7,25 +6,31 @@ function initMap() {
 
   const map = new google.maps.Map(mapElement, {
     center: location,
-    zoom: 8,
+    zoom: 15, // zoom plus rapproché pour voir le cercle
   });
 
-  const marker = new google.maps.Marker({
+  // Marker
+  new google.maps.Marker({
     position: location,
     map: map,
   });
 
-new google.maps.Circle({
-  map: map,
-  center: location,
-  radius: 1000,
-  fillColor: '#90beab',
-  fillOpacity: 0.2,
-  strokeColor: '#90beab',
-  strokeOpacity: 0.6,
-  strokeWeight: 2,
-});
+  // Cercle 1 km
+  const circle = new google.maps.Circle({
+    map: map,
+    center: location,
+    radius: 1000, 
+    fillColor: '#90beab',
+    fillOpacity: 0.2,
+    strokeColor: '#90beab',
+    strokeOpacity: 0.6,
+    strokeWeight: 2,
+  });
+
+  // Adapter la vue pour que le cercle soit bien visible
+  map.fitBounds(circle.getBounds());
 }
+
 
 // --- SCRIPT PRINCIPAL ---
 document.addEventListener("DOMContentLoaded", () => {
