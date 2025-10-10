@@ -3,7 +3,7 @@ function initMap() {
   const mapElement = document.querySelector('.map');
   if (!mapElement) return;
 
-  const location = { lat: 48.8566, lng: 2.3522 }; // exemple : Paris
+  const location = { lat: 49.30531365926556, lng: 2.7737150817081977 };
   const map = new google.maps.Map(mapElement, {
     center: location,
     zoom: 12,
