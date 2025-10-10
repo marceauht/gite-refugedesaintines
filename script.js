@@ -94,18 +94,34 @@ if (navToggle && nav) {
 // Form
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contact-form");
-  const status = document.createElement("p");
-  status.className = "form-status";
-  form.appendChild(status);
+
+  // Crée le paragraphe pour afficher le message
+  let status = form.querySelector(".form-status");
+  if (!status) {
+    status = document.createElement("p");
+    status.className = "form-status";
+    form.appendChild(status);
+  }
 
   form.addEventListener("submit", e => {
     e.preventDefault();
 
     const formData = new FormData(form);
 
+    // Ajoute le champ caché 'form-name' nécessaire à Netlify
+    if (!formData.has("form-name")) {
+      formData.append("form-name", form.getAttribute("name"));
+    }
+
+    // Transforme les données pour fetch
+    const encode = data => {
+      return [...data.entries()].map(([k,v]) => encodeURIComponent(k)+"="+encodeURIComponent(v)).join("&");
+    }
+
     fetch("/", {
       method: "POST",
-      body: formData,
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode(formData)
     })
     .then(() => {
       status.style.color = "green";
@@ -118,3 +134,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
