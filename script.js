@@ -89,3 +89,4 @@ if (navToggle && nav) {
 
   setupGalleryScroll('.gallery-images', '.scroll-left-images', '.scroll-right-images');
   setupGalleryScroll('.gallery-avis', '.scroll-left-avis', '.scroll-right-avis');
+});
