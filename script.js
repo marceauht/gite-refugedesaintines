@@ -89,29 +89,3 @@ if (navToggle && nav) {
 
   setupGalleryScroll('.gallery-images', '.scroll-left-images', '.scroll-right-images');
   setupGalleryScroll('.gallery-avis', '.scroll-left-avis', '.scroll-right-avis');
-
-  // Formulaire EmailJS
-  const form = document.getElementById("contact-form");
-  const status = form.querySelector(".form-status");
-  form.addEventListener("submit", e => {
-    e.preventDefault();
-    const templateParams = {
-      name: form.name.value,
-      email: form.email.value,
-      message: form.message.value
-    };
-    Promise.all([
-      emailjs.send("service_fteu6mk", "template_po7p4tf", templateParams),
-      emailjs.send("service_fteu6mk", "template_0f7eh8p", templateParams)
-    ])
-    .then(() => {
-      status.style.color = "green";
-      status.textContent = "Votre message a bien été envoyé !";
-      form.reset();
-    })
-    .catch(() => {
-      status.style.color = "red";
-      status.textContent = "Une erreur est survenue, veuillez réessayer plus tard.";
-    });
-  });
-});

@@ -801,7 +801,9 @@
       <h2>Contact / Réservation</h2>
       <p>Pour réserver directement et profiter de nos meilleurs tarifs, contactez-nous !</p>
 
-      <form id="contact-form" class="contact-form">
+      <form id="contact-form" class="contact-form" name="contact" method="POST" data-netlify="true">
+        <input type="hidden" name="contact" value="contact">
+
         <label>
           <span>Nom</span>
           <input type="text" name="name" required>
