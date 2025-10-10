@@ -4,15 +4,27 @@ function initMap() {
   if (!mapElement) return;
 
   const location = { lat: 49.30531365926556, lng: 2.7737150817081977 };
+
   const map = new google.maps.Map(mapElement, {
     center: location,
-    zoom: 12,
+    zoom: 8,
   });
 
   const marker = new google.maps.Marker({
     position: location,
     map: map,
   });
+
+new google.maps.Circle({
+  map: map,
+  center: location,
+  radius: 1000,
+  fillColor: '#90beab',
+  fillOpacity: 0.2,
+  strokeColor: '#90beab',
+  strokeOpacity: 0.6,
+  strokeWeight: 2,
+});
 }
 
 // --- SCRIPT PRINCIPAL ---
