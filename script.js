@@ -90,3 +90,31 @@ if (navToggle && nav) {
   setupGalleryScroll('.gallery-images', '.scroll-left-images', '.scroll-right-images');
   setupGalleryScroll('.gallery-avis', '.scroll-left-avis', '.scroll-right-avis');
 });
+
+// Form
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contact-form");
+  const status = document.createElement("p");
+  status.className = "form-status";
+  form.appendChild(status);
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    fetch("/", {
+      method: "POST",
+      body: formData,
+    })
+    .then(() => {
+      status.style.color = "green";
+      status.textContent = "Votre message a bien été envoyé !";
+      form.reset();
+    })
+    .catch(() => {
+      status.style.color = "red";
+      status.textContent = "Une erreur est survenue, veuillez réessayer plus tard.";
+    });
+  });
+});
