@@ -6,13 +6,7 @@ function initMap() {
 
   const map = new google.maps.Map(mapElement, {
     center: location,
-    zoom: 15, // zoom plus rapproché pour voir le cercle
-  });
-
-  // Marker
-  new google.maps.Marker({
-    position: location,
-    map: map,
+    zoom: 15,
   });
 
   // Cercle 1 km
