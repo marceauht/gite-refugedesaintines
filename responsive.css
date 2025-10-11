@@ -107,6 +107,10 @@
   .contact-right a img {
     left: 0px;
   }
+
+  .link-more {
+      text-decoration: none;
+    }
 }
 
 
@@ -291,4 +295,7 @@
         gap: 12px;
     }
 
+    .link-more {
+      text-decoration: none;
+    }
 }      
