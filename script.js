@@ -78,32 +78,46 @@ if (navToggle && nav) {
     });
   });
 
-  // Galleries scroll
-  function setupGalleryScroll(gallerySelector, btnLeftSelector, btnRightSelector) {
-    const gallery = document.querySelector(gallerySelector);
-    const btnLeft = document.querySelector(btnLeftSelector);
-    const btnRight = document.querySelector(btnRightSelector);
-    if (!gallery || !btnLeft || !btnRight) return;
+  // Gallery
+function setupGalleryScroll(gallerySelector, btnLeftSelector, btnRightSelector, imagesPerScrollDesktop = 2, mode = "fixed") {
+  const gallery = document.querySelector(gallerySelector);
+  const btnLeft = document.querySelector(btnLeftSelector);
+  const btnRight = document.querySelector(btnRightSelector);
+  if (!gallery || !btnLeft || !btnRight) return;
 
-    const items = gallery.querySelectorAll('img, .avis-card');
-    if (!items.length) return;
-    const gap = parseInt(getComputedStyle(gallery).gap) || 20;
-    const scrollAmount = () => items[0].offsetWidth + gap;
+  const gap = parseInt(getComputedStyle(gallery).gap) || 20;
 
-    btnRight.addEventListener('click', () => {
-      gallery.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
-    });
-    btnLeft.addEventListener('click', () => {
-      gallery.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
-    });
-  }
+  const getScrollAmount = () => {
+    if (mode === "dynamic") {
+      return gallery.clientWidth; // scroll par largeur visible
+    } else {
+      const items = gallery.querySelectorAll('img, .avis-card');
+      if (!items.length) return 0;
+      if (window.innerWidth <= 768) return items[0].offsetWidth + gap;
+      let width = 0;
+      for (let i = 0; i < imagesPerScrollDesktop; i++) {
+        if (items[i]) width += items[i].offsetWidth + gap;
+      }
+      return width;
+    }
+  };
 
-  setupGalleryScroll('.gallery-images', '.scroll-left-images', '.scroll-right-images');
-  setupGalleryScroll('.gallery-avis', '.scroll-left-avis', '.scroll-right-avis');
-});
+  btnRight.addEventListener('click', () => {
+    gallery.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+  });
+
+  btnLeft.addEventListener('click', () => {
+    gallery.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+  });
+}
+
+// Images → scroll fixe
+setupGalleryScroll('.gallery-images', '.scroll-left-images', '.scroll-right-images', 2, "fixed");
+
+// Avis → scroll dynamique
+setupGalleryScroll('.gallery-avis', '.scroll-left-avis', '.scroll-right-avis', 1, "dynamic");
 
 // Form
-document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contact-form");
 
   // Crée le paragraphe pour afficher le message
@@ -145,4 +159,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-

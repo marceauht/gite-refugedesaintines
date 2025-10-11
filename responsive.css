@@ -5,8 +5,12 @@
 /* ---------------------------------------------
    Tablette paysage (max-width: 1024px)
    --------------------------------------------- */
-@media (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
 
+  .hero {
+    margin-top: 100px;
+    min-height: 50vh;
+  }
   .hero h1 {
     font-size: 34px;
   }
@@ -30,6 +34,12 @@
     gap: 12px;
   }
 
+  .gallery-wrapper {
+        padding: 0 12px;
+        max-width: 95%;
+        margin: 0 auto;
+    }
+
   .gallery-scroll img {
     height: 250px;
   }
@@ -37,6 +47,19 @@
   .avis-card {
     min-width: 220px;
     font-size: 13px;
+  }
+
+  .gallery-avis .avis-card {
+    flex: 0 0 calc((100% - 20px) / 2);
+  }
+
+  .review-platform img {
+        height: 24px;
+        width: auto;
+    }
+
+  .scroll-btn {
+      display: none !important;
   }
 
   .equip-list {
@@ -49,19 +72,41 @@
   }
 
   .contact-container {
-    flex-direction: column;
-    gap: 20px;
+    flex-direction: row;
+    gap: 30px;
+    align-items: stretch;
   }
 
   .contact-left,
   .contact-right {
+    width: 50%;
+  }
+
+  .contact-form {
+    max-width: 100%;
+    margin-top: 20px; 
+  }
+
+  .contact-form button.btn {
     width: 100%;
   }
 
-  .contact-right a {
-    width: 80%;
+   /* Séparateur vertical */
+  .contact-separator {
+    width: 1px;
+    background-color: var(--muted);
+    margin: 0 auto;
   }
 
+  .contact-right a {
+    width: 100%;
+    max-width: none;
+    line-height: 58px;
+  }
+
+  .contact-right a img {
+    left: 0px;
+  }
 }
 
 
@@ -70,135 +115,180 @@
    --------------------------------------------- */
 @media (max-width: 768px) {
 
-  .nav {
-    display: none;
-    flex-direction: column;
-    background: var(--cream);
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: 10px 0;
-    gap: 0;
-  }
+    .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;   
+        width: 100%;
+        padding: 6px 0; 
+    }
 
-  .nav.open {
-    display: flex;
-  }
+    .header-inner {
+        padding: 6px 16px;
+    }
 
-  .nav a {
-    padding: 10px 20px;
-    margin: 6px 0;
-  }
+    body {
+        padding-top: 60px;
+    }
 
-  .nav-toggle {
-    display: flex;
-  }
+    .nav {
+        display: none;
+        flex-direction: column;
+        background: var(--cream);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 10px 0;
+        gap: 0;
+    }
 
-  .hero {
-    min-height: 60vh;
-  }
+    .nav.open {
+        display: flex;
+    }
 
-  .hero h1 {
-    font-size: 28px;
-  }
+    .nav a {
+        padding: 10px 20px;
+        margin: 6px 0;
+    }
 
-  .hero p {
-    font-size: 16px;
-  }
+    .nav-toggle {
+        display: flex;
+    }
 
-  .hero-buttons .btn {
-    padding: 8px 16px;
-    font-size: 14px;
-  }
+    .hero {
+        min-height: 60vh;
+    }
 
-  .expandable-card {
-    margin: 16px auto;
-  }
+    .hero h1 {
+        font-size: 28px;
+    }
 
-  .cards {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
+    .hero p {
+        font-size: 16px;
+    }
 
-  .gallery-scroll img {
-    height: 200px;
-  }
+    .hero-buttons .btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
 
-  .avis-card {
-    min-width: 180px;
-    font-size: 12px;
-  }
+    .expandable-card {
+        margin: 16px auto;
+    }
 
-  .equip-list li {
-    font-size: 12px;
-    padding: 5px 8px;
-  }
+    .cards {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
 
-  .contact-container {
-    flex-direction: column;
-    gap: 16px;
-  }
+    .gallery-wrapper {
+        padding: 0 12px;
+        max-width: 95%;
+        margin: 0 auto;
+    }
 
-  .contact-right a {
-    width: 90%;
-    font-size: 14px;
-  }
+    .gallery-scroll {
+        scroll-snap-type: x mandatory;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
 
-  .popup-content {
-    width: 90%;
-    max-height: 70vh;
-    padding: 16px;
-  }
+    .gallery-scroll figure {
+        flex: 0 0 100%;
+        scroll-snap-align: start;
+        margin: 0;
+    }
 
-  .popup-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
+    .gallery-scroll img {
+        width: 100%;
+        height: auto;
+        pointer-events: none;
+        user-select: none;
+        border-radius: 12px;
+    }
 
-}
+    .equip-list li {
+      display: none;
+    }
 
+    .equip-list li:nth-child(1),
+    .equip-list li:nth-child(2),
+    .equip-list li:nth-child(3),
+    .equip-list li:nth-child(4),
+    .equip-list li:nth-child(6),
+    .equip-list li:nth-child(8),
+    .equip-list li:nth-child(9),
+    .equip-list li:nth-child(11),
+    .equip-list li:nth-child(14),
+    .equip-list li:nth-child(16),
+    .equip-list li.equip-btn {
+      display: list-item;
+    }
 
-/* ---------------------------------------------
-   Petit mobile / portrait (max-width: 480px)
-   --------------------------------------------- */
-@media (max-width: 480px) {
+    .review-platform img {
+        height: 24px;
+        width: auto;
+    }
 
-  .hero h1 {
-    font-size: 22px;
-  }
+    .avis-card {
+        min-width: 180px;
+        font-size: 12px;
+    }
 
-  .hero p {
-    font-size: 14px;
-  }
+    .gallery-avis .avis-card {
+        flex: 0 0 100%;
+    }
 
-  .hero-buttons .btn {
-    padding: 6px 12px;
-    font-size: 13px;
-  }
+    .scroll-btn {
+        display: none !important;
+    }
 
-  .gallery-scroll img {
-    height: 160px;
-  }
+    .equip-list li {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
 
-  .avis-card {
-    min-width: 150px;
-    font-size: 11px;
-  }
+    .contact-container {
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+    }
 
-  .equip-list li {
-    font-size: 11px;
-    padding: 4px 6px;
-  }
+    .contact-left,
+    .contact-right {
+      width: 100%;
+      max-width: 520px;
+    }
 
-  .popup-content {
-    width: 95%;
-    max-height: 65vh;
-    padding: 12px;
-  }
+    .contact-form {
+      width: 100%;
+    }
 
-  .popup-grid {
-    gap: 10px;
-  }
+    .contact-right a {
+        width: 100%;
+        font-size: 14px;
+        margin-top: 16px;
+    }
 
-}
+    .contact-separator {
+      width: 100%;
+      max-width: 520px;
+      height: 1px;
+      background: var(--muted);
+      margin: 20px auto;
+      align-self: center;
+    }
+
+    .popup-content {
+        width: 90%;
+        max-height: 70vh;
+        padding: 16px;
+    }
+
+    .popup-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+}      
