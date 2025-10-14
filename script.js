@@ -40,6 +40,19 @@ if (navToggle && nav) {
     nav.classList.toggle('open');
   });
 }
+  // --- Fermeture auto du menu hamburger ---
+const navLinks = document.querySelectorAll('.nav a');
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    if (nav.classList.contains('open')) {
+      nav.classList.remove('open');
+      navToggle.classList.remove('active');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+});
+
 
 
   // Expandable cards

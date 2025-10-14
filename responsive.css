@@ -135,6 +135,10 @@
         padding-top: 60px;
     }
 
+    .section {
+      scroll-margin-top: 60px;
+    }
+
     .nav {
         display: none;
         flex-direction: column;
