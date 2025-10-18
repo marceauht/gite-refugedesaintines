@@ -892,12 +892,10 @@
       <h2>Contact / Réservation</h2>
       <p>Pour réserver directement et profiter de nos meilleurs tarifs, contactez-nous !</p>
 
-      <form id="contact-form" class="contact-form" name="contact" method="POST" data-netlify="true">
-        <input type="hidden" name="form-name" value="contact">
-
+      <form id="contact-form" class="contact-form" name="contact">
         <label>
           <span>Nom</span>
-          <input type="text" name="name" autocomplete="name" required>
+          <input type="text" name="nom" autocomplete="name" required>
         </label>
         <label>
           <span>Email</span>
@@ -936,6 +934,30 @@
         </div>
       </div>
     </section>
+
+    <script>
+      document.getElementById("contact-form").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const statusEl = document.querySelector(".form-status");
+        const data = {
+          nom: this.nom.value,
+          email: this.email.value,
+          message: this.message.value
+        };
+        fetch("https://script.google.com/macros/s/AKfycbz0yEanGYhQiVB5N8G4sIoAVe9s-mut13Jn8BSweZv1wSSWfMjcTAALqCtxY0J7EeQ8Mg/exec", {
+          method: "POST",
+          body: JSON.stringify(data)
+        })
+        .then(r => r.json())
+        .then(() => {
+          statusEl.innerText = "Message envoyé avec succès ✅";
+          this.reset();
+        })
+        .catch(() => {
+          statusEl.innerText = "Erreur lors de l'envoi ❌. Réessayez.";
+        });
+      });
+    </script>
   </main>
 
   <footer class="site-footer">
