@@ -129,3 +129,4 @@ setupGalleryScroll('.gallery-images', '.scroll-left-images', '.scroll-right-imag
 
 // Avis → scroll dynamique
 setupGalleryScroll('.gallery-avis', '.scroll-left-avis', '.scroll-right-avis', 1, "dynamic");
+});
