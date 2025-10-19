@@ -144,7 +144,6 @@ document.getElementById("contact-form").addEventListener("submit", function(e) {
         statusEl.innerHTML = `
           <span class="loader">
             <span class="letter">📧</span>
-            <span class="trail"></span><span class="trail"></span><span class="trail"></span>
             Envoi en cours...
           </span>
         `;
