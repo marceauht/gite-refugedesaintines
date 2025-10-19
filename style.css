@@ -876,6 +876,41 @@ body{
   transform: scale(1.05);
 }
 
+/* Loader animé : lettre 📧 qui se déplace avec des traits */
+.loader {
+  display: inline-flex;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #003381; /* couleur du loader */
+}
+
+.loader .letter {
+  display: inline-block;
+  animation: moveLetter 1s linear infinite;
+  margin-right: 8px;
+}
+
+.loader .trail {
+  display: inline-block;
+  width: 4px;
+  height: 2px;
+  background: #003381;
+  margin-right: 2px;
+  animation: blink 1s infinite;
+}
+
+@keyframes moveLetter {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 0; }
+  25%, 75% { opacity: 1; }
+}
+
 /* Footer */
 .site-footer{
   padding:24px 0;

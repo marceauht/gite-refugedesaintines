@@ -934,30 +934,6 @@
         </div>
       </div>
     </section>
-
-    <script>
-      document.getElementById("contact-form").addEventListener("submit", function(e) {
-        e.preventDefault();
-        const statusEl = document.querySelector(".form-status");
-        const data = {
-          nom: this.nom.value,
-          email: this.email.value,
-          message: this.message.value
-        };
-        fetch("https://script.google.com/macros/s/AKfycbyu2oCCpHnS6onwr7MEMB6aR8KVdl2vRIObVkivFaugpdQbQCJJeuBeLxFZnSqZP39JAw/exec", {
-          method: "POST",
-          body: JSON.stringify(data)
-        })
-        .then(r => r.json())
-        .then(() => {
-          statusEl.innerText = "Message envoyé avec succès ✅";
-          this.reset();
-        })
-        .catch(() => {
-          statusEl.innerText = "Erreur lors de l'envoi ❌. Réessayez.";
-        });
-      });
-    </script>
   </main>
 
   <footer class="site-footer">

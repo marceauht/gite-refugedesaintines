@@ -130,3 +130,37 @@ setupGalleryScroll('.gallery-images', '.scroll-left-images', '.scroll-right-imag
 // Avis → scroll dynamique
 setupGalleryScroll('.gallery-avis', '.scroll-left-avis', '.scroll-right-avis', 1, "dynamic");
 });
+
+// Form
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const statusEl = document.querySelector(".form-status");
+        const data = {
+          nom: this.nom.value,
+          email: this.email.value,
+          message: this.message.value
+        };
+
+        statusEl.innerHTML = `
+          <span class="loader">
+            <span class="letter">📧</span>
+            <span class="trail"></span><span class="trail"></span><span class="trail"></span>
+            Envoi en cours...
+          </span>
+        `;
+
+        fetch("https://script.google.com/macros/s/AKfycbyu2oCCpHnS6onwr7MEMB6aR8KVdl2vRIObVkivFaugpdQbQCJJeuBeLxFZnSqZP39JAw/exec", {
+          method: "POST",
+          body: JSON.stringify(data)
+        })
+        .then(r => r.json())
+        .then(() => {
+          statusEl.innerText = "Message envoyé avec succès ✅";
+          statusEl.style.color = "#90beab";
+          this.reset();
+        })
+        .catch(() => {
+          statusEl.innerText = "Erreur lors de l'envoi ❌. Réessayez.";
+          statusEl.style.color = "#F44336";
+        });
+      });
