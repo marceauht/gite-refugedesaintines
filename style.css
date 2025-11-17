@@ -918,3 +918,9 @@ body{
   color:var(--muted);
   font-size:14px
 }
+
+/* INTRANET */
+
+header.site-header.qr-code .brand {
+  margin: 0 auto;
+}

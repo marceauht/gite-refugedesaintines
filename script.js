@@ -28,6 +28,27 @@ function initMap() {
 
 // --- SCRIPT PRINCIPAL ---
 document.addEventListener("DOMContentLoaded", () => {
+
+  // --- ACCES QR / EN LOCAL ---
+const isLocal = location.hostname === '127.0.0.1' || location.hostname === 'localhost';
+const allowedCode = "XYZ123"; // code QR
+
+const params = new URLSearchParams(location.search);
+const code = params.get("code");
+
+const blockedEl = document.getElementById('blocked');
+const contentEl = document.getElementById('content');
+
+  if (blockedEl && contentEl) {
+    if (isLocal || code === allowedCode) {
+      blockedEl.style.display = 'none';
+      contentEl.style.display = 'block';
+    } else {
+      blockedEl.style.display = 'block';
+      contentEl.style.display = 'none';
+    }
+  }
+  
   // Nav toggle
 const navToggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.nav');
@@ -161,5 +182,5 @@ document.getElementById("contact-form").addEventListener("submit", function(e) {
         .catch(() => {
           statusEl.innerText = "Erreur lors de l'envoi ❌. Réessayez.";
           statusEl.style.color = "#F44336";
-        });
-      });
+  });
+});
