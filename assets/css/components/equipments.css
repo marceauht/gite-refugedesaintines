@@ -1,0 +1,37 @@
+﻿.equip-wrapper {
+  max-width: var(--container);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.equip-list{
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  justify-content: center;
+}
+
+.equip-list li{
+  background: var(--white);
+  padding: 8px 12px;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  font-size: 14px;
+}
+
+.equip-btn a {
+  display: inline-block;
+  color: var(--black);
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 999px; 
+  transition: transform 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.equip-btn a:hover {
+  color: var(--sage);
+  transform: scale(1.05);
+}

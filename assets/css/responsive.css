@@ -1,0 +1,338 @@
+﻿/* =====================================================
+   RESPONSIVE CSS - MOBILE & TABLET
+   ===================================================== */
+
+/* ---------------------------------------------
+   Tablet landscape (max-width: 1024px)
+   --------------------------------------------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .hero {
+    margin-top: 120;
+    min-height: 50vh;
+  }
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+
+  .hero-buttons .btn {
+    padding: 8px 16px;
+    font-size: 15px;
+  }
+
+  .expandable-card {
+    max-width: 95%;
+    margin: 20px auto;
+  }
+
+  .cards {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .gallery-wrapper {
+    padding: 0 12px;
+    max-width: 95%;
+    margin: 0 auto;
+  }
+
+  .gallery-scroll img {
+    height: 250px;
+  }
+
+  .avis-card {
+    min-width: 220px;
+    font-size: 13px;
+  }
+
+  .gallery-avis .avis-card {
+    flex: 0 0 calc((100% - 20px) / 2);
+  }
+
+  .review-platform img {
+    height: 24px;
+    width: auto;
+  }
+
+  .scroll-btn {
+    display: none !important;
+  }
+
+  .equip-list {
+    gap: 8px;
+  }
+
+  .equip-list li {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  .contact-container {
+    flex-direction: row;
+    gap: 30px;
+    align-items: stretch;
+  }
+
+  .contact-left,
+  .contact-right {
+    width: 50%;
+  }
+
+  .contact-form {
+    max-width: 100%;
+    margin-top: 20px;
+  }
+
+  .contact-form button.btn {
+    width: 100%;
+  }
+
+  .contact-separator {
+    width: 1px;
+    background-color: var(--muted);
+    margin: 0 auto;
+  }
+
+  .contact-right a {
+    width: 100%;
+    max-width: none;
+    line-height: 58px;
+  }
+
+  .contact-right a img {
+    left: 0px;
+  }
+
+  .acc-item {
+    text-decoration: none;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-hosting {
+    text-align: right;
+  }
+}
+
+/* ---------------------------------------------
+   Tablet portrait and mobile (max-width: 768px)
+   --------------------------------------------- */
+@media (max-width: 768px) {
+
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 6px 0;
+  }
+
+  .header-inner {
+    padding: 6px 16px;
+  }
+
+  body {
+    padding-top: 60px;
+  }
+
+  .section {
+    scroll-margin-top: 60px;
+  }
+
+  .nav {
+    display: none;
+    flex-direction: column;
+    background: var(--cream);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    gap: 0;
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .nav a {
+    padding: 10px 20px;
+    margin: 6px 0;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .hero {
+    min-height: 60vh;
+    margin-top: 0;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .hero-buttons .btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .expandable-card {
+    margin: 16px auto;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .gallery-wrapper {
+    padding: 0 12px;
+    max-width: 95%;
+    margin: 0 auto;
+  }
+
+  .gallery-scroll {
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .gallery-scroll figure {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    margin: 0;
+  }
+
+  .gallery-scroll img {
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+    border-radius: 12px;
+  }
+
+  .equip-list li {
+    display: none;
+  }
+
+  .equip-list li:nth-child(1),
+  .equip-list li:nth-child(2),
+  .equip-list li:nth-child(3),
+  .equip-list li:nth-child(4),
+  .equip-list li:nth-child(6),
+  .equip-list li:nth-child(8),
+  .equip-list li:nth-child(9),
+  .equip-list li:nth-child(11),
+  .equip-list li:nth-child(14),
+  .equip-list li:nth-child(16),
+  .equip-list li.equip-btn {
+    display: list-item;
+  }
+
+  .review-platform img {
+    height: 24px;
+    width: auto;
+  }
+
+  .avis-card {
+    min-width: 180px;
+    font-size: 12px;
+  }
+
+  .gallery-avis .avis-card {
+    flex: 0 0 100%;
+  }
+
+  .scroll-btn {
+    display: none !important;
+  }
+
+  .equip-list li {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+
+  .contact-container {
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .contact-left,
+  .contact-right {
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
+
+  .contact-right a {
+    width: 100%;
+    font-size: 14px;
+    margin-top: 16px;
+  }
+
+  .contact-separator {
+    width: 100%;
+    max-width: 520px;
+    height: 1px;
+    background: var(--muted);
+    margin: 20px auto;
+    align-self: center;
+  }
+
+  .popup-content {
+    width: 90%;
+    max-height: 70vh;
+    padding: 16px;
+  }
+
+  .popup-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .acc-item {
+    text-decoration: none;
+  }
+
+  .site-footer {
+    padding: 28px 16px 16px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .footer-hosting {
+    text-align: left;
+  }
+}

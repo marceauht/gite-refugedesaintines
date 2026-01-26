@@ -1,0 +1,144 @@
+﻿/* Skip link */
+.skip-link{
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-link:focus{
+  left: 10px;
+  top: 10px;
+  width: auto;
+  height: auto;
+  padding: 8px 12px;
+  background: #000;
+  color: #fff;
+  border-radius: 6px;
+}
+
+/* Header */
+.site-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--sage);
+  z-index: 9999;
+  padding: 18px 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.header-inner{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.brand{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.brand-logo{
+  max-width: 70px;
+  height: auto;
+}
+
+.brand-text{
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-text .logo{
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: #000;
+}
+
+.brand-text .sub{
+  font-size: 14px;
+  color: #000;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.nav a{
+  display: inline-block;
+  margin: 0 0;
+  text-decoration: none;
+  color: var(--black);
+  font-weight: 500;
+  font-size: 16px;
+  padding: 6px 14px;
+  border-radius: 25px;
+  background-color: var(--cream);
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.nav a:hover{
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 2000;
+}
+
+.nav-toggle span {
+  position: absolute;
+  display: block;
+  height: 3px;
+  width: 22px;
+  background: var(--black);
+  border-radius: 2px;
+  transition: all 0.3 ease;
+  transform-origin: center;
+}
+
+.nav-toggle span:nth-child(1) {
+  top: 6px;
+}
+
+.nav-toggle span:nth-child(2) {
+  top: 12px;
+}
+
+.nav-toggle span:nth-child(3) {
+  top: 18px;
+}
+
+.nav-toggle.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 12px;
+}
+
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 12px;
+}

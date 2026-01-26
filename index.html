@@ -1,41 +1,177 @@
 <!doctype html>
 <html lang="fr">
 <head>
+  <!-- Basics -->
   <meta charset="utf-8" />
-  <meta name="description" content="Réservez votre studio cosy à Saintines, proche CDG, Parc Astérix et accès A1 à 5 minutes, avec terrasse, Wi-Fi, TV connectée et parking." />
-  <title>Le Refuge de Saintines</title>
-  <link rel="icon" href="images/lrds-logo.png" type="images/png" loading="lazy">
-  <link rel="preload" as="image" href="images/hero.webp" type="images/webp">
-  <meta name="description" content="Le Refuge de Saintines" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="responsive.css">
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LodgingBusiness",
-  "name": "Le Refuge de Saintines",
-  "image": "https://gite-refugedesaintines.com/images/lrds-logo.png",
-  "description": "Réservez votre studio cosy à Saintines, proche CDG, Parc Astérix et accès A1 à 5 minutes, avec terrasse, Wi-Fi, TV connectée et parking.",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "80 Impasse du Lavoir",
-    "addressLocality": "Saintines",
-    "postalCode": "60410",
-    "addressCountry": "FR"
-  },
-  "telephone": "+33 6 73 73 53 18",
-  "url": "https://gite-refugedesaintines.com",
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 49.30528567724818,
-    "longitude": 2.773693624035537
-  }
-}
-</script>
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>Le Refuge de Saintines | Studio cosy proche CDG & Parc Astérix</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Réservez votre studio cosy à Saintines, proche CDG, Parc Astérix et accès A1 à 5 minutes, avec terrasse, Wi-Fi, TV connectée et parking." />
+  <link rel="canonical" href="https://gite-refugedesaintines.com/" />
+
+  <!-- Indexation (site principal = indexable) -->
+  <meta name="robots" content="index, follow" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/lrds-logo.png" type="image/png" />
+
+  <!-- Performance: hero + fonts -->
+  <link rel="preload" as="image" href="images/hero.webp" type="image/webp" fetchpriority="high" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/main.css" />
+
+  <!-- Social sharing (Open Graph) -->
+  <meta property="og:site_name" content="Le Refuge de Saintines" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Le Refuge de Saintines | Studio cosy proche CDG & Parc Astérix" />
+  <meta property="og:description" content="Studio cosy à Saintines : terrasse, Wi-Fi, TV connectée, parking. Proche CDG, Parc Astérix et accès A1." />
+  <meta property="og:url" content="https://gite-refugedesaintines.com/" />
+  <meta property="og:image" content="https://gite-refugedesaintines.com/images/hero.webp" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Le Refuge de Saintines | Studio cosy proche CDG & Parc Astérix" />
+  <meta name="twitter:description" content="Réservez en direct : studio cosy à Saintines avec terrasse, Wi-Fi, TV connectée et parking." />
+  <meta name="twitter:image" content="https://gite-refugedesaintines.com/images/hero.webp" />
+
+  <!-- (Optionnel) PWA / UI -->
+  <meta name="theme-color" content="#ffffff" />
+
+  <!-- Structured data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    "@id": "https://gite-refugedesaintines.com/#lodging",
+    "name": "Le Refuge de Saintines",
+    "url": "https://gite-refugedesaintines.com/",
+    "image": [
+      "https://gite-refugedesaintines.com/images/hero.webp",
+      "https://gite-refugedesaintines.com/images/lrds-logo.png"
+    ],
+    "description": "Réservez votre studio cosy à Saintines, proche CDG, Parc Astérix et accès A1 à 5 minutes, avec terrasse, Wi-Fi, TV connectée et parking.",
+    "telephone": "+33 6 73 73 53 18",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "80 Impasse du Lavoir",
+      "addressLocality": "Saintines",
+      "postalCode": "60410",
+      "addressCountry": "FR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 49.30528567724818,
+      "longitude": 2.773693624035537
+    },
+
+    "priceRange": "À partir de 50€ / nuit",
+    "currenciesAccepted": "EUR",
+    "checkinTime": "16:00",
+    "checkoutTime": "11:00",
+    "maximumAttendeeCapacity": 4,
+    "petsAllowed": true,
+
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Wi-Fi",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Parking gratuit",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "TV connectée",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Terrasse",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Cuisine équipée",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Machine à café",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Linge de lit fourni",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Serviettes fournies",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Climatisation ou chauffage",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Entrée privée",
+        "value": true
+      }
+    ],
+
+    "offers": [
+      {
+        "@type": "Offer",
+        "price": "58.00",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "url": "https://gite-refugedesaintines.com/",
+        "category": "https://schema.org/LodgingReservation"
+      },
+      {
+        "@type": "Offer",
+        "url": "https://www.airbnb.fr/rooms/1428176497326220574",
+        "availability": "https://schema.org/InStock",
+        "category": "https://schema.org/LodgingReservation"
+      },
+      {
+        "@type": "Offer",
+        "url": "https://www.booking.com/hotel/fr/charming-studio-close-to-cdg.fr.html",
+        "availability": "https://schema.org/InStock",
+        "category": "https://schema.org/LodgingReservation"
+      }
+    ],
+
+    "potentialAction": {
+      "@type": "ReserveAction",
+      "target": "https://gite-refugedesaintines.com/"
+    },
+
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.94",
+      "reviewCount": "18",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+
+  }
+  </script>
 </head>
+
+
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
 
@@ -98,19 +234,12 @@
 
             <div class="expandable-content">
                 <p>
-                Au calme et sans vis-à-vis, ce studio vous offre confort, praticité et sérénité.<br><br>
-                Commencez la journée par un café au soleil sur la terrasse avant de partir explorer la ville impériale de Compiègne, Pierrefonds et son château ou le Parc Astérix.<br>
-                Après vos découvertes, retrouvez un cocon chaleureux avec le Wi-Fi haut-débit, la TV connectée, une literie douillette et la cuisine équipée. <br><br>
-                <strong>
-                  Ici, tout est prêt pour que vous vous sentiez chez vous.<br>
-                </strong>
-                ___________________________________________________________________________________________________________<br><br>
-                Votre arrivée se fait par le garage : sur la gauche, une buanderie avec lave-linge et sèche-linge, idéale pour les longs séjours ; sur la droite, la porte s'ouvre sur votre cocon.<br><br>
-                Dès l'entrée, vous découvrez une pièce de vie conviviale : une table pour partager un repas, une cuisine toute équipée où préparer vos plats. Le coin canapé vous invite à la détente et peut se transformer en couchage pour vos proches.<br><br>
-                Un peu plus loin, l'espace nuit se dévoile... Avec un lit double confortable et une TV connectée pour vos soirées Netflix&Chill.<br><br>
-                La salle de bain, moderne et fonctionnelle, vous offre une douche, vasque, miroir et toilettes. Le tout, avec linge de maison et accessoires fournis pour voyager léger.<br><br>
-                Et pour terminer la journée en douceur, la terrasse et le jardin complète l'expérience : un cadre sans vis-à-vis, idéal pour savourer un café au soleil, un repas en plein air ou faire un barbecue.<br><br>
-                Ici, chaque détail a été pensé pour que vous vous sentiez bien, que vous soyez en couple, en famille, entre amis ou en déplacement professionnel.
+                Au fond d’une petite rue calme, ce studio vous accueille comme une parenthèse douce entre deux journées bien remplies.  
+                Le matin, on savoure un café au soleil sur la terrasse sans vis-à-vis. Le soir, on retrouve un cocon chaleureux et moderne : Wi-Fi haut débit, TV connectée, literie confortable, climatisation, cuisine entièrement équipée… tout est pensé pour votre bien-être.<br><br>
+
+                Situé à quelques minutes de Compiègne, Pierrefonds et du Parc Astérix, le Refuge de Saintines est le point de départ idéal pour explorer la région avant de rentrer profiter du calme et du confort du logement.<br><br>
+
+                <strong>Ici, on ralentit. On se repose. On profite.</strong>
               </p>
             </div>
           </div>
@@ -157,37 +286,19 @@
     <section>
       <div class="equip-wrapper">
         <ul class="equip-list">
-            <!-- Infos essentielles / capacité -->
-            <li>🏠 30 m²</li>
-            <li>👨‍👩‍👧‍👦 4 voyageurs</li>
-            <li>🐾 Animaux admis</li>
-            <li>🛏 Lit parapluie disponible</li>
-            <li>🚪 Logement de plain-pied</li>
-
-            <!-- Confort et services -->
-            <li>📶 Wifi</li>
-            <li>🌡 Chauffage / Climatisation</li>
-            <li>🖥 TV connectée</li>
-            <li>🛋 Terrasse privée</li>
-            <li>🚬 Fumeur à l'extérieur</li>
-
-            <!-- Cuisine & repas -->
-            <li>🍳 Cuisine équipée</li>
-            <li>🔥 Barbecue</li>
-            <li>🧺 Buanderie / Lave-linge & sèche-linge</li>
-            <li>🧴 Linge fourni & accessoires d'hygiène</li>
-            <li>☕ Cafetière / Bouilloire</li>
-
-            <!-- Parking / extérieur -->
-           <li>🅿 Parking gratuit</li>
-
-            <!-- Extras -->
-          <li>🍽 Vaisselle & ustensiles</li>
-          <li>🧯 Extincteur / sécurité</li>
+          <li>🏡 Studio cosy de 30 m²</li>
+          <li>🛏 Lit double + canapé convertible</li>
+          <li>📶 Wi-Fi haut débit</li>
+          <li>🖥 TV connectée (Netflix, Prime, Disney+)</li>
+          <li>🌡 Chauffage & climatisation</li>
+          <li>🍳 Cuisine équipée</li>
+          <li>🧺 Buanderie (lave-linge & sèche-linge)</li>
+          <li>🌿 Terrasse privée sans vis-à-vis</li>
+          <li>🅿️ Parking gratuit sur place</li>
 
           <!-- Bouton pour voir tous les équipements -->
           <li class="equip-btn">
-            <a href="#" data-popup-target="popup-equipements">Voir tous les équipements</a>
+            <a href="#" data-popup-target="popup-equipements" class="equip-link">Voir tous les équipements</a>
           </li>
         </ul>
 
@@ -302,19 +413,51 @@
         <!-- Accordéons -->
         <div class="accordion">
           <div class="acc-item">
-            <button class="acc-toggle" aria-expanded="false" aria-controls="acc-parking" id="acc-parking-btn">🅿️ Parking / Accès</button>
+            <button class="acc-toggle" aria-expanded="false" aria-controls="acc-parking" id="acc-parking-btn">💶 Tarifs</button>
             <div id="acc-parking" class="acc-panel">
               <p>
-                  📍 L'adresse exacte ainsi que les modalités d'accès vous sera envoyée lors de votre réservation. <br><br>
+                Les nuitées sont proposées <strong>à partir de 58 € / nuit</strong>.<br>
+                Des <strong>réductions</strong> peuvent s’appliquer pour les séjours à la semaine ou au mois.<br><br>
 
-                  🚗 Stationnement <br><br>
+                <strong>Le tarif inclut :</strong>
+              </p>
 
-                  • Deux petits parkings sont disponibles en haut et en bas de la rue. <br>
-                  • Sinon, vous pouvez vous garer sur le côté gauche de la voie publique. <br><br>
+              <ul>
+                <li>le logement entier</li>
+                <li>la terrasse et le barbecue</li>
+                <li>l’accès à la buanderie</li>
+                <li>un espace de rangement sécurisé (idéal pour les vélos)</li>
+                <li>le linge de lit et les serviettes</li>
+                <li>les produits d’hygiène de base</li>
+                <li>le Wi-Fi et le stationnement gratuit à proximité</li>
+              </ul>
 
-                  🚦 Attention à ne pas stationner sur les bandes jaunes et à ne pas obstruer l’accès aux portails situés sur la droite de la rue.<br><br>
+              <br>
 
-                  🔄 La rue est à sens unique, pensez-y pour faciliter votre arrivée !<br><br>
+              <p>
+                🧼 <strong>Frais de ménage</strong>
+              </p>
+
+              <ul>
+                <li>Des frais de ménage de <strong>30 € par séjour</strong> s’appliquent, quel que soit le nombre de nuits.</li>
+              </ul>
+
+              <br>
+
+              <p>
+                ➕ <strong>Options & informations complémentaires</strong>
+              </p>
+
+              <ul>
+                <li>🐾 Animaux acceptés : supplément de <strong>10 € par animal et par séjour</strong></li>
+                <li>👤 Voyageurs supplémentaires : au-delà de <strong>2 personnes</strong>, supplément de <strong>10 € par voyageur et par séjour</strong></li>
+                <li>👶 Lit parapluie : mis gratuitement à disposition sur simple demande</li>
+              </ul>
+
+              <br>
+              
+              <p>
+                Pour toute question ou demande particulière, n’hésitez pas à me contacter. 🙂<br><br>
               </p>
             </div>
           </div>
@@ -323,13 +466,42 @@
             <button class="acc-toggle" aria-expanded="false" aria-controls="acc-check" id="acc-check-btn">🕒 Check-in / Check-out</button>
             <div id="acc-check" class="acc-panel">
               <p>
-                🕒 Horaires :<br>
-                    • Arrivée : à partir de 16:00<br>
-                    • Départ : jusqu’à 11:00<br><br>
-
-                🔑 L’entrée au logement se fait en toute autonomie grâce à une boîte à clé sécurisée.<br>
-                Les instructions vous seront communiquées au moment de la réservation.<br><br>
+                <strong>La réservation peut s'effectuer</strong>
               </p>
+
+              <ul>
+                <li>directement via ce site en bas de page, garantissant un meilleur tarif</li>
+                <li>ou via les plateformes de réservation (AirBnB, Booking.com, etc.)</li>
+              </ul>
+
+              <p>
+                Une fois votre réservation confirmée, vous recevrez toutes les informations nécéssaires pour préparer votre séjour.
+              </p>
+
+              <br>
+
+              <p>
+                <strong>L'arrivée se fait en toute autonomie</strong>, grâce à une boîte à clé sécurisée.<br>
+                Vous pouvez arriver librement à partir de <strong>16:00</strong>.
+              </p>
+
+              <p>
+                <strong>Le départ</strong>, quant à lui, s'effectue avant <strong>11:00</strong>.
+              </p>
+
+              <br>
+
+              <p>
+                🕒 <strong>Horaires flexibles</strong>
+              </p>
+
+              <ul>
+                <li>Selon les disponibilités et le planning des réservations, une arrivée anticipée ou un départ tardif peut être envisagé, sans frais supplémentaires.</li>
+                <li>N'hésitez pas à m'en faire la demande en amont.</li>
+              </ul>
+
+              <br><br>
+
             </div>
           </div>
 
@@ -337,76 +509,42 @@
             <button class="acc-toggle" aria-expanded="false" aria-controls="acc-rules" id="acc-rules-btn">⚖️ Règlement intérieur</button>
             <div id="acc-rules" class="acc-panel">
               <p>
-                <strong>🏡 Règlement Intérieur du Studio / House Rules<br><br></strong>
+                <strong>🏡 Règlement intérieur</strong><br><br>
 
-                Bienvenue et merci d’avoir choisi mon studio ! Pour assurer un séjour agréable à tous, merci de respecter les règles suivantes :<br>
-                Welcome and thank you for choosing our studio! To ensure a pleasant stay for everyone, please respect the following rules:<br><br>
+                Merci de respecter ces quelques règles afin de garantir un séjour agréable à tous :
+                <br><br>
 
-                <strong>🕐 Horaires / Check-in & Check-out<br><br></strong>
+                <strong>🕐 Arrivée & départ</strong><br>
+                  • Check-in à partir de 16h<br>
+                  • Check-out jusqu’à 11h<br>
+                (Horaires flexibles sur demande selon disponibilité)<br><br>
 
-                Arrivée : 16H<br>
-                Check-in: 4PM<br><br>
+                <strong>🚭 Non-fumeur</strong><br>
+                Il est strictement interdit de fumer à l’intérieur. Un cendrier est disponible à l’extérieur.<br><br>
 
-                Départ : 11 H<br>
-                Check-out: 11AM<br><br>
+                <strong>🐾 Animaux</strong><br>
+                Les animaux sont admis (supplément 10 €/animaux).<br>
+                Les besoins des animaux doivent être faits à l’extérieur de la propriété.<br><br>
 
-                (Possibilité d’ajustements selon disponibilités – n’hésitez pas à demander !)<br>
-                (Flexible times possible depending on availability – feel free to ask!)<br><br>
+                <strong>🎉 Fêtes & bruit</strong><br>
+                • Pas de fêtes ni soirées<br>
+                • Merci de respecter le voisinage, surtout entre 22h et 8h<br><br>
 
-                <strong>🚭 Non-fumeur / No Smoking<br><br></strong>
+                <strong>👥 Capacité & visiteurs</strong><br>
+                Le logement accueille jusqu’à 4 personnes maximum. Pas de visiteurs non déclarés.<br><br>
 
-                Il est interdit de fumer à l’intérieur du logement.<br>
-                Un cendrier est disponible à l’extérieur.<br><br>
+                <strong>🧼 Propreté</strong><br>
+                Merci de laisser le logement dans un état correct (vaisselle, poubelles).<br>
+                Le ménage de fin de séjour est inclus.<br><br>
 
-                Smoking is not allowed inside the apartment.<br>
-                An ashtray is available outside.<br><br>
+                <strong>🔐 Sécurité</strong><br>
+                • Bien fermer la porte en partant<br>
+                • Éteindre lumières, chauffage/clim et appareils inutilisés<br><br>
 
-                <strong>🐾 Animaux / Pets<br><br></strong>
+                <strong>🔧 En cas de souci</strong><br>
+                Merci de prévenir rapidement au 06.73.73.53.18 (SMS/WhatsApp).<br><br>
 
-                Les animaux sont admis (moyennant un supplément).<br>
-                Pets are allowed (for a small extra charge).<br><br>
-
-                <strong>🎉 Fêtes & bruit / Parties & Noise<br><br></strong>
-
-                Pas de fêtes ni de soirées.<br>
-                Merci de respecter le voisinage et de limiter le bruit entre 22h et 8h.<br><br>
-
-                No parties or events.<br>
-                Please respect the neighbors and keep noise down between 10 PM and 8 AM.<br><br>
-
-                <strong>👥 Visiteurs / Visitors<br><br></strong>
-
-                Le logement est prévu pour 4 personnes maximum.<br>
-                Pas de visiteurs non déclarés.<br><br>
-
-                The apartment is intended for 4 guests maximum.<br>
-                No unregistered guests allowed.<br><br>
-
-                <strong>🧼 Propreté / Cleanliness<br><br></strong>
-
-                Merci de laisser le logement dans un état correct : vaisselle propre, poubelles vidées si possible.<br>
-                Le ménage de fin de séjour est inclus, mais un petit coup de propre est toujours apprécié.<br><br>
-
-                Please leave the apartment tidy: clean dishes, take out the trash if possible.<br>
-                Final cleaning is included, but a quick tidy-up is always appreciated.<br><br>
-
-                <strong>🔐 Sécurité / Security<br><br></strong>
-
-                Toujours fermer la porte à clé en partant.<br>
-                Éteindre les lumières, chauffage ou climatisation et tout appareil inutilisé.<br><br>
-
-                Always lock the door when you leave.<br>
-                Turn off lights, heating/AC, and unused appliances.<br><br>
-
-                <strong>🔧 En cas de souci / If something goes wrong<br><br></strong>
-
-                En cas de problème ou de casse, merci de nous prévenir rapidement via Whatsapp au 06.73.73.53.18<br><br>
-
-                If anything breaks or goes wrong, please notify quickly trough the Whatsapp app at 06.73.73.53.18.<br><br>
-
-
-                <strong>Merci de votre compréhension et bon séjour !<br>
-                Thank you for your understanding and have a great stay! 😊<br><br></strong>
+                <strong>Un règlement plus détaillé sera accessible dans le logement.</strong><br><br>
               </p>
             </div>
           </div>
@@ -418,6 +556,7 @@
     <section id="avis" class="section">
       <div class="container">
         <h2>Avis</h2>
+        <p class="reviews-intro">Plus de 20 avis ⭐️⭐️⭐️⭐️⭐️ sur AirBnB &amp; Booking !</p>
       </div>
       
       <div class="gallery-wrapper avis-wrapper">
@@ -426,15 +565,75 @@
       
     <div class="gallery-inner-wrapper">
       <div class="gallery-scroll gallery-avis">
+        
         <div class="avis-card">
           <p>
             ⭐️⭐️⭐️⭐️⭐️<br>
-            Le logement est juste parfait,<br>
-            très soigné avec des petites attentions qui<br>
-            font plaisir et l'endroit est très paisible,<br>
-            rien à dire de négatif je recommande à 100 %<br>
-            et je n'hésiterai pas à reprendre si besoin,<br>
-            merci Marceau pour votre gentillesse 🙏<br>
+            Nous vous recommandons vivement de séjourner chez Marceau. Le logement qu'il propose est vraiment en adéquation avec le descriptif.
+            Un petit havre de paix vous y attend !!<br>
+            <strong>janvier 2026</strong>
+          </p>
+          
+            <div class="review-card">
+              <p class="review-platform"><img src="images/airbnb.png" alt="AirBnB" loading="lazy"></p>
+            </div>
+
+          <p class="author">— Isabelle</p>
+        </div>
+
+        <div class="avis-card">
+          <p>
+            ⭐️⭐️⭐️⭐️⭐️<br>
+            Environ 6 heures après notre réservation, nous avons allumé le chauffage, ouvert une bouteille de vin et profité de la tranquilité
+            du chalet confortable de Marceau. Tout s'est bien passé, l'endroit a été conçu avec goût et après une bonne nuit de sommeil, nous sommes
+            repartis avec de bons souvenirs en poche.<br>
+            <strong>décembre 2025</strong>
+          </p>
+          
+            <div class="review-card">
+              <p class="review-platform"><img src="images/airbnb.png" alt="AirBnB" loading="lazy"></p>
+            </div>
+
+          <p class="author">— Robert</p>
+        </div>
+
+        <div class="avis-card">
+          <p>
+            ⭐️⭐️⭐️⭐️⭐️<br>
+            Séjour excellent, hôte très accueillant et bienveillant. Logement très cosy et chalereux. Literie au top, nous avons très bien dormi.
+            Très bonne qualité également au niveau du chauffage. Petit point à signaler : la hauteur sous plafond de la salle de bain est limitée,
+            ce qui peut être moins confortable pour les personnes de grande taille. Endroit calme, parfait.. Stationnement facile dans la rue.
+            Restaurant à proximité, accessible en quelques minutes en voiture. Je recommande +++<br>
+            <strong>décembre 2025</strong>
+          </p>
+          
+            <div class="review-card">
+              <p class="review-platform"><img src="images/airbnb.png" alt="AirBnB" loading="lazy"></p>
+            </div>
+
+          <p class="author">— Marie-Laure</p>
+        </div>
+
+        <div class="avis-card">
+          <p>
+            ⭐️⭐️⭐️⭐️⭐️<br>
+            Hôte très réactif avec toutes les infos nécessaires envoyés au fur et à mesure.
+            Logement conforme à la description et aux attentes, endroit calme avec tout ce qu'il faut même plus !
+            Seul petit bémol pour moi, c'est la lumière du jour et des veilleuses des appareils électriques un peu partout qui m'ont empêché de dormir correctement car j'ai le sommeil leger mais sinon tout était parfait merci beaucoup !<br>
+            <strong>novembre 2025</strong>
+          </p>
+          
+            <div class="review-card">
+              <p class="review-platform"><img src="images/airbnb.png" alt="AirBnB" loading="lazy"></p>
+            </div>
+
+          <p class="author">— Isabelle</p>
+        </div>
+
+        <div class="avis-card">
+          <p>
+            ⭐️⭐️⭐️⭐️⭐️<br>
+            Le logement est juste parfait, très soigné avec des petites attentions qui font plaisir et l'endroit est très paisible, rien à dire de négatif je recommande à 100 % et je n'hésiterai pas à reprendre si besoin, merci Marceau pour votre gentillesse 🙏<br>
             <strong>octobre 2025</strong>
           </p>
           
@@ -448,8 +647,7 @@
         <div class="avis-card">
           <p>
             ⭐️⭐️⭐️⭐️⭐️<br>
-            Fidèle à la description, appartement très propre<br>
-            et décoré avec goût.<br>
+            Fidèle à la description, appartement très propre et décoré avec goût.
             Je recommande sans hésitation.<br>
             <strong>août 2025</strong>
           </p>
@@ -464,13 +662,10 @@
         <div class="avis-card">
           <p>
             ⭐️⭐️⭐️⭐️⭐️<br>
-            Le studio de Marceau est fonctionnel, bien équipé<br> 
-            et joliment décoré, parfait pour 2 personnes.<br>
-            Le quartier est très calme.<br>
-            Des places de parking sont disponibles dans la rue.<br>
-            Nous n'avons pas rencontré Marceau, <br>
-            mais il s'est montré très disponible<br>
-            et bienveillant lors de nos échanges. 🙂<br>
+            Le studio de Marceau est fonctionnel, bien équipé et joliment décoré, parfait pour 2 personnes.
+            Le quartier est très calme.
+            Des places de parking sont disponibles dans la rue.
+            Nous n'avons pas rencontré Marceau, mais il s'est montré très disponible et bienveillant lors de nos échanges. 🙂<br>
             <strong>août 2025</strong>
           </p>
           
@@ -484,11 +679,9 @@
         <div class="avis-card">
           <p>
             ⭐️⭐️⭐️⭐️⭐️<br>
-            Notre hôte est très agréable et serviable.<br>
-            Les explications pour l'acces au logement<br>
-            sont précises et claires.<br>
-            Dans le studio, il y a un QR code qui donne<br>
-            des explications pour employer les équipements du logement.<br>
+            Notre hôte est très agréable et serviable.
+            Les explications pour l'acces au logement sont précises et claires.
+            Dans le studio, il y a un QR code qui donne des explications pour employer les équipements du logement.
             Le studio est confortable et super bien équipé.<br>
             <strong>septembre 2025</strong>
           </p>
@@ -503,8 +696,8 @@
         <div class="avis-card">
           <p>
             ⭐️⭐️⭐️⭐️⭐️<br>
-            Propriétaire très attentionné.<br>
-            Logement propre et agréable.<br>
+            Propriétaire très attentionné.
+            Logement propre et agréable.
             Je recommande vivement !<br>
             <strong>juillet 2025</strong>
           </p>
@@ -519,7 +712,7 @@
         <div class="avis-card">
           <p>
             ⭐️⭐️⭐️⭐️⭐️<br>
-            Appartement soigné avec toutes les commodités.<br>
+            Appartement soigné avec toutes les commodités.
             Propre et frais !<br>
             <strong>juillet 2025</strong>
           </p>
@@ -534,14 +727,10 @@
         <div class="avis-card">
           <p>
             ⭐️⭐️⭐️⭐️⭐️<br>
-            Nous avons passé 3 belles nuits dans la maison de Marceau<br>
-             qui a pleinement répondu aux attentes.<br>
-            Marceau est un hôte très accommodant <br>
-            et fera tout pour que vous vous sentiez à l'aise. <br>
-            Notre séjour a eu lieu sous une chaleur extrême,<br>
-            mais la climatisation dans la maison a parfaitement fonctionné.<br>
-            Je peux seulement dire que toutes<br>
-            les installations ont parfaitement fonctionné.<br>
+            Nous avons passé 3 belles nuits dans la maison de Marceau qui a pleinement répondu aux attentes.
+            Marceau est un hôte très accommodant et fera tout pour que vous vous sentiez à l'aise.
+            Notre séjour a eu lieu sous une chaleur extrême, mais la climatisation dans la maison a parfaitement fonctionné.
+            Je peux seulement dire que toutes les installations ont parfaitement fonctionné.
             Je ne peux que recommander ce logement !<br>
             <strong>août 2025</strong>
           </p>
@@ -556,28 +745,11 @@
         <div class="avis-card">
           <p>
             ⭐️⭐️⭐️⭐️⭐️<br>
-            Logement propre, confortable<br>
-            et très bien situé pour visiter la région.<br>
-            Le jardin est un vrai plus !<br>
-            La communication avec Marceau a été claire et efficace.<br>
-             Nous avons passé un excellent week-end !<br>
-            <strong>juin 2025</strong>
-          </p>
-          
-            <div class="review-card">
-              <p class="review-platform"><img src="images/airbnb.png" alt="AirBnB" loading="lazy"></p>
-            </div>
-
-          <p class="author">— Ken</p>
-        </div>
-
-        <div class="avis-card">
-          <p>
-            ⭐️⭐️⭐️⭐️⭐️<br>
-            Logement propre et très bien équipé<br>
-            pour un week-end.<br>
-            Nous reviendrons sans hésitez lors<br>
-            d’un prochain séjour dans la région.<br>
+            Logement propre, confortable
+            et très bien situé pour visiter la région.
+            Le jardin est un vrai plus !
+            La communication avec Marceau a été claire et efficace.
+            Nous avons passé un excellent week-end !<br>
             <strong>juillet 2025</strong>
           </p>
           
@@ -585,7 +757,7 @@
               <p class="review-platform"><img src="images/airbnb.png" alt="AirBnB" loading="lazy"></p>
             </div>
 
-          <p class="author">— Lise</p>
+          <p class="author">— Ken</p>
         </div>
       </div>
     </div>
@@ -883,7 +1055,7 @@
 
 
 
-  <!-- CONTACT -->
+<!-- CONTACT -->
 
 <section id="contact" class="section">
   <div class="container contact-container">
@@ -905,6 +1077,24 @@
           <span>Message</span>
           <textarea name="message" rows="4" autocomplete="message" required></textarea>
         </label>
+
+        <div class="form-consent">
+          <label class="consent-label">
+            <input
+              type="checkbox"
+              name="consent"
+              required
+            />
+            <span class="consent-text">
+              J'ai lu et j'accepte le
+              <a href="#infos" data-open="acc-rules">règlement intérieur</a>.
+            </span>
+          </label>
+        </div>
+
+        <input type="text" name="website" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;opacity:0;height:0;width:0" aria-hidden="true">
+
+
         <button class="btn" type="submit">Envoyer</button>
 
         <div class="alt-contact">
@@ -937,13 +1127,49 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <p>&copy; <strong>Le Refuge de Saintines - 2025 All rights reserved.</strong>
+    <div class="container footer-grid">
+
+      <!-- Colonne 1 : Identité -->
+      <div class="footer-block">
+        <p class="footer-title">Le Refuge de Saintines</p>
+        <p>
+          Studio de location meublée<br>
+          80 Impasse du Lavoir<br>
+          60410 Saintines – France
+        </p>
+      </div>
+
+      <!-- Colonne 2 : Contact -->
+      <div class="footer-block">
+        <p class="footer-title">Contact</p>
+        <p>
+          📞 <a href="tel:+33673735318">06 73 73 53 18</a><br>
+          ✉️ <a href="mailto:contact@gite-refugedesaintines.com">contact@gite-refugedesaintines.com</a>
+        </p>
+      </div>
+
+      <!-- Colonne 3 : Liens légaux -->
+      <div class="footer-block">
+        <p class="footer-title">Informations légales</p>
+        <p>
+          <a href="mentions-legales.html">Mentions légales</a><br>
+          <a href="politique-confidentialite.html">Politique de confidentialité</a>
+        </p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Le Refuge de Saintines — Tous droits réservés</p>
+      <p class="footer-hosting">
+        Site hébergé par <a href="https://www.infomaniak.com" target="_blank" rel="noopener">Infomaniak</a>
+      </p>
     </div>
   </footer>
 
+
   <!-- Script JS Global-->
-  <script src="script.js" defer></script>
+  <script src="assets/js/main.js" type="module"></script>
 
   <!-- Maps -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAO_fIj7IW5mJPv_QyIg3XO01EB8GLspqQ&callback=initMap&loading=async" defer></script>
