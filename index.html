@@ -1,1257 +1,681 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <!-- Basics -->
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Le Refuge de Saintines | Studio cosy proche CDG & Parc Astérix</title>
-
-  <!-- SEO -->
-  <meta name="description" content="Réservez votre studio cosy à Saintines, proche CDG, Parc Astérix et accès A1 à 5 minutes, avec terrasse, Wi-Fi, TV connectée et parking." />
+  <title>Le Refuge de Saintines | Studio cosy proche CDG &amp; Parc Astérix</title>
+  <meta name="description" content="Réservez votre studio cosy à Saintines, proche CDG, Parc Astérix et accès A1, avec terrasse, Wi-Fi, TV connectée et parking." />
   <link rel="canonical" href="https://gite-refugedesaintines.com/" />
-
-  <!-- Indexation (site principal = indexable) -->
   <meta name="robots" content="index, follow" />
-
-  <!-- Favicon -->
+  <meta name="theme-color" content="#07100c" />
   <link rel="icon" href="images/lrds-logo.png" type="image/png" />
-
-  <!-- Performance: hero + fonts -->
   <link rel="preload" as="image" href="images/hero.webp" type="image/webp" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
-
-  <!-- CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/main.css" />
-
-  <!-- Social sharing (Open Graph) -->
   <meta property="og:site_name" content="Le Refuge de Saintines" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Le Refuge de Saintines | Studio cosy proche CDG & Parc Astérix" />
+  <meta property="og:title" content="Le Refuge de Saintines | Studio cosy proche CDG &amp; Parc Astérix" />
   <meta property="og:description" content="Studio cosy à Saintines : terrasse, Wi-Fi, TV connectée, parking. Proche CDG, Parc Astérix et accès A1." />
   <meta property="og:url" content="https://gite-refugedesaintines.com/" />
   <meta property="og:image" content="https://gite-refugedesaintines.com/images/hero.webp" />
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Le Refuge de Saintines | Studio cosy proche CDG & Parc Astérix" />
+  <meta name="twitter:title" content="Le Refuge de Saintines | Studio cosy proche CDG &amp; Parc Astérix" />
   <meta name="twitter:description" content="Réservez en direct : studio cosy à Saintines avec terrasse, Wi-Fi, TV connectée et parking." />
   <meta name="twitter:image" content="https://gite-refugedesaintines.com/images/hero.webp" />
-
-  <!-- (Optionnel) PWA / UI -->
-  <meta name="theme-color" content="#ffffff" />
-
-  <!-- Structured data (JSON-LD) -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "LodgingBusiness",
-    "@id": "https://gite-refugedesaintines.com/#lodging",
-    "name": "Le Refuge de Saintines",
-    "url": "https://gite-refugedesaintines.com/",
-    "image": [
-      "https://gite-refugedesaintines.com/images/hero.webp",
-      "https://gite-refugedesaintines.com/images/lrds-logo.png"
-    ],
-    "description": "Réservez votre studio cosy à Saintines, proche CDG, Parc Astérix et accès A1 à 5 minutes, avec terrasse, Wi-Fi, TV connectée et parking.",
-    "telephone": "+33 6 73 73 53 18",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "80 Impasse du Lavoir",
-      "addressLocality": "Saintines",
-      "postalCode": "60410",
-      "addressCountry": "FR"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 49.30528567724818,
-      "longitude": 2.773693624035537
-    },
-
-    "priceRange": "À partir de 50€ / nuit",
-    "currenciesAccepted": "EUR",
-    "checkinTime": "16:00",
-    "checkoutTime": "11:00",
-    "maximumAttendeeCapacity": 4,
-    "petsAllowed": true,
-
-    "amenityFeature": [
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "Wi-Fi",
-        "value": true
-      },
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "Parking gratuit",
-        "value": true
-      },
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "TV connectée",
-        "value": true
-      },
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "Terrasse",
-        "value": true
-      },
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "Cuisine équipée",
-        "value": true
-      },
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "Machine à café",
-        "value": true
-      },
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "Linge de lit fourni",
-        "value": true
-      },
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "Serviettes fournies",
-        "value": true
-      },
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "Climatisation ou chauffage",
-        "value": true
-      },
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "Entrée privée",
-        "value": true
-      }
-    ],
-
-    "offers": [
-      {
-        "@type": "Offer",
-        "price": "58.00",
-        "priceCurrency": "EUR",
-        "availability": "https://schema.org/InStock",
-        "url": "https://gite-refugedesaintines.com/",
-        "category": "https://schema.org/LodgingReservation"
-      },
-      {
-        "@type": "Offer",
-        "url": "https://www.airbnb.fr/rooms/1428176497326220574",
-        "availability": "https://schema.org/InStock",
-        "category": "https://schema.org/LodgingReservation"
-      },
-      {
-        "@type": "Offer",
-        "url": "https://www.booking.com/hotel/fr/charming-studio-close-to-cdg.fr.html",
-        "availability": "https://schema.org/InStock",
-        "category": "https://schema.org/LodgingReservation"
-      }
-    ],
-
-    "potentialAction": {
-      "@type": "ReserveAction",
-      "target": "https://gite-refugedesaintines.com/"
-    },
-
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.94",
-      "reviewCount": "18",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
-
+    "@context":"https://schema.org","@type":"LodgingBusiness",
+    "@id":"https://gite-refugedesaintines.com/#lodging",
+    "name":"Le Refuge de Saintines","url":"https://gite-refugedesaintines.com/",
+    "image":["https://gite-refugedesaintines.com/images/hero.webp"],
+    "description":"Studio cosy à Saintines, proche CDG, Parc Astérix et accès A1.",
+    "telephone":"+33 6 73 73 53 18",
+    "address":{"@type":"PostalAddress","addressLocality":"Saintines","postalCode":"60410","addressCountry":"FR"},
+    "geo":{"@type":"GeoCoordinates","latitude":49.30528567724818,"longitude":2.773693624035537},
+    "priceRange":"À partir de 58€ / nuit","currenciesAccepted":"EUR",
+    "checkinTime":"16:00","checkoutTime":"11:00","maximumAttendeeCapacity":4,"petsAllowed":true,
+    "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.94","reviewCount":"30","bestRating":"5","worstRating":"1"}
   }
   </script>
+  <style>
+    @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+  </style>
+  <!-- Flatpickr — calendrier de réservation -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/l10n/fr.min.js"></script>
 </head>
-
-
 <body>
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
   <a class="skip-link" href="#main">Aller au contenu</a>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="#" class="brand">
-        <img src="images/lrds-logo.png" alt="Logo Le Refuge de Saintines" class="brand-logo" loading="lazy">
-            <div class="brand-text">
-                <span class="logo">Le Refuge</span>
-                <small class="sub">de Saintines</small>
-            </div>
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="#home" class="brand" aria-label="Le Refuge de Saintines — Accueil">
+        <img src="images/lrds-logo.png" alt="Logo Le Refuge de Saintines" class="brand-logo" loading="lazy" />
+        <div class="brand-text">
+          <span class="brand-name">Le Refuge</span>
+          <small class="brand-sub">de Saintines</small>
+        </div>
       </a>
-
-      <button class="nav-toggle" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-overlay">
+        <span></span><span></span><span></span>
       </button>
-
-
       <nav class="nav" aria-label="Navigation principale">
         <a href="#logement">Le logement</a>
-        <a href="#infos">Infos pratiques</a>
+        <a href="#infos">Infos</a>
         <a href="#avis">Avis</a>
-        <a href="#reco">Recommandations</a>
-        <a href="#contact">Contact</a>
+        <a href="#reco">Aux alentours</a>
+        <a href="#contact" class="nav-cta">Réserver</a>
       </nav>
+      <a href="#contact" class="nav-cta-header-mobile">Réserver</a>
+      <div class="status-pill" aria-label="Logement disponible">
+        <span class="status-dot" aria-hidden="true"></span>Disponible
+      </div>
     </div>
   </header>
 
+  <nav class="nav-overlay" id="nav-overlay" aria-label="Menu mobile">
+    <a href="#logement">Le logement</a>
+    <a href="#infos">Infos pratiques</a>
+    <a href="#avis">Avis</a>
+    <a href="#reco">Aux alentours</a>
+  </nav>
+
   <main id="main">
+
     <!-- HERO -->
-    <section id="home" class="hero">
-      <img src="images/hero.webp" alt="Le Refuge de Saintines" class="hero-img" loading="eager" fetchpriority="high">
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-          <h1>Le Refuge de Saintines</h1>
-          <p class="lead">Séjournez à proximité de CDG & du Parc Astérix + Accès à l'A1</p>
-                <div class="hero-buttons">
-                    <a href="#logement" class="btn">Découvrir le logement</a>
-                    <a href="#contact" class="btn">Réserver</a>
-                </div>
+    <section id="home" class="hero" aria-label="Présentation du Refuge de Saintines">
+      <img src="images/hero.webp" alt="Terrasse du Refuge de Saintines" class="hero-img" loading="eager" fetchpriority="high" />
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <!-- Texte en haut -->
+      <div class="hero-content container">
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-line" aria-hidden="true"></span>
+          Saintines · Oise · France
+          <span class="hero-eyebrow-line" aria-hidden="true"></span>
+        </div>
+        <h1>Le Refuge<br>de <em>Saintines</em></h1>
+        <p class="hero-lead">
+          À 35 min de CDG & 25 min du Parc Astérix,<br>un studio tout équipé avec terrasse privée<br>et le calme de la Picardie pour recharger les batteries.
+        </p>
+        <!-- Boutons poussés en bas par flex -->
+        <div class="hero-buttons">
+          <a href="#logement" class="btn btn-primary magnetic">Découvrir →</a>
+          <a href="#contact"  class="btn btn-outline  magnetic">Réserver</a>
+        </div>
+
+        <!-- Stats mobile — dans le flux flex de hero-content -->
+        <div class="hero-stats-mobile" aria-hidden="true">
+          <div class="hsm-item"><span class="hsm-val">4.94★</span><span class="hsm-lbl">Note</span></div>
+          <div class="hsm-item"><span class="hsm-val">16h · 11h</span><span class="hsm-lbl">Check-in · out</span></div>
+          <div class="hsm-item"><span class="hsm-val">58€</span><span class="hsm-lbl">/ nuit</span></div>
+        </div>
+      </div>
+
+      <!-- Stats basse -->
+      <div class="hero-stats" aria-label="Chiffres clés">
+        <div class="hero-stat">
+          <span class="hero-stat-val" data-count="4.94" data-suffix="★" data-decimals="2">4.94★</span>
+          <span class="hero-stat-label">Note moyenne</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-val" data-count="30" data-suffix="+">30+</span>
+          <span class="hero-stat-label">Avis voyageurs</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-val" data-count="30" data-suffix="m²">30m²</span>
+          <span class="hero-stat-label">Studio cosy</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-val" data-count="58" data-suffix="€">58€</span>
+          <span class="hero-stat-label">À partir de / nuit</span>
+        </div>
+      </div>
+
+      <div class="hero-scroll" aria-hidden="true">
+        <span class="hero-scroll-text">Scroll</span>
+        <div class="hero-scroll-line"></div>
       </div>
     </section>
 
     <!-- LOGEMENT -->
-
-    <section id="logement" class="section">
+    <section id="logement">
       <div class="container">
-        <div class="expandable-card">
-
-        <!-- Bouton H2 cliquable -->
-        
-        <h2 class="expandable-title">
-          Le logement
-        <img src="images/arrow-right-solid-full.svg" alt="" class="arrow-icon" loading="lazy">
-      </h2>
-
-        <!-- Description -->
-
-            <div class="expandable-content">
-                <p>
-                Au fond d’une petite rue calme, ce studio vous accueille comme une parenthèse douce entre deux journées bien remplies.  
-                Le matin, on savoure un café au soleil sur la terrasse sans vis-à-vis. Le soir, on retrouve un cocon chaleureux et moderne : Wi-Fi haut débit, TV connectée, literie confortable, climatisation, cuisine entièrement équipée… tout est pensé pour votre bien-être.<br><br>
-
-                Situé à quelques minutes de Compiègne, Pierrefonds et du Parc Astérix, le Refuge de Saintines est le point de départ idéal pour explorer la région avant de rentrer profiter du calme et du confort du logement.<br><br>
-
-                <strong>Ici, on ralentit. On se repose. On profite.</strong>
-              </p>
+        <p class="section-label reveal">01 — Le logement</p>
+        <div class="logement-grid">
+          <div class="logement-visual reveal-left">
+            <div class="logement-img-wrap">
+              <img src="images/p1.webp" alt="Intérieur du studio Le Refuge de Saintines" loading="lazy" />
+              <div class="logement-img-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="logement-badge" aria-label="Studio de 30 mètres carrés">
+              <strong>30</strong><span>m²</span>
+            </div>
+          </div>
+          <div class="logement-content reveal-right">
+            <h2>Un cocon<br><em>hors du temps</em></h2>
+            <p class="logement-text">Au fond d'une petite rue calme, ce studio vous accueille comme une parenthèse douce entre deux journées bien remplies. Le matin, on savoure un café au soleil sur la terrasse sans vis-à-vis. Le soir, on retrouve un cocon chaleureux et moderne : Wi-Fi haut débit, TV connectée, literie confortable, climatisation, cuisine entièrement équipée… tout est pensé pour votre bien-être.</p>
+            <p class="logement-text">Situé à quelques minutes de Compiègne, Pierrefonds et du Parc Astérix, le Refuge de Saintines est le point de départ idéal pour explorer la région avant de rentrer profiter du calme et du confort du logement.</p>
+            <p class="logement-text"><strong>Ici, on ralentit. On se repose. On profite.</strong></p>
+            <div class="logement-mini-stats">
+              <div class="mini-stat"><span class="mini-stat-val">4</span><span class="mini-stat-label">Pers. max</span></div>
+              <div class="mini-stat"><span class="mini-stat-val">16h</span><span class="mini-stat-label">Check-in</span></div>
+              <div class="mini-stat"><span class="mini-stat-val">11h</span><span class="mini-stat-label">Check-out</span></div>
+              <div class="mini-stat"><span class="mini-stat-val">58€</span><span class="mini-stat-label">Dès / nuit</span></div>
             </div>
           </div>
         </div>
-      </section>
-
-        <!-- Gallerie -->
-    <section>
-        <div class="gallery-wrapper">
-            <button class="scroll-btn left scroll-left-images"><</button>
-            <button class="scroll-btn right scroll-right-images">></button>
-          
-            <div class="gallery-inner-wrapper">
-            <div class="gallery-scroll gallery-images">
-                <figure><img src="images/p1.webp" alt="Espace de vie" loading="lazy"></figure>
-                <figure><img src="images/p2.webp" alt="Terrasse" loading="lazy"></figure>
-                <figure><img src="images/p3.webp" alt="Cuisine" loading="lazy"></figure>
-                <figure><img src="images/p4.webp" alt="SDB" loading="lazy"></figure>
-                <figure><img src="images/p5.webp" alt="Chambre" loading="lazy"></figure>
-                <figure><img src="images/p6.webp" alt="Terrasse + Jardin" loading="lazy"></figure>
-                <figure><img src="images/p7.webp" alt="Cuisine + Espace repas" loading="lazy"></figure>
-                <figure><img src="images/p8.webp" alt="Canapé-lit" loading="lazy"></figure>
-                <figure><img src="images/p9.webp" alt="Espace repas" loading="lazy"></figure>
-                <figure><img src="images/p10.webp" alt="Terrasse + Jardin 2" loading="lazy"></figure>
-                <figure><img src="images/p11.webp" alt="TV connectée" loading="lazy"></figure>
-                <figure><img src="images/p12.webp" alt="Lit double" loading="lazy"></figure>
-                <figure><img src="images/p13.webp" alt="SDB 2" loading="lazy"></figure>
-                <figure><img src="images/p14.webp" alt="Espace repas 2" loading="lazy"></figure>
-                <figure><img src="images/p15.webp" alt="Terrasse + Jardin 2" loading="lazy"></figure>
-                <figure><img src="images/p16.webp" alt="Salon" loading="lazy"></figure>
-                <figure><img src="images/p17.webp" alt="Machine à café / Bouilloire / Grille-pain" loading="lazy"></figure>
-                <figure><img src="images/p18.webp" alt="Casserole / Planche à découper" loading="lazy"></figure>
-                <figure><img src="images/p19.webp" alt="WC / Toilettes" loading="lazy"></figure>
-                <figure><img src="images/p20.webp" alt="Douche" loading="lazy"></figure>
-                <figure><img src="images/p21.webp" alt="Four / Four micro-ondes" loading="lazy"></figure>
-                <figure><img src="images/p22.webp" alt="Verres / Assiettes / Tasses / Plats / Bols / Vaisselles" loading="lazy"></figure>
-                <figure><img src="images/p23.webp" alt="Buanderie / Lave-linge / Sèche-linge" loading="lazy"></figure>
-            </div>
-            </div>
-        </div>
+      </div>
     </section>
 
-        <!-- Equipments list -->
-    <section>
-      <div class="equip-wrapper">
-        <ul class="equip-list">
-          <li>🏡 Studio cosy de 30 m²</li>
-          <li>🛏 Lit double + canapé convertible</li>
-          <li>📶 Wi-Fi haut débit</li>
-          <li>🖥 TV connectée (Netflix, Prime, Disney+)</li>
-          <li>🌡 Chauffage & climatisation</li>
-          <li>🍳 Cuisine équipée</li>
-          <li>🧺 Buanderie (lave-linge & sèche-linge)</li>
-          <li>🌿 Terrasse privée sans vis-à-vis</li>
-          <li>🅿️ Parking gratuit sur place</li>
+    <!-- GALERIE -->
+    <section class="gallery-section" id="galerie" aria-label="Galerie photos">
+      <div class="gallery-header container">
+        <p class="section-label reveal">02 — Galerie</p>
+        <h2 class="reveal">Chaque espace,<br><em>pensé pour vous</em></h2>
+      </div>
+      <div class="gallery-outer">
+        <div class="gallery-track" id="gallery-track" role="region" aria-label="Photos du logement">
+          <figure><img src="images/p1.webp"  alt="Espace de vie"          loading="lazy"/><figcaption>Espace de vie</figcaption></figure>
+          <figure><img src="images/p2.webp"  alt="Terrasse"               loading="lazy"/><figcaption>Terrasse</figcaption></figure>
+          <figure><img src="images/p3.webp"  alt="Cuisine"                loading="lazy"/><figcaption>Cuisine</figcaption></figure>
+          <figure><img src="images/p4.webp"  alt="Salle de bain"          loading="lazy"/><figcaption>Salle de bain</figcaption></figure>
+          <figure><img src="images/p5.webp"  alt="Chambre"                loading="lazy"/><figcaption>Chambre</figcaption></figure>
+          <figure><img src="images/p6.webp"  alt="Terrasse et jardin"     loading="lazy"/><figcaption>Terrasse &amp; Jardin</figcaption></figure>
+          <figure><img src="images/p7.webp"  alt="Cuisine et repas"       loading="lazy"/><figcaption>Cuisine &amp; Repas</figcaption></figure>
+          <figure><img src="images/p8.webp"  alt="Canapé-lit"             loading="lazy"/><figcaption>Canapé-lit</figcaption></figure>
+          <figure><img src="images/p9.webp"  alt="Espace repas"           loading="lazy"/><figcaption>Espace repas</figcaption></figure>
+          <figure><img src="images/p10.webp" alt="Terrasse vue 2"         loading="lazy"/><figcaption>Terrasse vue 2</figcaption></figure>
+          <figure><img src="images/p11.webp" alt="TV connectée"           loading="lazy"/><figcaption>TV connectée</figcaption></figure>
+          <figure><img src="images/p12.webp" alt="Lit double"             loading="lazy"/><figcaption>Lit double</figcaption></figure>
+          <figure><img src="images/p13.webp" alt="Salle de bain 2"        loading="lazy"/><figcaption>Salle de bain 2</figcaption></figure>
+          <figure><img src="images/p14.webp" alt="Espace repas 2"         loading="lazy"/><figcaption>Repas 2</figcaption></figure>
+          <figure><img src="images/p15.webp" alt="Jardin"                 loading="lazy"/><figcaption>Jardin</figcaption></figure>
+          <figure><img src="images/p16.webp" alt="Salon"                  loading="lazy"/><figcaption>Salon</figcaption></figure>
+          <figure><img src="images/p17.webp" alt="Machine à café"         loading="lazy"/><figcaption>Machine à café</figcaption></figure>
+          <figure><img src="images/p18.webp" alt="Cuisine détail"         loading="lazy"/><figcaption>Cuisine détail</figcaption></figure>
+          <figure><img src="images/p19.webp" alt="WC"                     loading="lazy"/><figcaption>WC</figcaption></figure>
+          <figure><img src="images/p20.webp" alt="Douche"                 loading="lazy"/><figcaption>Douche</figcaption></figure>
+          <figure><img src="images/p21.webp" alt="Four et micro-ondes"    loading="lazy"/><figcaption>Four &amp; Micro-ondes</figcaption></figure>
+          <figure><img src="images/p22.webp" alt="Vaisselle"              loading="lazy"/><figcaption>Vaisselle</figcaption></figure>
+          <figure><img src="images/p23.webp" alt="Buanderie"              loading="lazy"/><figcaption>Buanderie</figcaption></figure>
+        </div>
+      </div>
+      <div class="gallery-progress">
+        <div class="gallery-progress-bar"><div class="gallery-progress-fill"></div></div>
+        <span class="gallery-progress-label">1 / 23</span>
+      </div>
+      <div class="gallery-nav">
+        <button class="gallery-btn" id="gallery-left"  aria-label="Photo précédente">←</button>
+        <button class="gallery-btn" id="gallery-right" aria-label="Photo suivante">→</button>
+      </div>
+    </section>
 
-          <!-- Bouton pour voir tous les équipements -->
-          <li class="equip-btn">
-            <a href="#" data-popup-target="popup-equipements" class="equip-link">Voir tous les équipements</a>
-          </li>
-        </ul>
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Visionneuse de photos">
+      <button class="lightbox-close" aria-label="Fermer">✕</button>
+      <button class="lightbox-prev"  aria-label="Photo précédente">←</button>
+      <button class="lightbox-next"  aria-label="Photo suivante">→</button>
+      <div class="lightbox-inner"><img class="lightbox-img" src="" alt="" /></div>
+      <div class="lightbox-caption" aria-live="polite"></div>
+      <div class="lightbox-counter" aria-live="polite"></div>
+    </div>
 
-        <!-- Tous les équipements - Popup -->
-        <div id="popup-equipements" class="popup-overlay">
-          <div class="popup-content">
-            <button class="popup-close">&times;</button>
-              <h3>Tous les équipements</h3>
-            
-            <ul class="popup-list">
-              <!-- Vues panoramiques -->
-              <li>🌅 Vue sur le jardin</li>
-
-              <!-- Salle de bain -->
-              <li>💇‍♀️ Sèche-cheveux</li>
-              <li>🧽 Produits de nettoyage</li>
-              <li>🧴 Shampoing</li>
-              <li>🧼 Savon</li>
-              <li>🚿 Eau chaude</li>
-              <li>🫧 Gel douche</li>
-
-              <!-- Chambre et linge -->
-              <li>🧺 Lave-linge (gratuit) dans le logement</li>
-              <li>🌬 Sèche-linge (gratuit) dans le logement</li>
-              <li>🧻 Équipements de base : serviettes, draps, savon et papier toilette</li>
-              <li>👕 Cintres</li>
-              <li>🛌 Draps</li>
-              <li>💤 Oreillers et couvertures supplémentaires</li>
-              <li>🪟 Stores</li>
-              <li>🧥 Fer à repasser</li>
-              <li>🧍‍♂️ Étendoir à linge</li>
-              <li>🗄 Espace de rangement pour les vêtements (dressing et placard)</li>
-
-              <!-- Divertissement -->
-              <li>📺 TV HD avec Amazon Prime Video, Disney+, Netflix...</li>
-
-              <!-- Famille -->
-              <li>🍼 Lit parapluie (payant, sur demande)</li>
-              <li>🌘 Stores occultants</li>
-              <li>🍽 Vaisselle pour enfants</li>
-
-              <!-- Chauffage et climatisation -->
-              <li>❄️ Climatisation centrale</li>
-              <li>🔥 Chauffage central</li>
-
-              <!-- Sécurité à la maison -->
-              <li>📹 Caméras de surveillance extérieures (garage)</li>
-              <li>🚨 Détecteur de fumée</li>
-              <li>☠️ Détecteur de monoxyde de carbone</li>
-              <li>🧯 Extincteur</li>
-              <li>🩹 Kit de premiers secours</li>
-
-              <!-- Internet et bureau -->
-              <li>📶 Wifi</li>
-
-              <!-- Cuisine et salle à manger -->
-              <li>🍴 Cuisine équipée</li>
-              <li>🧊 Réfrigérateur</li>
-              <li>🔌 Four à micro-ondes</li>
-              <li>🍳 Équipements de cuisine de base</li>
-              <li>🍽 Vaisselle et couverts (assiettes, bols, tasses…)</li>
-              <li>🧊 Congélateur</li>
-              <li>🔥 Four simple</li>
-              <li>☕ Bouilloire électrique</li>
-              <li>☕ Cafetière</li>
-              <li>🍷 Verres à vin</li>
+    <!-- ÉQUIPEMENTS -->
+    <section id="equipements">
+      <div class="container">
+        <p class="section-label reveal">03 — Équipements</p>
+        <h2 class="reveal">Tout le confort,<br><em>sans exception</em></h2>
+        <div class="equip-grid reveal">
+          <div class="equip-item">🛏 Lit double + canapé convertible</div>
+          <div class="equip-item">🌿 Terrasse privée sans vis-à-vis</div>
+          <div class="equip-item">📶 Wi-Fi fibre</div>
+          <div class="equip-item">🖥 TV connectée (Netflix, Prime, Disney+)</div>
+          <div class="equip-item">🍳 Cuisine entièrement équipée</div>
+          <div class="equip-item">🌡 Climatisation &amp; chauffage</div>
+          <div class="equip-item">🧺 Lave-linge &amp; sèche-linge</div>
+          <div class="equip-item">🔥 Barbecue privé</div>
+          <div class="equip-item">🅿️ Parking gratuit</div>
+          <div class="equip-item">🐾 Animaux acceptés</div>
+          <div class="equip-item">🔐 Arrivée autonome (boîte à clé)</div>
+          <div class="equip-item">🚿 Salle de bain privée</div>
+        </div>
+        <div class="equip-more reveal">
+          <button class="btn btn-outline" id="equip-btn">↓ Voir tous les équipements</button>
+        </div>
+        <div class="expand-panel" id="equip-panel">
+          <div class="expand-panel-inner">
+            <ul class="equip-full-grid">
+              <li>❄️ Four &amp; micro-ondes</li>
+              <li>☕ Machine à café &amp; bouilloire</li>
               <li>🍞 Grille-pain</li>
-              <li>🍳 Plaque de cuisson</li>
-              <li>🔥 Ustensiles de barbecue</li>
-              <li>🍖 Barbecue (charbon, bois,)</li>
-              <li>🍽 Table à manger</li>
-              <li>☕ Café</li>
-
-              <!-- Caractéristiques de l’emplacement -->
-              <li>🚪 Entrée privée</li>
-              <li>🧺 Laverie automatique à proximité</li>
-
-              <!-- Extérieur -->
-              <li>🏡 Arrière-cour privée</li>
-              <li>🪑 Mobilier d’extérieur</li>
-              <li>🍽 Espace repas en plein air</li>
-              <li>🔥 Barbecue privé (charbon / bois)</li>
-
-              <!-- Parking et installations -->
-              <li>🅿️ Parking gratuit sur place</li>
-              <li>🚗 Parking gratuit dans la rue</li>
-              <li>🛗 Logement de plain-pied (aucun escalier)</li>
-
-              <!-- Services -->
-              <li>🐾 Animaux acceptés</li>
-              <li>🎒 Dépôt de bagages autorisé (arrivée anticipée / départ tardif)</li>
-              <li>📆 Séjours longue durée autorisés (28+ jours)</li>
-              <li>🔐 Arrivée autonome (boîte à clé sécurisée)</li>
-              <li>🧹 Service de ménage disponible 24h/24 (en supplément)</li>
+              <li>💇 Sèche-cheveux</li>
+              <li>🧻 Linge de lit &amp; serviettes fournis</li>
+              <li>🌘 Stores occultants</li>
+              <li>🪑 Mobilier de jardin</li>
+              <li>🩹 Kit premiers secours</li>
+              <li>🚨 Détecteur de fumée &amp; CO</li>
+              <li>🧯 Extincteur</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="map-section" class="section">
+    <!-- LOCALISATION -->
+    <section id="localisation" class="flush-top">
       <div class="container">
-        <div id="map" class="map" aria-label="Carte du logement"></div>
+        <p class="section-label reveal">04 — Localisation</p>
+        <h2 class="reveal">Idéalement<br><em>situé</em></h2>
+        <!-- 4 distances uniquement -->
+        <div class="map-distances reveal">
+          <div class="map-dist-item"><span class="map-dist-icon">✈️</span><div class="map-dist-info"><span class="map-dist-place">CDG — Roissy</span><span class="map-dist-time">~35 min</span></div></div>
+          <div class="map-dist-item"><span class="map-dist-icon">🎢</span><div class="map-dist-info"><span class="map-dist-place">Parc Astérix</span><span class="map-dist-time">~20 min</span></div></div>
+          <div class="map-dist-item"><span class="map-dist-icon">🛣️</span><div class="map-dist-info"><span class="map-dist-place">Accès autoroute A1</span><span class="map-dist-time">~5 min</span></div></div>
+          <div class="map-dist-item"><span class="map-dist-icon">🏛️</span><div class="map-dist-info"><span class="map-dist-place">Compiègne</span><span class="map-dist-time">~20 min</span></div></div>
+        </div>
+        <!-- Carte Google Maps avec cercle de rayon -->
+        <div class="map-wrap reveal map-wrap--mt">
+          <div id="gmap" class="gmap"></div>
+          <div class="map-label">
+            <span class="map-label-title">Zone approximative</span>
+            <p>Saintines, Oise — 60410</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- INFOS PRATIQUES -->
-    <section id="infos" class="section">
+    <section id="infos">
       <div class="container">
-        <h2>Infos pratiques</h2>
+        <p class="section-label reveal">05 — Infos pratiques</p>
+        <h2 class="reveal">Tout ce qu'il faut<br><em>savoir</em></h2>
+        <div class="infos-grid reveal">
 
-        <!-- Accordéons -->
-        <div class="accordion">
-          <div class="acc-item">
-            <button class="acc-toggle" aria-expanded="false" aria-controls="acc-parking" id="acc-parking-btn">💶 Tarifs</button>
-            <div id="acc-parking" class="acc-panel">
-              <p>
-                Les nuitées sont proposées <strong>à partir de 58 € / nuit</strong>.<br>
-                Des <strong>réductions</strong> peuvent s’appliquer pour les séjours à la semaine ou au mois.<br><br>
-
-                <strong>Le tarif inclut :</strong>
-              </p>
-
-              <ul>
-                <li>le logement entier</li>
-                <li>la terrasse et le barbecue</li>
-                <li>l’accès à la buanderie</li>
-                <li>un espace de rangement sécurisé (idéal pour les vélos)</li>
-                <li>le linge de lit et les serviettes</li>
-                <li>les produits d’hygiène de base</li>
-                <li>le Wi-Fi et le stationnement gratuit à proximité</li>
-              </ul>
-
-              <br>
-
-              <p>
-                🧼 <strong>Frais de ménage</strong>
-              </p>
-
-              <ul>
-                <li>Des frais de ménage de <strong>30 € par séjour</strong> s’appliquent, quel que soit le nombre de nuits.</li>
-              </ul>
-
-              <br>
-
-              <p>
-                ➕ <strong>Options & informations complémentaires</strong>
-              </p>
-
-              <ul>
-                <li>🐾 Animaux acceptés : supplément de <strong>10 € par animal et par séjour</strong></li>
-                <li>👤 Voyageurs supplémentaires : au-delà de <strong>2 personnes</strong>, supplément de <strong>10 € par voyageur et par séjour</strong></li>
-                <li>👶 Lit parapluie : mis gratuitement à disposition sur simple demande</li>
-              </ul>
-
-              <br>
-              
-              <p>
-                Pour toute question ou demande particulière, n’hésitez pas à me contacter. 🙂<br><br>
-              </p>
+          <!-- Tarifs -->
+          <div class="info-card">
+            <span class="info-card-icon">💶</span>
+            <div class="info-card-highlight">
+              <span class="info-card-big">58€</span>
+              <span class="info-card-unit">/ nuit</span>
             </div>
+            <div class="info-card-title">Tarifs</div>
+            <div class="info-row"><span class="info-dot"></span><span>Frais de ménage : 30 € par séjour</span></div>
+            <div class="info-row"><span class="info-dot"></span><span>Animaux : 10 € / animal / séjour</span></div>
+            <div class="info-row"><span class="info-dot"></span><span>Au-delà de 2 pers. : 10 € / voyageur (gratuit &lt; 12 ans)</span></div>
+            <div class="info-row"><span class="info-dot"></span><span>Lit parapluie : gratuit sur simple demande</span></div>
+            <div class="info-row"><span class="info-dot"></span><span>Réductions pour séjours semaine / mois</span></div>
           </div>
 
-          <div class="acc-item">
-            <button class="acc-toggle" aria-expanded="false" aria-controls="acc-check" id="acc-check-btn">🕒 Check-in / Check-out</button>
-            <div id="acc-check" class="acc-panel">
-              <p>
-                <strong>La réservation peut s'effectuer</strong>
-              </p>
-
-              <ul>
-                <li>directement via ce site en bas de page, garantissant un meilleur tarif</li>
-                <li>ou via les plateformes de réservation (AirBnB, Booking.com, etc.)</li>
-              </ul>
-
-              <p>
-                Une fois votre réservation confirmée, vous recevrez toutes les informations nécéssaires pour préparer votre séjour.
-              </p>
-
-              <br>
-
-              <p>
-                <strong>L'arrivée se fait en toute autonomie</strong>, grâce à une boîte à clé sécurisée.<br>
-                Vous pouvez arriver librement à partir de <strong>16:00</strong>.
-              </p>
-
-              <p>
-                <strong>Le départ</strong>, quant à lui, s'effectue avant <strong>11:00</strong>.
-              </p>
-
-              <br>
-
-              <p>
-                🕒 <strong>Horaires flexibles</strong>
-              </p>
-
-              <ul>
-                <li>Selon les disponibilités et le planning des réservations, une arrivée anticipée ou un départ tardif peut être envisagé, sans frais supplémentaires.</li>
-                <li>N'hésitez pas à m'en faire la demande en amont.</li>
-              </ul>
-
-              <br><br>
-
+          <!-- Horaires -->
+          <div class="info-card">
+            <span class="info-card-icon">🕒</span>
+            <div class="info-time-row">
+              <div class="info-time-block">
+                <span class="info-time-val">16h</span>
+                <span class="info-time-lbl">Check-in</span>
+              </div>
+              <div class="info-sep"></div>
+              <div class="info-time-block">
+                <span class="info-time-val">11h</span>
+                <span class="info-time-lbl">Check-out</span>
+              </div>
             </div>
+            <div class="info-card-title">Arrivée &amp; départ</div>
+            <div class="info-row"><span class="info-dot"></span><span>Arrivée autonome — boîte à clé sécurisée</span></div>
+            <div class="info-row"><span class="info-dot"></span><span>Horaires flexibles selon disponibilités, sans frais supplémentaires</span></div>
+            <div class="info-row"><span class="info-dot"></span><span>Dépôt de bagages autorisé (arrivée anticipée / départ tardif)</span></div>
+            <div class="info-row"><span class="info-dot"></span><span>Réservez directement ici pour le meilleur tarif</span></div>
           </div>
 
-          <div class="acc-item">
-            <button class="acc-toggle" aria-expanded="false" aria-controls="acc-rules" id="acc-rules-btn">⚖️ Règlement intérieur</button>
-            <div id="acc-rules" class="acc-panel">
-              <p>
-                <strong>🏡 Règlement intérieur</strong><br><br>
-
-                Merci de respecter ces quelques règles afin de garantir un séjour agréable à tous :
-                <br><br>
-
-                <strong>🕐 Arrivée & départ</strong><br>
-                  • Check-in à partir de 16h<br>
-                  • Check-out jusqu’à 11h<br>
-                (Horaires flexibles sur demande selon disponibilité)<br><br>
-
-                <strong>🚭 Non-fumeur</strong><br>
-                Il est strictement interdit de fumer à l’intérieur. Un cendrier est disponible à l’extérieur.<br><br>
-
-                <strong>🐾 Animaux</strong><br>
-                Les animaux sont admis (supplément 10 €/animaux).<br>
-                Les besoins des animaux doivent être faits à l’extérieur de la propriété.<br><br>
-
-                <strong>🎉 Fêtes & bruit</strong><br>
-                • Pas de fêtes ni soirées<br>
-                • Merci de respecter le voisinage, surtout entre 22h et 8h<br><br>
-
-                <strong>👥 Capacité & visiteurs</strong><br>
-                Le logement accueille jusqu’à 4 personnes maximum. Pas de visiteurs non déclarés.<br><br>
-
-                <strong>🧼 Propreté</strong><br>
-                Merci de laisser le logement dans un état correct (vaisselle, poubelles).<br>
-                Le ménage de fin de séjour est inclus.<br><br>
-
-                <strong>🔐 Sécurité</strong><br>
-                • Bien fermer la porte en partant<br>
-                • Éteindre lumières, chauffage/clim et appareils inutilisés<br><br>
-
-                <strong>🔧 En cas de souci</strong><br>
-                Merci de prévenir rapidement au 06.73.73.53.18 (SMS/WhatsApp).<br><br>
-
-                <strong>Un règlement plus détaillé sera accessible dans le logement.</strong><br><br>
-              </p>
-            </div>
+          <!-- Réserver en direct -->
+          <div class="info-card info-card-resa">
+            <span class="info-card-icon">🔑</span>
+            <div class="info-card-title">Réserver en direct</div>
+            <div class="info-row"><span class="info-dot"></span><span><strong>Meilleur tarif garanti</strong> — sans commission plateforme</span></div>
+            <div class="info-row"><span class="info-dot"></span><span>Paiement par <strong>virement SEPA instantané</strong></span></div>
+            <div class="info-row"><span class="info-dot"></span><span>Caution de 300€ via <strong>Swikly</strong> (empreinte bancaire, jamais débitée)</span></div>
+            <div class="info-row"><span class="info-dot"></span><span>Contrat de bail saisonnier envoyé par email</span></div>
+            <div class="info-row"><span class="info-dot"></span><span>Réservation <strong>non remboursable</strong> — dates libérées sous 48h sans paiement</span></div>
+            <a href="#contact" class="btn btn-primary info-card-cta">Réserver maintenant →</a>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- AVIS -->
-    <section id="avis" class="section">
+    <!-- AVIS — WHEEL -->
+    <section id="avis" class="avis-section">
       <div class="container">
-        <h2>Avis</h2>
-        <p class="reviews-intro">Plus de 30 avis ⭐️⭐️⭐️⭐️⭐️ sur AirBnB &amp; Booking !</p>
-      </div>
-      
-      <div class="gallery-wrapper avis-wrapper">
-        <button class="scroll-btn left scroll-left-avis"><</button>
-        <button class="scroll-btn right scroll-right-avis">></button>
-      
-    <div class="gallery-inner-wrapper">
-      <div class="gallery-scroll gallery-avis">
-
-        <div class="avis-card">
-          <p>
-            ⭐️⭐️⭐️⭐️⭐️<br>
-            Ma femme et moi avons eu un séjour très agréable, très paisible.<br>
-            Le calme était omniprésent ce qui a facilité notre séjour en détente surtout que Marceau a été très rassurant
-            et réactif selon nos besoin !<br>
-            Merci à vous 🤗👌<br>
-            <strong>avril 2026</strong>
-          </p>
-          
-            <div class="review-card">
-              <p class="review-platform"><img src="images/airbnb.png" alt="AirBnB" loading="lazy"></p>
+        <p class="section-label reveal">06 — Avis voyageurs</p>
+        <h2 class="reveal">Ce qu'ils<br><em>en pensent</em></h2>
+        <div class="reveal">
+          <div class="avis-rating-banner">
+            <div class="avis-rating-score" aria-label="Note de 4,94 sur 5">4.94</div>
+            <div class="avis-rating-info">
+              <div class="avis-rating-stars" aria-hidden="true">★★★★★</div>
+              <div class="avis-rating-count">+30 avis vérifiés · AirBnB &amp; Booking</div>
             </div>
-
-          <p class="author">— Williams A.</p>
+          </div>
         </div>
 
-        <div class="avis-card">
-          <p>
-            ⭐️⭐️⭐️⭐️⭐️<br>
-            Parfait après une journée intense au Parc Astérix.
-            J'ai apprécié l'endroit, au calme.
-            Les instructions sont claires.<br>
-            Merci à vous 🙂<br>
-            <strong>avril 2026</strong>
-          </p>
-          
-            <div class="review-card">
-              <p class="review-platform"><img src="images/airbnb.png" alt="AirBnB" loading="lazy"></p>
-            </div>
-
-          <p class="author">— Julie</p>
-        </div>
-
-        <div class="avis-card">
-          <p>
-            ⭐️⭐️⭐️⭐️⭐️<br>
-            Hôte super sympa, accueillant et disponible, et le logement Airbnb était vraiment génial ;
-            en particulier, la terrasse éclairée était un atout majeur pour terminer la soirée en beauté<br>
-            <strong>mars 2026</strong>
-          </p>
-          
-            <div class="review-card">
-              <p class="review-platform"><img src="images/airbnb.png" alt="AirBnB" loading="lazy"></p>
-            </div>
-
-          <p class="author">— Marius</p>
-        </div>
-
-        <div class="avis-card">
-          <p>
-            ⭐️⭐️⭐️⭐️⭐️<br>
-            Marceau est très accueillant, le logement est très beau et bien équipé et surtout très propre et confortable.<br>
-            <strong>mars 2026</strong>
-          </p>
-          
-            <div class="review-card">
-              <p class="review-platform"><img src="images/airbnb.png" alt="AirBnB" loading="lazy"></p>
-            </div>
-
-          <p class="author">— Geoffrey</p>
-        </div>
-
-        <div class="avis-card">
-          <p>
-            ⭐️⭐️⭐️⭐️⭐️<br>
-            Nous avons passé un excellent week-end chez Marceau.
-            Tout était impeccable.
-            Marceau a été très réactif et arrangeant. 
-            Encore merci !<br>
-            <strong>février 2026</strong>
-          </p>
-          
-            <div class="review-card">
-              <p class="review-platform"><img src="images/airbnb.png" alt="AirBnB" loading="lazy"></p>
-            </div>
-
-          <p class="author">— Léa</p>
-        </div>
-        
-        <div class="avis-card">
-          <p>
-            ⭐️⭐️⭐️⭐️⭐️<br>
-            Nous vous recommandons vivement de séjourner chez Marceau. Le logement qu'il propose est vraiment en adéquation avec le descriptif.
-            Un petit havre de paix vous y attend !!<br>
-            <strong>janvier 2026</strong>
-          </p>
-          
-            <div class="review-card">
-              <p class="review-platform"><img src="images/airbnb.png" alt="AirBnB" loading="lazy"></p>
-            </div>
-
-          <p class="author">— Isabelle</p>
-        </div>
-
-        <div class="avis-card">
-          <p>
-            ⭐️⭐️⭐️⭐️⭐️<br>
-            Environ 6 heures après notre réservation, nous avons allumé le chauffage, ouvert une bouteille de vin et profité de la tranquilité
-            du chalet confortable de Marceau. Tout s'est bien passé, l'endroit a été conçu avec goût et après une bonne nuit de sommeil, nous sommes
-            repartis avec de bons souvenirs en poche.<br>
-            <strong>décembre 2025</strong>
-          </p>
-          
-            <div class="review-card">
-              <p class="review-platform"><img src="images/airbnb.png" alt="AirBnB" loading="lazy"></p>
-            </div>
-
-          <p class="author">— Robert</p>
-        </div>
-
-        <div class="avis-card">
-          <p>
-            ⭐️⭐️⭐️⭐️⭐️<br>
-            Séjour excellent, hôte très accueillant et bienveillant. Logement très cosy et chalereux. Literie au top, nous avons très bien dormi.
-            Très bonne qualité également au niveau du chauffage. Petit point à signaler : la hauteur sous plafond de la salle de bain est limitée,
-            ce qui peut être moins confortable pour les personnes de grande taille. Endroit calme, parfait.. Stationnement facile dans la rue.
-            Restaurant à proximité, accessible en quelques minutes en voiture. Je recommande +++<br>
-            <strong>décembre 2025</strong>
-          </p>
-          
-            <div class="review-card">
-              <p class="review-platform"><img src="images/airbnb.png" alt="AirBnB" loading="lazy"></p>
-            </div>
-
-          <p class="author">— Marie-Laure</p>
-        </div>
-
-        <div class="avis-card">
-          <p>
-            ⭐️⭐️⭐️⭐️⭐️<br>
-            Hôte très réactif avec toutes les infos nécessaires envoyés au fur et à mesure.
-            Logement conforme à la description et aux attentes, endroit calme avec tout ce qu'il faut même plus !
-            Seul petit bémol pour moi, c'est la lumière du jour et des veilleuses des appareils électriques un peu partout qui m'ont empêché de dormir correctement car j'ai le sommeil leger mais sinon tout était parfait merci beaucoup !<br>
-            <strong>novembre 2025</strong>
-          </p>
-          
-            <div class="review-card">
-              <p class="review-platform"><img src="images/airbnb.png" alt="AirBnB" loading="lazy"></p>
-            </div>
-
-          <p class="author">— Isabelle</p>
-        </div>
-
-        <div class="avis-card">
-          <p>
-            ⭐️⭐️⭐️⭐️⭐️<br>
-            Le logement est juste parfait, très soigné avec des petites attentions qui font plaisir et l'endroit est très paisible, rien à dire de négatif je recommande à 100 % et je n'hésiterai pas à reprendre si besoin, merci Marceau pour votre gentillesse 🙏<br>
-            <strong>octobre 2025</strong>
-          </p>
-          
-            <div class="review-card">
-              <p class="review-platform"><img src="images/airbnb.png" alt="AirBnB" loading="lazy"></p>
-            </div>
-
-          <p class="author">— Aurélie</p>
-        </div>
-
-        <div class="avis-card">
-          <p>
-            ⭐️⭐️⭐️⭐️⭐️<br>
-            Fidèle à la description, appartement très propre et décoré avec goût.
-            Je recommande sans hésitation.<br>
-            <strong>août 2025</strong>
-          </p>
-          
-            <div class="review-card">
-              <p class="review-platform"><img src="images/airbnb.png" alt="AirBnB" loading="lazy"></p>
-            </div>
-
-          <p class="author">— Loic</p>
-        </div>
-      
-        <div class="avis-card">
-          <p>
-            ⭐️⭐️⭐️⭐️⭐️<br>
-            Le studio de Marceau est fonctionnel, bien équipé et joliment décoré, parfait pour 2 personnes.
-            Le quartier est très calme.
-            Des places de parking sont disponibles dans la rue.
-            Nous n'avons pas rencontré Marceau, mais il s'est montré très disponible et bienveillant lors de nos échanges. 🙂<br>
-            <strong>août 2025</strong>
-          </p>
-          
-            <div class="review-card">
-              <p class="review-platform"><img src="images/airbnb.png" alt="AirBnB" loading="lazy"></p>
-            </div>
-
-          <p class="author">— Cédric</p>
-        </div>
-
-        <div class="avis-card">
-          <p>
-            ⭐️⭐️⭐️⭐️⭐️<br>
-            Notre hôte est très agréable et serviable.
-            Les explications pour l'acces au logement sont précises et claires.
-            Dans le studio, il y a un QR code qui donne des explications pour employer les équipements du logement.
-            Le studio est confortable et super bien équipé.<br>
-            <strong>septembre 2025</strong>
-          </p>
-          
-            <div class="review-card">
-              <p class="review-platform"><img src="images/booking.png" alt="Booking" loading="lazy"></p>
-            </div>
-
-          <p class="author">— Chantal</p>
-        </div>
-
-        <div class="avis-card">
-          <p>
-            ⭐️⭐️⭐️⭐️⭐️<br>
-            Propriétaire très attentionné.
-            Logement propre et agréable.
-            Je recommande vivement !<br>
-            <strong>juillet 2025</strong>
-          </p>
-          
-            <div class="review-card">
-              <p class="review-platform"><img src="images/booking.png" alt="Booking" loading="lazy"></p>
-            </div>
-
-          <p class="author">— Nathalie</p>
-        </div>
-
-        <div class="avis-card">
-          <p>
-            ⭐️⭐️⭐️⭐️⭐️<br>
-            Appartement soigné avec toutes les commodités.
-            Propre et frais !<br>
-            <strong>juillet 2025</strong>
-          </p>
-          
-            <div class="review-card">
-              <p class="review-platform"><img src="images/booking.png" alt="Booking" loading="lazy"></p>
-            </div>
-
-          <p class="author">— Regina</p>
-        </div>
-
-        <div class="avis-card">
-          <p>
-            ⭐️⭐️⭐️⭐️⭐️<br>
-            Nous avons passé 3 belles nuits dans la maison de Marceau qui a pleinement répondu aux attentes.
-            Marceau est un hôte très accommodant et fera tout pour que vous vous sentiez à l'aise.
-            Notre séjour a eu lieu sous une chaleur extrême, mais la climatisation dans la maison a parfaitement fonctionné.
-            Je peux seulement dire que toutes les installations ont parfaitement fonctionné.
-            Je ne peux que recommander ce logement !<br>
-            <strong>août 2025</strong>
-          </p>
-          
-            <div class="review-card">
-              <p class="review-platform"><img src="images/airbnb.png" alt="AirBnB" loading="lazy"></p>
-            </div>
-
-          <p class="author">— Bent</p>
-        </div>
-
-        <div class="avis-card">
-          <p>
-            ⭐️⭐️⭐️⭐️⭐️<br>
-            Logement propre, confortable
-            et très bien situé pour visiter la région.
-            Le jardin est un vrai plus !
-            La communication avec Marceau a été claire et efficace.
-            Nous avons passé un excellent week-end !<br>
-            <strong>juillet 2025</strong>
-          </p>
-          
-            <div class="review-card">
-              <p class="review-platform"><img src="images/airbnb.png" alt="AirBnB" loading="lazy"></p>
-            </div>
-
-          <p class="author">— Ken</p>
+        <!-- Roue des avis -->
+        <div class="wheel-section">
+          <div class="wheel-outer">
+            <div class="wheel-fade-left"  aria-hidden="true"></div>
+            <div class="wheel-fade-right" aria-hidden="true"></div>
+            <div class="wheel-track" id="wheel-track" aria-live="polite"></div>
+          </div>
+          <div class="wheel-controls">
+            <button class="wheel-btn" id="wheel-btn" aria-label="Avis suivant">
+              <svg id="wheel-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M21 12a9 9 0 1 1-2.64-6.36" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <polyline points="21 3 21 9 15 9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="wheel-counter" id="wheel-counter" aria-live="polite">1 / 17</div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-
+    </section>
 
     <!-- RECOMMANDATIONS -->
-<section id="reco" class="section">
-  <div class="container">
-    <h2>Recommandations locales</h2>
-
-    <article class="cards">
-      <article class="card">
-        <h3>🍽️ Restaurants</h3>
-        <a class="link-more" href="#" data-popup-target="popup-restaurants">Voir la liste →</a>
-      </article>
-
-      <article class="card">
-        <h3>🛒 Commerces</h3>
-        <a class="link-more" href="#" data-popup-target="popup-commerces">Voir la liste →</a>
-      </article>
-
-      <article class="card">
-        <h3>🏪 Pratiques</h3>
-        <a class="link-more" href="#" data-popup-target="popup-pratique">Voir la liste →</a>
-      </article>
-
-      <article class="card">
-        <h3>🎡 Activités</h3>
-        <a class="link-more" href="#" data-popup-target="popup-activites">Voir la liste →</a>
-      </article>
-    </article>
-  </div>
-</section>
-
-<!-- POP-UPS -->
-
-<!-- Restaurants -->
-<div id="popup-restaurants" class="popup-overlay">
-  <div class="popup-content">
-    <button class="popup-close">×</button>
-    <h3>🍽️ Restaurants</h3>
-
-    <div class="popup-grid">
-      <div class="popup-item">
-        <h4>Chez Jacko</h4>
-        <p>🍽️ Cuisine traditionnelle française</p>
-        <p>📍 Villeneuve-sur-Verberie — 10 min</p>
-        <a href="https://maps.app.goo.gl/niAqtH91cJ9FtbYs9" target="_blank">Voir sur Google Maps</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>Turc'Oise</h4>
-        <p>🥙 Spécialités turques, tacos, grillades...</p>
-        <p>📍 Béthisy-Saint-Pierre — 5 min</p>
-        <a href="https://maps.app.goo.gl/FYk6kjBypmdsJJkL9" target="_blank">Voir sur Google Maps</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>L'auberge du bac</h4>
-        <p>🍷 Cuisine gastronomique - française</p>
-        <p>📍 La Croix-Saint-Ouen — 10 min</p>
-        <a href="https://maps.app.goo.gl/456u7Z39wyK5Yn2s6" target="_blank">Voir sur Google Maps</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>Les 3 Brasseurs</h4>
-        <p>🍺 Brasserie / cuisine française</p>
-        <p>📍 Compiègne — 20 min</p>
-        <a href="https://maps.app.goo.gl/mcgECiuapCTiCa6W7" target="_blank">Voir sur Google Maps</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>Le Gril des Barbares</h4>
-        <p>🥩 Grillades / cuisine française</p>
-        <p>📍 Senlis — 30 min</p>
-        <a href="https://maps.app.goo.gl/oqa5dsLkDstgsaAi7" target="_blank">Voir sur Google Maps</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>McDonald's</h4>
-        <p>🍔 Restauration rapide</p>
-        <p>📍 Compiègne — 20 min</p>
-        <a href="https://maps.app.goo.gl/cxaL5NmFfUZwCbTd8" target="_blank">Voir sur Google Maps</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>Burger King</h4>
-        <p>🍔 Restauration rapide</p>
-        <p>📍 Compiègne — 20 min</p>
-        <a href="https://maps.app.goo.gl/3Ve2dAu9aq6qPuqh8" target="_blank">Voir sur Google Maps</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>Le Verbois</h4>
-        <p>🍷 Cuisine gastronomique</p>
-        <p>📍 Saint-Maximin — 30 min</p>
-        <a href="https://maps.app.goo.gl/RPCLQM2MSGSjobYT8" target="_blank">Voir sur Google Maps</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>La Table Italienne</h4>
-        <p>🍝 Cuisine italienne</p>
-        <p>📍 Senlis — 25 min</p>
-        <a href="https://maps.app.goo.gl/3wg2UeahdtoRKabL9" target="_blank">Voir sur Google Maps</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Commerces -->
-<div id="popup-commerces" class="popup-overlay">
-  <div class="popup-content">
-    <button class="popup-close">×</button>
-    <h3>🛒 Commerces</h3>
-
-    <div class="popup-grid">
-      <div class="popup-item">
-        <h4>E.Leclerc | Drive & Essence</h4>
-        <p>🛍️ Galerie marchande</p>
-        <p>📍 La Croix-Saint-Ouen — 15 minutes</p>
-        <a href="https://maps.app.goo.gl/X8qdQNLYb7pdwWMK8" target="_blank">Voir sur Google Maps</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>Carrefour Market | Drive & Essence</h4>
-        <p>🛒 Supermarché de proximité</p>
-        <p>📍 Béthisy-Saint-Pierre — 5 minutes</p>
-        <a href="https://maps.app.goo.gl/bV8LomnuugyJ8sUC7" target="_blank">Voir sur Google Maps</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>Épicerie Gaïte</h4>
-        <p>🥦 Produits locaux et de première nécessité</p>
-        <p>📍 Béthisy-Saint-Pierre — 5 minutes</p>
-        <a href="https://maps.app.goo.gl/F3f2vbTJFbV5KcYP9" target="_blank">Voir sur Google Maps</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>Saint-Sauveur Market</h4>
-        <p>🧀 Produits locaux et dépannage rapide</p>
-        <p>📍 Saint-Sauveur — 5 minutes</p>
-        <a href="https://maps.app.goo.gl/gcGLk222NDwbqkL9A" target="_blank">Voir sur Google Maps</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Pratique -->
-<div id="popup-pratique" class="popup-overlay">
-  <div class="popup-content">
-    <button class="popup-close">×</button>
-    <h3>🧭 Pratique</h3>
-
-    <div class="popup-grid">
-      <div class="popup-item">
-        <h4>Office de tourisme</h4>
-        <p>🧭 Office de toursime du secteur</p>
-        <p>📍 Compiègne - 20 minutes</p>
-        <a href="https://maps.app.goo.gl/hmP2TxTL2jnA82HU6" target="_blank">Voir sur Google Maps</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>L'Elégance | Tabac-Presse</h4>
-        <p>Presse, jeux, tabac, relais colis</p>
-        <p>📍 Béthisy-Saint-Pierre - 5 minutes</p>
-        <a href="https://maps.app.goo.gl/x9RGej9b6jcaGi9W9" target="_blank">Voir sur Google Maps</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>Le Lion d'Or | Tabac-Presse</h4>
-        <p>🚬 Tabac, presse</p>
-        <p>📍 Saint-Sauveur - 5 minutes</p>
-        <a href="https://maps.app.goo.gl/GbCz74UutRp8r1x99" target="_blank">Voir sur Google Maps</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>Station E.Leclerc</h4>
-        <p>⛽ Station automatique 24h/24 + lavage automobile</p>
-        <p>📍 La Croix-Saint-Ouen - 15 minutes</p>
-        <a href="https://maps.app.goo.gl/Dnscbb6JWmqXvyKu8" target="_blank">Voir sur Google Maps</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>Station Carrefour Market</h4>
-        <p>⛽ Station automatique 24h/24</p>
-        <p>📍 Béthisy-Saint-Pierre - 5 minutes</p>
-        <a href="https://maps.app.goo.gl/MnK5E6ycSeEELFDw8" target="_blank">Voir sur Google Maps</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>Pharmacie</h4>
-        <p>💊 Pharmacie principale du secteur</p>
-        <p>📍 Saint-Sauveur - 5 minutes</p>
-        <a href="https://maps.app.goo.gl/E5dQVFBzdF1EtmZq9" target="_blank">Voir sur Google Maps</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>Centre hospitalier</h4>
-        <p>🏥 Urgences 24h/24</p>
-        <p>📍 Compiègne - 15 minutes</p>
-        <p>☎️ 15 (Samu) — 18 (Pompiers)</p>
-        <a href="https://maps.app.goo.gl/4ejZhwsrSq7UqLGC6" target="_blank">Voir sur Google Maps</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>Commissariat de police</h4>
-        <p>👮 Poste de police le plus proche</p>
-        <p>📍 Compiègne - 20 minutes</p>
-        <p>☎️ 17 (Police)</p>
-        <a href="https://maps.app.goo.gl/utLodpyawAUDNDVDA" target="_blank">Voir sur Google Maps</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Activités -->
-<div id="popup-activites" class="popup-overlay">
-  <div class="popup-content">
-    <button class="popup-close">×</button>
-    <h3>🎡 Activités à proximité</h3>
-
-    <div class="popup-grid">
-      <div class="popup-item">
-        <h4>Parc Astérix</h4>
-        <p>🎢 Parc d'attractions à thème gaulois</p>
-        <p>📍 Plailly — 30 minutes</p>
-        <a href="https://maps.app.goo.gl/Er7dCvPYwumkUpMi6" target="_blank">Voir sur Google Maps</a>
-        <a href="https://www.parcasterix.fr/offres/billets?utm_source=google&utm_medium=cpc&utm_campaign=pax_fr_24_sea_brand_pure&utm_term=parc_asterix&gclsrc=aw.ds&gad_source=1&gad_campaignid=2087518044&gclid=Cj0KCQjw9JLHBhC-ARIsAK4PhcqU8MrYCcXnCg_bxndxovW6Cv_nDg764nn_Y6XnMS4aDyn5ELx-kuQaAvmBEALw_wcB" target="_blank">Voir le site web</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>Disneyland Paris</h4>
-        <p>🏰 Parc d'attractions et univers Disney</p>
-        <p>📍 Coupvray — 1 heure 10 minutes</p>
-        <a href="https://maps.app.goo.gl/DBQ71h7GZMMYHZZx9" target="_blank">Voir sur Google Maps</a>
-        <a href="https://www.disneylandparis.com/fr-fr/" target="_blank">Voir le site web</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>Paris</h4>
-        <p>🗼 Capitale française — monuments, culture et gastronomie</p>
-        <p>📍 Paris — 1 heure 15 minutes</p>
-        <a href="https://maps.app.goo.gl/WQY1PXNqj5UivjMo7" target="_blank">Voir sur Google Maps</a>
-        <a href="https://www.parisinfo.com/" target="_blank">Voir le site web</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>La Mer de Sable</h4>
-        <p>🐫 Parc familial dans un décor de désert</p>
-        <p>📍 Ermenonville — 25 minutes</p>
-        <a href="https://maps.app.goo.gl/QahbhkHPM3CaYaHB7" target="_blank">Voir sur Google Maps</a>
-        <a href="https://www.merdesable.fr/?gad_source=1&gad_campaignid=19969518144&gclid=Cj0KCQjw9JLHBhC-ARIsAK4Phcq8QOnGJzvyDfnmmhBfcD9xMPj_lk3Mo9HdE0wOgOJB5KnIpkTQ0D0aAkFOEALw_wcB" target="_blank">Voir le site web</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>Château de Pierrefonds</h4>
-        <p>🏰 Château médiéval magnifiquement restauré</p>
-        <p>📍 Pierrefonds — 25 minutes</p>
-        <a href="https://maps.app.goo.gl/DbCqXRzxWf1CrAyd8" target="_blank">Voir sur Google Maps</a>
-        <a href="https://www.chateau-pierrefonds.fr" target="_blank">Voir le site web</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>Château de Compiègne & Centre-ville</h4>
-        <p>🏛️ Château impérial, musées et centre historique</p>
-        <p>📍 Compiègne — 20 minutes</p>
-        <a href="https://maps.app.goo.gl/Dk8szVsZGuoCpp1V6" target="_blank">Voir sur Google Maps</a>
-        <a href="https://www.compiegne-pierrefonds.fr" target="_blank">Voir le site web</a>
-      </div>
-
-      <div class="popup-item">
-        <h4>Château de Chantilly</h4>
-        <p>🏰 Magnifique château et musée historique</p>
-        <p>📍 Chantilly — 40 minutes</p>
-        <a href="https://maps.app.goo.gl/NBh5q6BL41tV1TMG7" target="_blank">Voir sur Google Maps</a>
-        <a href="https://chateaudechantilly.fr" target="_blank">Voir le site web</a>
-      </div>
-
-        <div class="popup-item">
-        <h4>Parc Nautic de Verberie</h4>
-        <p>💦 Base de loisirs, kayak, paddle, jeux d’eau</p>
-        <p>📍 Verberie — 5 minutes</p>
-        <a href="https://maps.app.goo.gl/3mudd9FuWtXsLqRK7" target="_blank">Voir sur Google Maps</a>
-        <a href="https://www.parknauticverberie.com" target="_blank">Voir le site web</a>
-      </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-<!-- CONTACT -->
-
-<section id="contact" class="section">
-  <div class="container contact-container">
-    <!-- Colonne gauche : Formulaire -->
-    <div class="contact-left">
-      <h2>Contact / Réservation</h2>
-      <p>Pour réserver directement et profiter de nos meilleurs tarifs, contactez-nous !</p>
-
-      <form id="contact-form" class="contact-form" name="contact">
-        <label>
-          <span>Nom</span>
-          <input type="text" name="nom" autocomplete="name" required>
-        </label>
-        <label>
-          <span>Email</span>
-          <input type="email" name="email" autocomplete="email" required>
-        </label>
-        <label>
-          <span>Message</span>
-          <textarea name="message" rows="4" autocomplete="message" required></textarea>
-        </label>
-
-        <div class="form-consent">
-          <label class="consent-label">
-            <input
-              type="checkbox"
-              name="consent"
-              required
-            />
-            <span class="consent-text">
-              J'ai lu et j'accepte le
-              <a href="#infos" data-open="acc-rules">règlement intérieur</a>.
-            </span>
-          </label>
+    <section id="reco">
+      <div class="container">
+        <p class="section-label reveal">07 — Aux alentours</p>
+        <h2 class="reveal">Explorer<br><em>la région</em></h2>
+        <div class="reco-tabs reveal">
+          <button class="reco-tab" data-panel="panel-restaurants"><span class="reco-tab-icon">🍽️</span><h3>Restaurants</h3><span class="reco-tab-label">Voir →</span></button>
+          <button class="reco-tab" data-panel="panel-commerces"><span class="reco-tab-icon">🛒</span><h3>Commerces</h3><span class="reco-tab-label">Voir →</span></button>
+          <button class="reco-tab" data-panel="panel-pratique"><span class="reco-tab-icon">🏪</span><h3>Pratique</h3><span class="reco-tab-label">Voir →</span></button>
+          <button class="reco-tab" data-panel="panel-activites"><span class="reco-tab-icon">🎡</span><h3>Activités</h3><span class="reco-tab-label">Voir →</span></button>
         </div>
 
-        <input type="text" name="website" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;opacity:0;height:0;width:0" aria-hidden="true">
+        <div class="reco-panel" id="panel-restaurants"><div class="reco-panel-inner"><div class="reco-grid">
+          <div class="reco-item"><h4>Chez Jacko</h4><p>🍽️ Cuisine traditionnelle française</p><p>📍 Villeneuve-sur-Verberie — 10 min</p><a href="https://maps.app.goo.gl/niAqtH91cJ9FtbYs9" target="_blank" rel="noopener">Google Maps →</a></div>
+          <div class="reco-item"><h4>Turc'Oise</h4><p>🥙 Spécialités turques, grillades</p><p>📍 Béthisy-Saint-Pierre — 5 min</p><a href="https://maps.app.goo.gl/FYk6kjBypmdsJJkL9" target="_blank" rel="noopener">Google Maps →</a></div>
+          <div class="reco-item"><h4>L'Auberge du Bac</h4><p>🍷 Cuisine gastronomique française</p><p>📍 La Croix-Saint-Ouen — 10 min</p><a href="https://maps.app.goo.gl/456u7Z39wyK5Yn2s6" target="_blank" rel="noopener">Google Maps →</a></div>
+          <div class="reco-item"><h4>Les 3 Brasseurs</h4><p>🍺 Brasserie / cuisine française</p><p>📍 Compiègne — 20 min</p><a href="https://maps.app.goo.gl/mcgECiuapCTiCa6W7" target="_blank" rel="noopener">Google Maps →</a></div>
+          <div class="reco-item"><h4>Le Gril des Barbares</h4><p>🥩 Grillades / cuisine française</p><p>📍 Senlis — 30 min</p><a href="https://maps.app.goo.gl/oqa5dsLkDstgsaAi7" target="_blank" rel="noopener">Google Maps →</a></div>
+          <div class="reco-item"><h4>Le Verbois</h4><p>🍷 Cuisine gastronomique</p><p>📍 Saint-Maximin — 30 min</p><a href="https://maps.app.goo.gl/RPCLQM2MSGSjobYT8" target="_blank" rel="noopener">Google Maps →</a></div>
+          <div class="reco-item"><h4>La Table Italienne</h4><p>🍝 Cuisine italienne</p><p>📍 Senlis — 25 min</p><a href="https://maps.app.goo.gl/3wg2UeahdtoRKabL9" target="_blank" rel="noopener">Google Maps →</a></div>
+          <div class="reco-item"><h4>McDonald's &amp; Burger King</h4><p>🍔 Restauration rapide</p><p>📍 Compiègne — 20 min</p><a href="https://maps.app.goo.gl/cxaL5NmFfUZwCbTd8" target="_blank" rel="noopener">Google Maps →</a></div>
+        </div></div></div>
 
+        <div class="reco-panel" id="panel-commerces"><div class="reco-panel-inner"><div class="reco-grid">
+          <div class="reco-item"><h4>E.Leclerc | Drive &amp; Essence</h4><p>🛍️ Galerie marchande</p><p>📍 La Croix-Saint-Ouen — 15 min</p><a href="https://maps.app.goo.gl/X8qdQNLYb7pdwWMK8" target="_blank" rel="noopener">Google Maps →</a></div>
+          <div class="reco-item"><h4>Carrefour Market | Drive</h4><p>🛒 Supermarché de proximité</p><p>📍 Béthisy-Saint-Pierre — 5 min</p><a href="https://maps.app.goo.gl/bV8LomnuugyJ8sUC7" target="_blank" rel="noopener">Google Maps →</a></div>
+          <div class="reco-item"><h4>Épicerie Gaïte</h4><p>🥦 Produits locaux et de première nécessité</p><p>📍 Béthisy-Saint-Pierre — 5 min</p><a href="https://maps.app.goo.gl/F3f2vbTJFbV5KcYP9" target="_blank" rel="noopener">Google Maps →</a></div>
+          <div class="reco-item"><h4>Saint-Sauveur Market</h4><p>🧀 Produits locaux et dépannage rapide</p><p>📍 Saint-Sauveur — 5 min</p><a href="https://maps.app.goo.gl/gcGLk222NDwbqkL9A" target="_blank" rel="noopener">Google Maps →</a></div>
+        </div></div></div>
 
-        <button class="btn" type="submit">Envoyer</button>
+        <div class="reco-panel" id="panel-pratique"><div class="reco-panel-inner"><div class="reco-grid">
+          <div class="reco-item"><h4>Office de tourisme</h4><p>🧭 Compiègne — 20 min</p><a href="https://maps.app.goo.gl/hmP2TxTL2jnA82HU6" target="_blank" rel="noopener">Google Maps →</a></div>
+          <div class="reco-item"><h4>L'Élégance | Tabac-Presse</h4><p>📰 Tabac, presse, relais colis</p><p>📍 Béthisy-Saint-Pierre — 5 min</p><a href="https://maps.app.goo.gl/x9RGej9b6jcaGi9W9" target="_blank" rel="noopener">Google Maps →</a></div>
+          <div class="reco-item"><h4>Station E.Leclerc</h4><p>⛽ 24h/24 + lavage automobile</p><p>📍 La Croix-Saint-Ouen — 15 min</p><a href="https://maps.app.goo.gl/Dnscbb6JWmqXvyKu8" target="_blank" rel="noopener">Google Maps →</a></div>
+          <div class="reco-item"><h4>Pharmacie</h4><p>💊 Principale du secteur</p><p>📍 Saint-Sauveur — 5 min</p><a href="https://maps.app.goo.gl/E5dQVFBzdF1EtmZq9" target="_blank" rel="noopener">Google Maps →</a></div>
+          <div class="reco-item"><h4>Centre hospitalier</h4><p>🏥 Urgences 24h/24 · ☎️ 15 / 18</p><p>📍 Compiègne — 15 min</p><a href="https://maps.app.goo.gl/4ejZhwsrSq7UqLGC6" target="_blank" rel="noopener">Google Maps →</a></div>
+          <div class="reco-item"><h4>Commissariat de police</h4><p>👮 ☎️ 17 (Police)</p><p>📍 Compiègne — 20 min</p><a href="https://maps.app.goo.gl/utLodpyawAUDNDVDA" target="_blank" rel="noopener">Google Maps →</a></div>
+        </div></div></div>
 
-        <div class="alt-contact">
-          <p>
-            Ou reservez directement par téléphone / Whatsapp :<br>
-            📞 <a href="tel:+33673735318" class="phone-link">06.73.73.53.18</a>
-            | Marceau
-          </p>
-        </div>
+        <div class="reco-panel" id="panel-activites"><div class="reco-panel-inner"><div class="reco-grid">
+          <div class="reco-item"><h4>Parc Astérix</h4><p>🎢 Parc d'attractions gaulois</p><p>📍 Plailly — 20 min</p><a href="https://maps.app.goo.gl/Er7dCvPYwumkUpMi6" target="_blank" rel="noopener">Google Maps →</a><a href="https://www.parcasterix.fr" target="_blank" rel="noopener">Site Officiel →</a></div>
+          <div class="reco-item"><h4>Disneyland Paris</h4><p>🏰 Parc Disney</p><p>📍 Coupvray — 1h10</p><a href="https://maps.app.goo.gl/DBQ71h7GZMMYHZZx9" target="_blank" rel="noopener">Google Maps →</a><a href="https://www.disneylandparis.com/fr-fr/" target="_blank" rel="noopener">Site Officiel →</a></div>
+          <div class="reco-item"><h4>Paris</h4><p>🗼 Capitale française — monuments, culture</p><p>📍 ~1h15 en voiture</p><a href="https://maps.app.goo.gl/WQY1PXNqj5UivjMo7" target="_blank" rel="noopener">Google Maps →</a></div>
+          <div class="reco-item"><h4>La Mer de Sable</h4><p>🐫 Parc familial dans un décor de désert</p><p>📍 Ermenonville — 25 min</p><a href="https://maps.app.goo.gl/QahbhkHPM3CaYaHB7" target="_blank" rel="noopener">Google Maps →</a><a href="https://www.merdesable.fr" target="_blank" rel="noopener">Site Officiel →</a></div>
+          <div class="reco-item"><h4>Château de Compiègne</h4><p>🏛️ Château impérial, musées et centre historique</p><p>📍 Compiègne — 20 min</p><a href="https://maps.app.goo.gl/Dk8szVsZGuoCpp1V6" target="_blank" rel="noopener">Google Maps →</a></div>
+          <div class="reco-item"><h4>Château de Chantilly</h4><p>🏰 Magnifique château et musée historique</p><p>📍 Chantilly — 40 min</p><a href="https://maps.app.goo.gl/NBh5q6BL41tV1TMG7" target="_blank" rel="noopener">Google Maps →</a><a href="https://chateaudechantilly.fr" target="_blank" rel="noopener">Site Officiel →</a></div>
+          <div class="reco-item"><h4>Forêt de Compiègne</h4><p>🌲 Randonnées, vélo, promenades</p><p>📍 Compiègne — 20 min</p><a href="https://maps.app.goo.gl/Dk8szVsZGuoCpp1V6" target="_blank" rel="noopener">Google Maps →</a></div>
+          <div class="reco-item"><h4>Forêt d'Halatte</h4><p>🌿 Nature, sentiers pédestres</p><p>📍 Senlis — 25 min</p><a href="https://maps.app.goo.gl/oqa5dsLkDstgsaAi7" target="_blank" rel="noopener">Google Maps →</a></div>
+        </div></div></div>
+      </div>
+    </section>
 
-         <!-- Conteneur pour le message dynamique -->
-        <div class="form-status" aria-live="polite"></div>
-      </form>
-    </div>
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <p class="section-label reveal">08 — Réservation</p>
+        <h2 class="reveal">Réserver<br><em>en direct</em></h2>
+        <p class="reveal contact-intro">Meilleur tarif garanti · Réponse immédiate · Paiement sécurisé</p>
 
-      <!-- Séparateur vertical -->
-      <div class="contact-separator"></div>
+        <div class="contact-grid">
 
-      <!-- Colonne droite : Boutons réservation -->
-        <div class="contact-right">
-          <a href="https://www.airbnb.fr/rooms/1428176497326220574" target="_blank" class="btn-airbnb">
-            <img src="images/airbnb.png" alt="Airbnb" loading="lazy"/> Réserver sur Airbnb
-          </a>
-          <a href="https://www.booking.com/hotel/fr/charming-studio-close-to-cdg.fr.html" target="_blank" class="btn-booking">
-            <img src="images/booking.png" alt="Booking.com" loading="lazy"/> Réserver sur Booking
-          </a>
+          <div class="reveal">
+            <form id="reservation-form" novalidate>
+
+              <!-- Dates -->
+              <div class="resa-section">
+                <span class="resa-section-label">Dates du séjour</span>
+                <div class="resa-dates-grid">
+                  <div class="form-group">
+                    <label for="date-arrivee">Arrivée</label>
+                    <input type="text" id="date-arrivee" placeholder="jj/mm/aaaa" readonly required />
+                  </div>
+                  <div class="form-group">
+                    <label for="date-depart">Départ</label>
+                    <input type="text" id="date-depart" placeholder="jj/mm/aaaa" readonly required />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Voyageurs & animaux -->
+              <div class="resa-section">
+                <span class="resa-section-label">Voyageurs &amp; options</span>
+                  <div class="resa-voyageurs-grid">
+                    <div class="form-group">
+                      <label>Adultes</label>
+                      <div class="resa-counter">
+                        <button type="button" id="adulte-minus" aria-label="Moins">−</button>
+                        <span class="resa-counter-val" id="adulte-count">1</span>
+                        <button type="button" id="adulte-plus" aria-label="Plus">+</button>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Enfants <small class="form-label-note">- 12 ans · gratuit</small></label>
+                        <div class="resa-counter">
+                          <button type="button" id="enfant-minus" aria-label="Moins">−</button>
+                          <span class="resa-counter-val" id="enfant-count">0</span>
+                          <button type="button" id="enfant-plus" aria-label="Plus">+</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Bébés <small class="form-label-note">gratuit</small></label>
+                        <div class="resa-counter">
+                          <button type="button" id="bebe-minus" aria-label="Moins">−</button>
+                          <span class="resa-counter-val" id="bebe-count">0</span>
+                          <button type="button" id="bebe-plus" aria-label="Plus">+</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Animal de compagnie <small class="form-label-note">2 animaux max</small></label>
+                      <button type="button" id="animal-toggle" class="resa-toggle-btn">Non</button>
+                    </div>
+                  </div>
+              </div>
+
+              <!-- Prix (affiché quand les deux dates sont remplies) -->
+              <div class="resa-price" id="resa-price" hidden>
+                <div class="resa-price-row">
+                  <span id="price-nuits">Nuitées</span>
+                  <span id="price-nuits-val"></span>
+                </div>
+                <div class="resa-price-row">
+                  <span>Frais de ménage</span>
+                  <span>30 €</span>
+                </div>
+                <div class="resa-price-row" id="price-row-voy" hidden>
+                  <span>Voyageur(s) supplémentaire(s)</span>
+                  <span id="price-voy-val"></span>
+                </div>
+                <div class="resa-price-row" id="price-row-ani" hidden>
+                  <span>Animal de compagnie</span>
+                  <span id="price-ani-val"></span>
+                </div>
+                <div class="resa-price-total">
+                  <span class="resa-price-total-label">Total du séjour</span>
+                  <span class="resa-price-total-val" id="price-total-val"></span>
+                </div>
+                <p class="resa-price-warning">⚠️ Réservation non remboursable · Paiement par virement instantané SEPA</p>
+              </div>
+
+              <!-- Coordonnées (affiché avec le prix) -->
+              <div id="resa-contact" hidden>
+                <div class="resa-section">
+                  <span class="resa-section-label">Vos coordonnées</span>
+                  <div class="form-group">
+                    <label for="resa-prenom">Prénom et nom</label>
+                    <input type="text" id="resa-prenom" name="prenom" autocomplete="name" placeholder="Marie DUPONT" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="resa-email">Email</label>
+                    <input type="email" id="resa-email" name="email" autocomplete="email" placeholder="votre@email.com" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="resa-tel">Téléphone <small class="form-label-note">indicatif inclus</small></label>
+                    <input type="tel" id="resa-tel" name="telephone" autocomplete="tel" placeholder="+33 6 XX XX XX XX" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="resa-adresse">Adresse postale <small class="form-label-note">requise pour le contrat</small></label>
+                    <input type="text" id="resa-adresse" name="adresse" autocomplete="street-address" placeholder="123 rue de la Paix, 75001 Paris" required />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Submit -->
+              <div id="resa-submit-wrap" hidden>
+                <div class="consent-row">
+                  <input type="checkbox" id="consent-resa" required />
+                  <label for="consent-resa">
+                    J'ai lu et j'accepte le <a href="rules.html" target="_blank" rel="noopener">règlement intérieur</a>,
+                    les <a href="cgv.html">conditions générales de vente</a> et la
+                    <a href="politique-confidentialite.html">politique de confidentialité</a>.
+                    Je reconnais que cette réservation est <strong>non remboursable</strong>.
+                  </label>
+                </div>
+                <input type="text" name="website" class="honey-field" tabindex="-1" aria-hidden="true" autocomplete="off" />
+                <button type="submit" class="btn btn-primary resa-submit-btn" id="resa-submit-btn">
+                  Confirmer la réservation →
+                </button>
+                <div class="form-status" id="resa-status" aria-live="polite"></div>
+              </div>
+
+              <!-- Champs cachés -->
+              <input type="hidden" id="hidden-nuits"     name="nb_nuits" />
+              <input type="hidden" id="hidden-voyageurs" name="nb_voyageurs" />
+              <input type="hidden" id="hidden-animaux"   name="animaux" />
+              <input type="hidden" id="hidden-arrivee"   name="date_arrivee" />
+              <input type="hidden" id="hidden-depart"    name="date_depart" />
+
+            </form>
+          </div>
+
+          <div class="contact-right reveal">
+            <p class="contact-right-title">Ou réservez via :</p>
+            <a href="https://www.airbnb.fr/rooms/1428176497326220574" target="_blank" rel="noopener" class="platform-btn btn-airbnb">
+              <img src="images/airbnb.png" alt="Logo Airbnb" loading="lazy" /> Réserver sur Airbnb
+            </a>
+            <a href="https://www.booking.com/hotel/fr/charming-studio-close-to-cdg.fr.html" target="_blank" rel="noopener" class="platform-btn btn-booking">
+              <img src="images/booking.png" alt="Logo Booking.com" loading="lazy" /> Réserver sur Booking
+            </a>
+            <div class="contact-or"></div>
+            <div class="phone-card">
+              <p>Un problème pour réserver / durant votre séjour ?</p>
+              <a href="tel:+33673735318">06.73.73.53.18</a>
+              <small>Marceau · Disponible 7j/7</small>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
+
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-
-      <!-- Colonne 1 : Identité -->
-      <div class="footer-block">
-        <p class="footer-title">Le Refuge de Saintines</p>
-        <p>
-          Studio de location meublée<br>
-          80 Impasse du Lavoir<br>
-          60410 Saintines – France
-        </p>
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-col-title">Le Refuge de Saintines</p>
+          <p>Studio de location meublée<br>80 Impasse du Lavoir<br>60410 Saintines — France</p>
+        </div>
+        <div>
+          <p class="footer-col-title">Contact</p>
+          <p><a href="tel:+33673735318">📞 06 73 73 53 18</a><br><a href="mailto:contact@gite-refugedesaintines.com">✉️ contact@gite-refugedesaintines.com</a></p>
+        </div>
+        <div>
+          <p class="footer-col-title">Légal</p>
+          <p><a href="rules.html">Règlement intérieur</a><br><a href="mentions-legales.html">Mentions légales</a><br><a href="cgv.html">Conditions générales de vente</a><br><a href="politique-confidentialite.html">Politique de confidentialité</a><br><a href="https://www.infomaniak.com" target="_blank" rel="noopener">Hébergé par Infomaniak</a></p>
+        </div>
       </div>
-
-      <!-- Colonne 2 : Contact -->
-      <div class="footer-block">
-        <p class="footer-title">Contact</p>
-        <p>
-          📞 <a href="tel:+33673735318">06 73 73 53 18</a><br>
-          ✉️ <a href="mailto:contact@gite-refugedesaintines.com">contact@gite-refugedesaintines.com</a>
-        </p>
+      <div class="footer-bottom">
+        <p>© 2026 Le Refuge de Saintines — Tous droits réservés</p>
+        <p class="footer-coords">49.305°N · 2.773°E · SAINTINES, OISE</p>
       </div>
-
-      <!-- Colonne 3 : Liens légaux -->
-      <div class="footer-block">
-        <p class="footer-title">Informations légales</p>
-        <p>
-          <a href="mentions-legales.html">Mentions légales</a><br>
-          <a href="politique-confidentialite.html">Politique de confidentialité</a>
-        </p>
-      </div>
-
-    </div>
-
-    <div class="footer-bottom">
-      <p>&copy; 2025 Le Refuge de Saintines — Tous droits réservés</p>
-      <p class="footer-hosting">
-        Site hébergé par <a href="https://www.infomaniak.com" target="_blank" rel="noopener">Infomaniak</a>
-      </p>
     </div>
   </footer>
 
-
-  <!-- Script JS Global-->
+  <!-- JS Module -->
   <script src="assets/js/main.js" type="module"></script>
 
-  <!-- Maps -->
+
+  <!-- Google Maps — cercle de rayon, style sombre -->
+  <script>
+    function initMap() {
+      var center = { lat: 49.30528567724818, lng: 2.773693624035537 };
+      var darkStyle = [
+        {elementType:'geometry',stylers:[{color:'#0d1a14'}]},
+        {elementType:'labels.text.fill',stylers:[{color:'#90beab'}]},
+        {elementType:'labels.text.stroke',stylers:[{color:'#07100c'}]},
+        {featureType:'road',elementType:'geometry',stylers:[{color:'#1a2e24'}]},
+        {featureType:'road',elementType:'geometry.stroke',stylers:[{color:'#07100c'}]},
+        {featureType:'road.highway',elementType:'geometry',stylers:[{color:'#243d31'}]},
+        {featureType:'road.highway',elementType:'geometry.stroke',stylers:[{color:'#07100c'}]},
+        {featureType:'water',elementType:'geometry',stylers:[{color:'#07100c'}]},
+        {featureType:'poi',elementType:'geometry',stylers:[{color:'#0d1a14'}]},
+        {featureType:'administrative',elementType:'geometry',stylers:[{color:'#1a2e24'}]},
+        {featureType:'administrative.locality',elementType:'labels.text.fill',stylers:[{color:'#b8d8cc'}]},
+        {featureType:'transit',elementType:'geometry',stylers:[{color:'#0d1a14'}]},
+        {featureType:'landscape',elementType:'geometry',stylers:[{color:'#0d1a14'}]}
+      ];
+      var map = new google.maps.Map(document.getElementById('gmap'), {
+        center: center,
+        zoom: 13,
+        styles: darkStyle,
+        disableDefaultUI: true,
+        zoomControl: true,
+        gestureHandling: 'cooperative'
+      });
+      /* Cercle rayon ~1 km — pas de marqueur précis */
+      new google.maps.Circle({
+        map: map,
+        center: center,
+        radius: 1000,
+        strokeColor: '#90beab',
+        strokeOpacity: 0.7,
+        strokeWeight: 2,
+        fillColor: '#90beab',
+        fillOpacity: 0.10
+      });
+      /* Petit point central discret */
+      new google.maps.Circle({
+        map: map,
+        center: center,
+        radius: 80,
+        strokeColor: '#90beab',
+        strokeOpacity: 0,
+        fillColor: '#90beab',
+        fillOpacity: 0.5
+      });
+    }
+  </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAO_fIj7IW5mJPv_QyIg3XO01EB8GLspqQ&callback=initMap&loading=async" defer></script>
 
 </body>

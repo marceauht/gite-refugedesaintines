@@ -1,338 +1,477 @@
-﻿/* =====================================================
-   RESPONSIVE CSS - MOBILE & TABLET
-   ===================================================== */
+/* ============================================================
+   RESPONSIVE.CSS — Source unique pour l'adaptation mobile
+   Le Refuge de Saintines — Desktop-first
+   ============================================================ */
 
-/* ---------------------------------------------
-   Tablet landscape (max-width: 1024px)
-   --------------------------------------------- */
-@media (min-width: 769px) and (max-width: 1024px) {
 
+/* ── Tablette large (≤ 1024px) ─────────────────────────────── */
+@media (max-width: 1024px) {
+  .logement-grid       { grid-template-columns: 1fr; gap: 48px; }
+  .logement-visual     { display: none; }
+  .reco-tabs           { grid-template-columns: repeat(2,1fr); }
+  .contact-grid        { grid-template-columns: 1fr; gap: 48px; }
+  .footer-grid         { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .infos-grid          { grid-template-columns: 1fr; gap: 14px; }
+}
+
+
+/* ── Tablette (≤ 900px) ────────────────────────────────────── */
+@media (max-width: 900px) {
+  section              { padding: 72px 0; }
+  .hero-stats          { display: none; }
+  .hero-content        { bottom: 0; }
+  .hero-scroll         { display: none; }
+  .status-pill         { display: none; }
+  .equip-grid          { grid-template-columns: repeat(2,1fr); }
+  .map-distances       { grid-template-columns: repeat(2,1fr); }
+  .reco-grid           { grid-template-columns: 1fr; }
+  .infos-grid          { grid-template-columns: 1fr; }
+  .footer-grid         { grid-template-columns: 1fr; gap: 28px; }
+  .footer-bottom       { flex-direction: column; gap: 8px; text-align: center; }
+}
+
+
+/* ============================================================
+   MOBILE (≤ 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* ── Navigation ─────────────────────────────────────────── */
+  .nav                 { display: none; }
+  .nav-toggle          { display: flex; order: 3; margin-left: 8px; }
+  .site-header         { padding: 10px 14px; }
+  .header-inner        { padding: 6px 6px 6px 14px; border-radius: 50px; }
+
+  /* Bouton Réserver dans le header (mobile only) */
+  .nav-cta-header-mobile {
+    display: inline-flex;
+    align-items: center;
+    background: var(--sage);
+    color: var(--bg) !important;
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 40px;
+    white-space: nowrap;
+    order: 2;
+    margin-right: 0;
+  }
+
+  /* ── Layout global ──────────────────────────────────────── */
+  section              { padding: 52px 0; scroll-margin-top: 40px; }
+  .container           { padding: 0 20px; }
+  body                 { cursor: auto; }
+  .cursor, .cursor-ring { display: none; }
+  button, a            { cursor: pointer; }
+
+  /* ── HERO ───────────────────────────────────────────────── */
   .hero {
-    margin-top: 120;
-    min-height: 50vh;
-  }
-  .hero h1 {
-    font-size: 34px;
-  }
-
-  .hero p {
-    font-size: 18px;
+  height: auto;
+  min-height: auto;
+  padding-top: 14px !important;
+  padding-bottom: 0 !important;
   }
 
-  .hero-buttons .btn {
-    padding: 8px 16px;
-    font-size: 15px;
+  .hero .hero-content {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  padding-top: 100px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  justify-content: flex-start;
+  gap: 16px;
   }
 
-  .expandable-card {
-    max-width: 95%;
-    margin: 20px auto;
+  .hero h1             { font-size: clamp(38px, 10vw, 56px); margin-bottom: 0; }
+  .hero-lead           { font-size: 14px; line-height: 1.65; max-width: 100%; }
+  .hero-eyebrow        { display: flex; }
+  .hero-buttons        { flex-direction: row; gap: 10px; flex-wrap: wrap; }
+  .hero-buttons .btn-outline { display: none; }
+
+  .hero-buttons .btn-primary {
+    font-size: 9px;
+    padding: 10px 20px;
+    letter-spacing: 1.5px;
   }
 
-  .cards {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 12px;
+  /* Stats bar mobile */
+  .hero-stats {
+    display: flex;
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    opacity: 1;
+    animation: none;
+    border-top: 1px solid var(--glass-border);
   }
 
-  .gallery-wrapper {
-    padding: 0 12px;
-    max-width: 95%;
-    margin: 0 auto;
+  .hero-stat {
+    padding: 14px 8px;
   }
 
-  .gallery-scroll img {
-    height: 250px;
+  .hero-stat-val {
+    font-size: 20px;
   }
 
-  .avis-card {
-    min-width: 220px;
-    font-size: 13px;
+  .hero-stat-label {
+    font-size: 7px;
+    letter-spacing: 1.5px;
   }
 
-  .gallery-avis .avis-card {
-    flex: 0 0 calc((100% - 20px) / 2);
+  /* ── LOGEMENT ───────────────────────────────────────────── */
+
+  .logement-mini-stats { 
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    text-align: center;
   }
 
-  .review-platform img {
-    height: 24px;
-    width: auto;
+  .mini-stat {
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
+    gap: 4px;
   }
 
-  .scroll-btn {
-    display: none !important;
+  /* ── GALERIE ────────────────────────────────────────────── */
+  .gallery-header {
+    padding: 48px 20px 0;
   }
 
-  .equip-list {
+  .gallery-outer::before,
+  .gallery-outer::after {
+    display: none;
+  }
+  
+  .gallery-track { 
+    padding: 24px 0px 32px;
+    scroll-padding-inline: 20px;
+  }
+  
+  .gallery-track figure {
+    flex-shrink: 0;
+    width: calc(100vw - 40px);
+    margin: 0 20px;
+    scroll-snap-align: center;
+  }
+  
+  .gallery-track figure img {
+    height: 280px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 12px; 
+  }
+
+  .gallery-track.is-grabbing {
+    cursor: grabbing;
+  }
+
+  .gallery-progress { 
+    display: none; 
+  }
+
+  /* ── ÉQUIPEMENTS ────────────────────────────────────────── */
+  .equip-grid {
+    grid-template-columns: 1fr;
     gap: 8px;
   }
 
-  .equip-list li {
-    font-size: 13px;
-    padding: 6px 10px;
+  .equip-item:nth-child(n+4) {
+    display: none; 
   }
 
-  .contact-container {
-    flex-direction: row;
-    gap: 30px;
-    align-items: stretch;
+  .equip-more {
+    display: block;
   }
 
-  .contact-left,
-  .contact-right {
-    width: 50%;
+  .equip-grid.expanded .equip-item {
+    display: flex; 
   }
 
-  .contact-form {
-    max-width: 100%;
-    margin-top: 20px;
-  }
-
-  .contact-form button.btn {
-    width: 100%;
-  }
-
-  .contact-separator {
-    width: 1px;
-    background-color: var(--muted);
-    margin: 0 auto;
-  }
-
-  .contact-right a {
-    width: 100%;
-    max-width: none;
-    line-height: 58px;
-  }
-
-  .contact-right a img {
-    left: 0px;
-  }
-
-  .acc-item {
-    text-decoration: none;
-  }
-
-  .footer-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-
-  .footer-bottom {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .footer-hosting {
-    text-align: right;
-  }
-}
-
-/* ---------------------------------------------
-   Tablet portrait and mobile (max-width: 768px)
-   --------------------------------------------- */
-@media (max-width: 768px) {
-
-  .site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 6px 0;
-  }
-
-  .header-inner {
-    padding: 6px 16px;
-  }
-
-  body {
-    padding-top: 60px;
-  }
-
-  .section {
-    scroll-margin-top: 60px;
-  }
-
-  .nav {
+  .expand-panel {
     display: none;
-    flex-direction: column;
-    background: var(--cream);
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: 10px 0;
-    gap: 0;
   }
 
-  .nav.open {
-    display: flex;
-  }
+  /* ── LOCALISATION ───────────────────────────────────────── */
+  /* Garder la carte — 2 colonnes pour les distances */
+  .map-distances       { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .map-dist-item       { padding: 14px 12px; }
+  .map-dist-place      { font-size: 12px; }
+  .map-dist-time       { font-size: 11px; }
+  .map-wrap            { margin-top: 20px; }
+  .gmap                { height: 200px; border-radius: 12px; }
 
-  .nav a {
-    padding: 10px 20px;
-    margin: 6px 0;
-  }
-
-  .nav-toggle {
-    display: flex;
-  }
-
-  .hero {
-    min-height: 60vh;
-    margin-top: 0;
-  }
-
-  .hero h1 {
-    font-size: 28px;
-  }
-
-  .hero p {
-    font-size: 16px;
-  }
-
-  .hero-buttons .btn {
-    padding: 8px 16px;
-    font-size: 14px;
-  }
-
-  .expandable-card {
-    margin: 16px auto;
-  }
-
-  .cards {
+  /* ── INFOS PRATIQUES ────────────────────────────────────────── */
+  .infos-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 10px;
+    justify-items: stretch;
   }
 
-  .gallery-wrapper {
-    padding: 0 12px;
-    max-width: 95%;
-    margin: 0 auto;
-  }
-
-  .gallery-scroll {
-    scroll-snap-type: x mandatory;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .gallery-scroll figure {
-    flex: 0 0 100%;
-    scroll-snap-align: start;
-    margin: 0;
-  }
-
-  .gallery-scroll img {
-    width: 100%;
-    height: auto;
-    pointer-events: none;
+  /* Carte réduite — emoji + titre + flèche */
+  .info-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    cursor: pointer;
     user-select: none;
-    border-radius: 12px;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background var(--tr), border-color var(--tr);
   }
 
-  .equip-list li {
-    display: none;
+  .info-card:hover {
+    background: var(--glass-hover);
+    border-color: rgba(144,190,171,.3);
   }
 
-  .equip-list li:nth-child(1),
-  .equip-list li:nth-child(2),
-  .equip-list li:nth-child(3),
-  .equip-list li:nth-child(4),
-  .equip-list li:nth-child(6),
-  .equip-list li:nth-child(8),
-  .equip-list li:nth-child(9),
-  .equip-list li:nth-child(11),
-  .equip-list li:nth-child(14),
-  .equip-list li:nth-child(16),
-  .equip-list li.equip-btn {
-    display: list-item;
+  .info-card::after {
+    content: '→';
+    margin-left: auto;
+    color: var(--sage);
+    font-size: 16px;
+    transition: transform var(--tr);
+    flex-shrink: 0;
   }
 
-  .review-platform img {
-    height: 24px;
-    width: auto;
-  }
+  .info-card:hover::after { transform: translateX(4px); }
 
-  .avis-card {
-    min-width: 180px;
-    font-size: 12px;
-  }
-
-  .gallery-avis .avis-card {
-    flex: 0 0 100%;
-  }
-
-  .scroll-btn {
-    display: none !important;
-  }
-
-  .equip-list li {
-    font-size: 12px;
-    padding: 5px 8px;
-  }
-
-  .contact-container {
-    flex-direction: column;
-    gap: 16px;
+  .info-card .info-card-icon {
+    line-height: 1;
+    display: flex;
     align-items: center;
+    position: relative;
   }
 
-  .contact-left,
-  .contact-right {
-    width: 100%;
-    max-width: 520px;
+  .infos-grid .info-card:nth-child(1) .info-card-icon {
+    top: 4px;
   }
 
-  .contact-form {
-    width: 100%;
+  .infos-grid .info-card:nth-child(2) .info-card-icon {
+    top: 6px;
   }
 
-  .contact-right a {
-    width: 100%;
-    font-size: 14px;
-    margin-top: 16px;
+  .infos-grid .info-card:nth-child(3) .info-card-icon {
+    top: 6px;
   }
 
-  .contact-separator {
-    width: 100%;
-    max-width: 520px;
-    height: 1px;
-    background: var(--muted);
-    margin: 20px auto;
-    align-self: center;
+  /* Masquer tout le contenu détaillé sur mobile */
+  .info-card .info-card-highlight,
+  .info-card .info-time-row,
+  .info-card .info-card-title,
+  .info-card .info-row,
+  .info-card .info-card-cta { display: none; }
+
+  /* Titre visible dans la carte réduite */
+  .info-card-label-mobile {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--cream);
+    white-space: nowrap;
   }
 
-  .popup-content {
-    width: 90%;
-    max-height: 70vh;
-    padding: 16px;
+  /* ── BOTTOM SHEET ────────────────────────────────────────────── */
+  .info-sheet-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 8000;
+    background: rgba(7,16,12,.7);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity .35s ease;
   }
 
-  .popup-grid {
-    grid-template-columns: 1fr;
+  .info-sheet-backdrop.open {
+    display: block;
+    opacity: 1;
+  }
+
+  .info-sheet {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 8001;
+    background: var(--bg-2);
+    border: 1px solid var(--glass-border);
+    border-bottom: none;
+    border-radius: 24px 24px 0 0;
+    padding: 0 18px 40px;
+    max-height: 82vh;
+    overflow-y: auto;
+    transform: translateY(100%);
+    transition: transform .4s cubic-bezier(.16,1,.3,1);
+    scrollbar-width: none;
+    box-sizing: border-box;
+  }
+
+  .info-sheet::-webkit-scrollbar { display: none; }
+
+  .info-sheet.open { transform: translateY(0); }
+
+  /* Poignée décorative en haut */
+  .info-sheet-handle {
+    width: 36px;
+    height: 4px;
+    background: var(--glass-border);
+    border-radius: 4px;
+    margin: 14px auto 0;
+  }
+
+  /* Bouton fermer */
+  .info-sheet-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--glass-border);
+    background: var(--glass);
+    color: var(--cream);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--tr);
+  }
+
+  .info-sheet-close:hover {
+    border-color: var(--sage);
+    color: var(--sage);
+  }
+
+  /* Header de la sheet */
+  .info-sheet-header {
+    display: flex;
+    align-items: center;
     gap: 12px;
+    padding: 28px 0 20px;
+    border-bottom: 1px solid var(--glass-border);
+    margin-bottom: 24px;
   }
 
-  .acc-item {
-    text-decoration: none;
+  .info-sheet-icon { font-size: 28px; }
+
+  .info-sheet-title {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--cream);
   }
 
-  .site-footer {
-    padding: 28px 16px 16px;
+  /* Contenu de la sheet */
+  .info-sheet-body .info-card-highlight {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 20px;
   }
 
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
+  .info-sheet-body .info-time-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
   }
 
-  .footer-bottom {
-    flex-direction: column;
+  .info-sheet-body .info-row {
+    display: flex;
     align-items: flex-start;
     gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(144,190,171,.06);
+    font-size: 13px;
+    color: var(--cream-dim);
+    line-height: 1.6;
   }
 
-  .footer-hosting {
-    text-align: left;
+  .info-sheet-body .info-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--sage);
+    flex-shrink: 0;
+    margin-top: 8px;
   }
+
+  .info-sheet-body .info-row:last-of-type { border-bottom: none; }
+
+  .info-sheet-body .info-card-cta {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 24px;
+    font-size: 13px;
+    padding: 14px 20px;
+  }
+
+  /* ── AVIS ───────────────────────────────────────────────── */
+  .avis-rating-banner {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  /* Empêcher les cartes de déborder sur les côtés */
+  .wheel-outer         { overflow: hidden; }
+  .wheel-track         { padding: 0; }
+
+  /* ── RECOMMANDATIONS ────────────────────────────────────── */
+  .reco-tabs           { grid-template-columns: repeat(2,1fr); gap: 10px; }
+  .reco-tab            { padding: 18px 12px; }
+
+  /* ── RÉSERVATION — formulaire ───────────────────────────── */
+  /* Dates sur la même ligne */
+  .resa-dates-grid     { grid-template-columns: 1fr 1fr; gap: 10px; }
+  /* Voyageurs en 2 colonnes */
+  .resa-voyageurs-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  /* Masquer les notes "(de compagnie)" et "(gratuit)" superflues */
+  .resa-voyageurs-grid .form-group:last-child label .form-label-note,
+  .resa-voyageurs-grid .form-group:nth-child(2) label .form-label-note { display: none; }
+  .contact-grid        { gap: 36px; }
+
+  /* ── FOOTER ─────────────────────────────────────────────── */
+  .site-footer         { padding: 36px 0 16px; }
+  .footer-grid         { grid-template-columns: 1fr; gap: 20px; }
+  .footer-bottom       { flex-direction: column; gap: 6px; text-align: center; padding-top: 16px; font-size: 11px; }
 }
+
+
+/* ── Mobile petit (≤ 480px) ────────────────────────────────── */
+@media (max-width: 480px) {
+  .container           { padding: 0 16px; }
+  section              { padding: 44px 0; }
+  .hero h1             { font-size: clamp(34px, 12vw, 48px); }
+  h2                   { font-size: clamp(26px, 8vw, 36px); }
+  .resa-dates-grid     { grid-template-columns: 1fr; }
+  .gallery-track figure img { height: 240px; }
+}
+
+
+/* ── Accessibilité — réduction des animations ──────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-img            { animation: none; }
+  .reveal, .reveal-left, .reveal-right { transition: opacity .3s; transform: none; }
+  .hero-eyebrow, .hero h1, .hero-lead,
+  .hero-buttons, .hero-stats, .hero-scroll { animation: none; opacity: 1; }
+  .status-dot          { animation: none; }
+  .roulette-track      { transition: none; }
+}
+
+/* Par défaut caché (affiché uniquement via media query mobile) */
+.hero-stats-mobile { display: none; }

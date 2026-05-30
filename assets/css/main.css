@@ -1,15 +1,14 @@
-﻿@import url('./base.css');
+/* ============================================================
+   MAIN.CSS — Point d'entrée CSS
+   Le Refuge de Saintines
+   ============================================================ */
+
+@import url('./base.css');
 @import url('./layout.css');
+@import url('./animations.css');
 @import url('./components/navigation.css');
 @import url('./components/hero.css');
-@import url('./components/expandable.css');
+@import url('./components/logement.css');
 @import url('./components/gallery.css');
 @import url('./components/equipments.css');
-@import url('./components/popup.css');
-@import url('./components/map.css');
-@import url('./components/accordion.css');
-@import url('./components/cards.css');
-@import url('./components/contact.css');
-@import url('./components/footer.css');
-@import url('./pages/home.css');
 @import url('./responsive.css');

@@ -1,54 +1,165 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Politique de confidentialité – Le Refuge de Saintines</title>
-  <meta name="robots" content="noindex">
-  <link rel="stylesheet" href="assets/css/main.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Politique de confidentialité — Le Refuge de Saintines</title>
+  <meta name="description" content="Politique de confidentialité et traitement des données personnelles — Le Refuge de Saintines." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="images/lrds-logo.png" type="image/png" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    .legal-hero { background:var(--bg); border-bottom:1px solid var(--glass-border); padding:140px 0 64px; }
+    .legal-label { font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--sage); display:block; margin-bottom:16px; }
+    .legal-hero h1 { font-family:var(--font-display); font-size:clamp(36px,6vw,64px); font-weight:400; color:var(--cream); line-height:1.1; margin-bottom:16px; }
+    .legal-hero h1 em { font-style:italic; color:var(--sage); }
+    .legal-hero p { font-size:14px; color:var(--cream-dim); line-height:1.75; }
+    .legal-body { padding:72px 0 96px; }
+    .legal-section { margin-bottom:48px; padding-bottom:48px; border-bottom:1px solid var(--glass-border); }
+    .legal-section:last-child { border-bottom:none; }
+    .legal-section h2 { font-family:var(--font-display); font-size:28px; font-weight:400; color:var(--cream); margin-bottom:20px; }
+    .legal-section p, .legal-section li { font-size:14px; color:var(--cream-dim); line-height:1.85; margin-bottom:10px; }
+    .legal-section strong { color:var(--cream); font-weight:600; }
+    .legal-section a { color:var(--sage); text-decoration:none; }
+    .legal-section a:hover { text-decoration:underline; }
+    .legal-card { background:var(--glass); border:1px solid var(--glass-border); border-radius:var(--r); padding:24px 28px; margin:20px 0; }
+    .legal-card p { margin-bottom:6px; }
+    .legal-table { width:100%; border-collapse:collapse; margin:16px 0; }
+    .legal-table th { text-align:left; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--sage); padding:10px 14px; border-bottom:1px solid var(--glass-border); }
+    .legal-table td { font-size:13px; color:var(--cream-dim); padding:10px 14px; border-bottom:1px solid rgba(144,190,171,.06); vertical-align:top; }
+    .legal-table tr:last-child td { border-bottom:none; }
+    .rights-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:16px 0; }
+    .rights-item { background:var(--glass); border:1px solid var(--glass-border); border-radius:var(--rs); padding:16px; }
+    .rights-item strong { display:block; color:var(--cream); margin-bottom:4px; font-size:13px; }
+    .rights-item span { font-size:12px; color:var(--cream-faint); }
+    @media(max-width:600px){ .rights-grid{grid-template-columns:1fr;} }
+  </style>
 </head>
 <body>
-<main class="legal-page container">
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
 
-<h1>Politique de confidentialité</h1>
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <img src="images/lrds-logo.png" alt="Logo Le Refuge de Saintines" class="brand-logo" loading="lazy" />
+        <div class="brand-text">
+          <span class="brand-name">Le Refuge</span>
+          <small class="brand-sub">de Saintines</small>
+        </div>
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="index.html#logement">Le logement</a>
+        <a href="index.html#infos">Infos</a>
+        <a href="index.html#avis">Avis</a>
+        <a href="index.html#reco">Aux alentours</a>
+        <a href="index.html#contact" class="nav-cta">Réserver</a>
+      </nav>
+    </div>
+  </header>
 
-<h2>1. Données collectées</h2>
-<p>
-Lorsque vous utilisez le formulaire de contact du site, les données suivantes peuvent être collectées :
-nom, email et message.
-</p>
+  <div class="legal-hero">
+    <div class="container">
+      <span class="legal-label">RGPD & Confidentialité</span>
+      <h1>Politique de<br><em>confidentialité</em></h1>
+      <p>Conformément au Règlement (UE) 2016/679 (RGPD) et à la loi Informatique et Libertés.</p>
+    </div>
+  </div>
 
-<h2>2. Utilisation des données</h2>
-<p>
-Ces données sont utilisées uniquement pour :
-</p>
-<ul>
-  <li>répondre à vos demandes de réservation</li>
-  <li>vous contacter dans le cadre de votre séjour</li>
-</ul>
+  <main class="legal-body">
+    <div class="container" style="max-width:800px;">
 
-<h2>3. Durée de conservation</h2>
-<p>
-Les données sont conservées pendant une durée maximale de 3 ans à compter du dernier contact.
-</p>
+      <div class="legal-section">
+        <h2>Responsable du traitement</h2>
+        <div class="legal-card">
+          <p><strong>Marceau Huart</strong> — Le Refuge de Saintines</p>
+          <p>80 Impasse du Lavoir, 60410 Saintines</p>
+          <p><a href="mailto:contact@gite-refugedesaintines.com">contact@gite-refugedesaintines.com</a> &nbsp;·&nbsp; 06.73.73.53.18</p>
+        </div>
+      </div>
 
-<h2>4. Partage des données</h2>
-<p>
-Vos données ne sont jamais revendues. Elles peuvent être transmises uniquement aux plateformes de réservation
-(Airbnb, Booking) si nécessaire pour la gestion du séjour.
-</p>
+      <div class="legal-section">
+        <h2>Données collectées</h2>
+        <p>Dans le cadre d'une réservation via le site, les données suivantes sont collectées :</p>
+        <table class="legal-table">
+          <thead>
+            <tr><th>Donnée</th><th>Finalité</th><th>Base légale</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Nom et prénom</td><td>Identification, établissement du contrat</td><td>Exécution du contrat</td></tr>
+            <tr><td>Adresse email</td><td>Envoi de la confirmation, du contrat et des emails automatiques</td><td>Exécution du contrat</td></tr>
+            <tr><td>Numéro de téléphone</td><td>Contact en cas d'urgence ou de problème</td><td>Exécution du contrat</td></tr>
+            <tr><td>Adresse postale</td><td>Renseignement du contrat de bail</td><td>Exécution du contrat</td></tr>
+            <tr><td>Dates de séjour & montant</td><td>Gestion de la réservation et facturation</td><td>Exécution du contrat</td></tr>
+          </tbody>
+        </table>
+        <p>Aucune donnée bancaire n'est collectée ou stockée par le site. Le paiement s'effectue par virement bancaire direct. La caution est gérée par Swikly (voir leur <a href="https://www.swikly.com/politique-de-confidentialite" target="_blank" rel="noopener">politique de confidentialité</a>).</p>
+      </div>
 
-<h2>5. Cookies</h2>
-<p>
-Le site utilise des cookies à des fins de fonctionnement, de mesure d’audience (Google Analytics) et
-d’amélioration de l’expérience utilisateur.
-</p>
+      <div class="legal-section">
+        <h2>Durée de conservation</h2>
+        <p>Les données personnelles sont conservées pendant <strong>3 ans</strong> à compter de la fin du séjour, conformément aux obligations légales et fiscales applicables aux loueurs en meublé.</p>
+      </div>
 
-<h2>6. Vos droits</h2>
-<p>
-Conformément au RGPD, vous disposez d’un droit d’accès, de rectification et de suppression de vos données.
-Vous pouvez exercer ce droit en écrivant à : contact@gite-refugedesaintines.com
-</p>
+      <div class="legal-section">
+        <h2>Destinataires des données</h2>
+        <p>Vos données sont transmises aux prestataires suivants dans le strict cadre de l'exécution de votre réservation :</p>
+        <div class="legal-card">
+          <p><strong>Yousign</strong> — signature électronique du contrat (prestataire certifié eIDAS)</p>
+          <p><strong>Swikly</strong> — gestion de la caution par empreinte bancaire</p>
+          <p><strong>Google</strong> — stockage des données de réservation via Google Sheets et Google Workspace</p>
+          <p><strong>Infomaniak</strong> — hébergement du site web (serveurs en Suisse)</p>
+        </div>
+        <p>Aucune donnée n'est vendue, louée ou transmise à des tiers à des fins commerciales.</p>
+      </div>
 
-</main>
+      <div class="legal-section">
+        <h2>Cookies</h2>
+        <p>Ce site n'utilise <strong>aucun cookie de traçage, de publicité ou d'analyse d'audience</strong>.</p>
+        <p>Un cookie technique est utilisé par la librairie Flatpickr pour le fonctionnement du calendrier de réservation. Il ne collecte aucune donnée personnelle et est supprimé à la fermeture du navigateur.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>Vos droits</h2>
+        <p>Conformément au RGPD, vous disposez des droits suivants sur vos données :</p>
+        <div class="rights-grid">
+          <div class="rights-item"><strong>Droit d'accès</strong><span>Obtenir une copie de vos données</span></div>
+          <div class="rights-item"><strong>Droit de rectification</strong><span>Corriger des données inexactes</span></div>
+          <div class="rights-item"><strong>Droit à l'effacement</strong><span>Supprimer vos données</span></div>
+          <div class="rights-item"><strong>Droit d'opposition</strong><span>S'opposer à un traitement</span></div>
+          <div class="rights-item"><strong>Droit à la portabilité</strong><span>Recevoir vos données dans un format lisible</span></div>
+          <div class="rights-item"><strong>Droit de limitation</strong><span>Restreindre un traitement</span></div>
+        </div>
+        <p>Pour exercer vos droits, contactez : <a href="mailto:contact@gite-refugedesaintines.com">contact@gite-refugedesaintines.com</a></p>
+        <p>En cas de réponse insatisfaisante, vous pouvez introduire une réclamation auprès de la <a href="https://www.cnil.fr" target="_blank" rel="noopener">CNIL</a>.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>Hébergement des données</h2>
+        <p>Le site est hébergé par <strong>Infomaniak Network SA</strong> (26 avenue de la Gare, CH-1003 Lausanne, Suisse), dont les serveurs sont situés en Suisse et en Union Européenne. Ce pays bénéficie d'une décision d'adéquation de la Commission Européenne.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>Modifications</h2>
+        <p>Cette politique de confidentialité peut être mise à jour à tout moment. La date de dernière modification est indiquée ci-dessous.</p>
+        <p style="margin-top:16px;font-size:12px;color:var(--cream-faint);">Dernière mise à jour : mai 2026</p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© 2026 Le Refuge de Saintines — Tous droits réservés</p>
+        <p><a href="rules.html" style="color:var(--cream-faint);margin-right:16px;">Règlement</a><a href="cgv.html" style="color:var(--cream-faint);margin-right:16px;">CGV</a><a href="mentions-legales.html" style="color:var(--cream-faint);margin-right:16px;">Mentions légales</a><a href="politique-confidentialite.html" style="color:var(--cream-faint);">Confidentialité</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" type="module"></script>
 </body>
 </html>

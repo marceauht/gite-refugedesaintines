@@ -1,5 +1,64 @@
-﻿.container{
+/* ============================================================
+   LAYOUT.CSS — Containers, Sections, Utilitaires
+   ============================================================ */
+
+.container {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 28px;
 }
+
+section {
+  position: relative;
+  padding: 100px 0;
+  z-index: 1;
+}
+
+section.flush {
+  padding: 0;
+}
+
+section.flush-top {
+  padding-top: 0;
+}
+
+/* ── Séparateur de section ──────────────────────────────────── */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--glass-border);
+  margin: 0 auto;
+}
+
+/* ── Utilitaires ────────────────────────────────────────────── */
+.text-sage    { color: var(--sage); }
+.text-muted   { color: var(--cream-dim); }
+.text-display { font-family: var(--font-display); }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Honeypot anti-spam ─────────────────────────────────────── */
+.honey-field {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  tabindex: -1;
+}
+
+/* Classes utilitaires supplémentaires */
+.map-wrap--mt { margin-top: 32px; }
+.avis-section { padding-bottom: 0; }
+.contact-intro { color: var(--cream-dim); margin-top: 10px; font-size: 14px; font-weight: 300; }
