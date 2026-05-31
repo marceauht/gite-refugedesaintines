@@ -30,10 +30,25 @@ export function initReservation() {
 
   async function fetchBlockedDates() {
     try {
-      const resp = await fetch(SCRIPT_URL + '?action=blocked_dates');
+      const resp = await fetch(SCRIPT_URL + '?action=blocked_dates', {
+        redirect: 'follow'
+      });
+      if (!resp.ok) return [];
       const json = await resp.json();
-      return json.blocked || [];
-    } catch {
+      const raw = Array.isArray(json.blocked) ? json.blocked : [];
+
+      // Le jour de départ (to) est exclusif → on le recule d'un jour
+      // pour ne pas bloquer une arrivée possible ce jour-là
+      return raw.map(b => {
+        const to = new Date(b.to + 'T00:00:00');
+        to.setDate(to.getDate() - 1);
+        const toStr = to.getFullYear() + '-'
+          + String(to.getMonth() + 1).padStart(2, '0') + '-'
+          + String(to.getDate()).padStart(2, '0');
+        return { from: b.from, to: toStr };
+      });
+    } catch (err) {
+      console.error('Erreur fetch dates bloquées :', err);
       return [];
     }
   }
@@ -202,9 +217,9 @@ export function initReservation() {
         <p>Vous allez recevoir deux emails à <strong>${email}</strong> :</p>
         <ol>
           <li>Un récapitulatif avec le RIB pour le virement et le lien Swikly pour la caution</li>
-          <li>Un lien <strong>Yousign</strong> pour signer votre contrat en ligne</li>
+          <li>Votre contrat de bail en pièce jointe, à signer et à retourner par email</li>
         </ol>
-        <p class="resa-success-note">⚠️ Votre réservation sera confirmée à réception du virement, de la signature du contrat ainsi que du dépôt de caution via Swikly. Pensez à vérifier vos spams.</p>
+        <p class="resa-success-note">⚠️ Votre réservation sera confirmée à réception du virement, du contrat signé ainsi que du dépôt de caution via Swikly. Pensez à vérifier vos spams.</p>
         <p>Une question ? <a href="tel:+33673735318">06.73.73.53.18</a></p>
       </div>`;
   }
