@@ -25,7 +25,10 @@ export function initReservation() {
 
   // ── Chargement des dates bloquées puis init Flatpickr ──
   fetchBlockedDates()
-    .then(initPickers)
+    .then(dates => {
+      console.log('Dates bloquées reçues :', dates.length, dates);
+      initPickers(dates);
+    })
     .catch(() => initPickers([]));
 
   async function fetchBlockedDates() {
