@@ -673,19 +673,17 @@ span.flatpickr-weekday {
   font-weight: 700 !important;
 }
 
-/* ── Dates indisponibles : fond rouge constant + barré gris ── */
 .flatpickr-day.flatpickr-disabled,
 .flatpickr-day.flatpickr-disabled:hover {
-  color: rgba(247,243,235,.32) !important;
-  background: rgba(244,67,54,.12) !important;
+  color: rgba(247,243,235,.28) !important;
+  background: transparent !important;
   border-color: transparent !important;
   text-decoration: line-through !important;
-  text-decoration-color: rgba(247,243,235,.32) !important;
+  text-decoration-color: rgba(247,243,235,.45) !important;
   text-decoration-thickness: 1px !important;
   cursor: not-allowed !important;
 }
 
-/* ── Jours hors-mois : chiffre grisé neutre, aucun effet ── */
 .flatpickr-day.prevMonthDay,
 .flatpickr-day.nextMonthDay,
 .flatpickr-day.prevMonthDay:hover,
