@@ -673,34 +673,27 @@ span.flatpickr-weekday {
   font-weight: 700 !important;
 }
 
-.flatpickr-day.disabled,
-.flatpickr-day.disabled:hover {
-  color: rgba(247,243,235,.18) !important;
-  background: rgba(244,67,54,.07) !important;
-  border-color: transparent !important;
-  text-decoration: line-through !important;
-  cursor: not-allowed !important;
-}
-
+/* ── Dates indisponibles : fond rouge constant + barré gris ── */
 .flatpickr-day.flatpickr-disabled,
 .flatpickr-day.flatpickr-disabled:hover {
   color: rgba(247,243,235,.32) !important;
   background: rgba(244,67,54,.12) !important;
+  border-color: transparent !important;
   text-decoration: line-through !important;
   text-decoration-color: rgba(247,243,235,.32) !important;
   text-decoration-thickness: 1px !important;
   cursor: not-allowed !important;
 }
 
+/* ── Jours hors-mois : chiffre grisé neutre, aucun effet ── */
 .flatpickr-day.prevMonthDay,
-.flatpickr-day.nextMonthDay {
-  color: rgba(247,243,235,.2) !important;
-  text-decoration: none !important;
-}
-
-.flatpickr-day.flatpickr-disabled {
+.flatpickr-day.nextMonthDay,
+.flatpickr-day.prevMonthDay:hover,
+.flatpickr-day.nextMonthDay:hover {
   color: rgba(247,243,235,.2) !important;
   background: transparent !important;
+  text-decoration: none !important;
+  cursor: default !important;
 }
 
 #date-arrivee,
