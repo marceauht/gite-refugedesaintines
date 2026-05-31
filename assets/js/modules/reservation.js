@@ -25,10 +25,7 @@ export function initReservation() {
 
   // ── Chargement des dates bloquées puis init Flatpickr ──
   fetchBlockedDates()
-    .then(dates => {
-      console.log('Dates bloquées reçues :', dates.length, dates);
-      initPickers(dates);
-    })
+    .then(initPickers)
     .catch(() => initPickers([]));
 
   async function fetchBlockedDates() {
@@ -40,15 +37,11 @@ export function initReservation() {
       const json = await resp.json();
       const raw = Array.isArray(json.blocked) ? json.blocked : [];
 
-      // Le jour de départ (to) est exclusif → on le recule d'un jour
-      // pour ne pas bloquer une arrivée possible ce jour-là
       return raw.map(b => {
-        const to = new Date(b.to + 'T00:00:00');
-        to.setDate(to.getDate() - 1);
-        const toStr = to.getFullYear() + '-'
-          + String(to.getMonth() + 1).padStart(2, '0') + '-'
-          + String(to.getDate()).padStart(2, '0');
-        return { from: b.from, to: toStr };
+        const from = new Date(b.from + 'T00:00:00');
+        const to   = new Date(b.to + 'T00:00:00');
+        to.setDate(to.getDate() - 1); // 
+        return { from, to };
       });
     } catch (err) {
       console.error('Erreur fetch dates bloquées :', err);
