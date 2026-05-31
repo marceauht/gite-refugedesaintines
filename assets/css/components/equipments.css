@@ -685,10 +685,10 @@ span.flatpickr-weekday {
 .flatpickr-day.flatpickr-disabled,
 .flatpickr-day.flatpickr-disabled:hover {
   color: rgba(247,243,235,.32) !important;
-  background: rgba(244,67,54,.10) !important;
+  background: rgba(244,67,54,.12) !important;
   text-decoration: line-through !important;
-  text-decoration-color: rgba(244,67,54,.9) !important;
-  text-decoration-thickness: 2px !important;
+  text-decoration-color: rgba(247,243,235,.32) !important;
+  text-decoration-thickness: 1px !important;
   cursor: not-allowed !important;
 }
 
