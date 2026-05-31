@@ -682,6 +682,14 @@ span.flatpickr-weekday {
   cursor: not-allowed !important;
 }
 
+.flatpickr-day.flatpickr-disabled,
+.flatpickr-day.flatpickr-disabled:hover {
+  color: rgba(247,243,235,.18) !important;
+  background: rgba(244,67,54,.07) !important;
+  text-decoration: line-through !important;
+  cursor: not-allowed !important;
+}
+
 .flatpickr-day.prevMonthDay,
 .flatpickr-day.nextMonthDay {
   color: rgba(247,243,235,.2) !important;
