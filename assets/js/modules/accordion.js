@@ -40,6 +40,21 @@ export function initReco() {
       }
     });
   });
+
+  /* Ouverture automatique d'un onglet via l'URL (ex. ?reco=pratique#reco) */
+  function openFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const target = params.get('reco');
+    if (!target) return;
+    const tab = document.querySelector(`.reco-tab[data-panel="panel-${target}"]`);
+    if (tab) {
+      tab.click();
+      setTimeout(() => {
+        document.getElementById('reco')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+  }
+  openFromUrl();
 }
 
 /* ============================================================
