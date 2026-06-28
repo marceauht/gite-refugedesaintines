@@ -62,6 +62,9 @@ export function initReco() {
    ============================================================ */
 
 const AVIS_DATA = [
+  { txt: "Le logement était parfait, plein de petites attentions dans la cuisine pour le café, la salle de bain avec un nécessaire de toilette pour le premier jour. Je recommande sans problème 👍🏻", author: "Timothée", date: "Mai 2026", plat: "AirBnB" },
+  { txt: "Nous avons apprécié le jardinet et le calme, le logement très propre, très bien équipé, la disponibilité de Marceau. Je recommande.", author: "Sylvie B.", date: "Mai 2026", plat: "AirBnB" },
+  { txt: "C\'est la deuxième fois que nous venons au refuge et nous avons, une fois de plus, passé un excellent séjour. L\'hôte est très accueillant et disponible, et l\'endroit est chaleureux et parfaitement entretenu. Digne d\'un établissement 5 étoiles, tout est pensé pour le confort des visiteurs : brosses à dents prévues pour chaque personne, emballées et à disposition, petit set d\'hygiène, literie très confortable… Marceau a même mis une bouteille d\'eau au frais, ce que nous n\'avions jamais vu dans d\'autres gîtes. L\'endroit est calme et reposant, avec une place de parking juste à côté. Nous recommandons vivement ce refuge et nous y reviendrons avec grand plaisir.", author: "Ruby D.", date: "Avril 2026", plat: "Google Maps" },
   { txt: "Ma femme et moi avons eu un séjour très agréable, très paisible. Le calme était omniprésent. Marceau a été très rassurant et réactif selon nos besoins.", author: "Williams A.", date: "Avril 2026", plat: "AirBnB" },
   { txt: "Parfait après une journée intense au Parc Astérix. J'ai apprécié l'endroit, au calme. Les instructions sont claires.", author: "Julie", date: "Avril 2026", plat: "AirBnB" },
   { txt: "Hôte super sympa, accueillant et disponible. La terrasse éclairée était un atout majeur pour terminer la soirée en beauté.", author: "Marius", date: "Mars 2026", plat: "AirBnB" },
