@@ -74,27 +74,4 @@ export function initNavigation() {
   }, { threshold: 0.4, rootMargin: '-10% 0px -50% 0px' });
 
   sections.forEach(s => activeObserver.observe(s));
-
-  /* ── Sticky CTA mobile ────────────────────────────────────── */
-  injectStickyCtaMobile();
-}
-
-function injectStickyCtaMobile() {
-  if (window.innerWidth > 768) return;
-
-  const cta = document.createElement('a');
-  cta.href = '#contact';
-  cta.className = 'mobile-cta-sticky';
-  cta.textContent = 'Réserver →';
-  cta.setAttribute('aria-label', 'Réserver — aller au formulaire de réservation');
-  document.body.appendChild(cta);
-
-  const contactSection = document.getElementById('contact');
-  if (!contactSection) return;
-
-  /* Masquer le bouton quand la section Réservation est visible */
-  const observer = new IntersectionObserver(([entry]) => {
-    cta.classList.toggle('hidden', entry.isIntersecting);
-  }, { threshold: 0.15 });
-  observer.observe(contactSection);
 }
