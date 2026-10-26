@@ -249,5 +249,3 @@ function initLightbox() {
   });
 }
 
-/* ── Drag pour le carousel avis ── */
-export function initAvisDrag() { /* replaced by wheel — no-op */ }
