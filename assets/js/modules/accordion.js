@@ -207,12 +207,3 @@ export function initWheel() {
     positionCards(false);
   }, { passive: true });
 }
-
-/* ============================================================
-   FORM
-   ============================================================ */
-
-const FORM_ENDPOINT =
-  'https://script.google.com/macros/s/AKfycby9Wl5NkOsqpnwpltSUX6-XNYsGp8VSiPpKQNTTGDuwslXsTs5-vVsJ4Ufi4oFrz4g/exec';
-
-
