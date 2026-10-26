@@ -11,7 +11,7 @@
 - JS en modules ES natifs : `assets/js/main.js` importe `assets/js/modules/*.js` (une fonction `initXxx()` par module, appelée au `DOMContentLoaded`).
 - CSS : `assets/css/main.css` importe les autres fichiers via `@import`. Variables de couleurs et polices dans `assets/css/base.css` (`:root`).
 - Librairies via CDN uniquement : Flatpickr 4.6.13 (calendrier, locale `fr`), Google Fonts (Cormorant Garamond + DM Sans).
-- Réservation : Google Apps Script (le code du script **n'est pas dans ce repo**, il vit dans le compte Google de Marceau).
+- Réservation : Google Apps Script. Marceau en garde une copie locale dans `GAS/gas.js`, **exclue de Git par `.gitignore`** (repo public : ce code ne doit jamais être publié ici). Elle n'est donc pas visible sur GitHub.
 
 ## Structure
 - `index.html` : page unique (sections `#home`, `#logement`, `#galerie`, `#equipements`, `#localisation`, `#infos`, `#avis`, `#reco`, `#contact`).
@@ -31,8 +31,7 @@
 - Avis : la note et le nombre d'avis sont aussi dans le JSON-LD (`aggregateRating`) ; les mettre à jour en même temps que la section `#avis`.
 - Le numéro de téléphone est écrit en dur à plusieurs endroits (HTML + messages d'erreur de `reservation.js`).
 - `_headers` (règles de cache) n'a **aucun effet** : GitHub Pages ignore ce fichier et impose son propre cache (10 min).
-- `accordion.js` contient une ancienne URL Apps Script (`FORM_ENDPOINT`) qui n'est plus utilisée. La seule URL active est celle de `reservation.js`.
-- Tester toute modif en mobile : beaucoup de comportements spécifiques (`responsive.css`, `infoSheet.js` actif seulement sous 768 px).
+- **Toute modif desktop doit aussi fonctionner en responsive.** Avant de proposer un changement, vérifier ce que `responsive.css` redéfinit pour les mêmes éléments (paliers : 1024, 900, 768 et 480 px), et tester au moins à 375 px (téléphone), 768 px (tablette) et 1280 px (ordinateur). Attention à `infoSheet.js`, actif seulement sous 768 px.
 
 ## Déploiement
 - Le repo est **public**. Ne jamais y mettre de secret, de mot de passe, d'IBAN ou de code d'accès.
