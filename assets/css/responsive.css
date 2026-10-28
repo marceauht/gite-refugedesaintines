@@ -438,10 +438,10 @@
   /* ── RÉSERVATION — formulaire ───────────────────────────── */
   /* Dates sur la même ligne */
   .resa-dates-grid     { grid-template-columns: 1fr 1fr; gap: 10px; }
-  /* Voyageurs en 2 colonnes */
+  /* Voyageurs en 2 colonnes, adultes sur toute la largeur */
   .resa-voyageurs-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-  /* Masquer les notes "(de compagnie)" et "(gratuit)" superflues */
-  .resa-voyageurs-grid .form-group:last-child label .form-label-note,
+  .resa-voyageurs-grid .form-group:first-child { grid-column: 1 / -1; }
+  /* Masquer la note "(- 12 ans · gratuit)" superflue */
   .resa-voyageurs-grid .form-group:nth-child(2) label .form-label-note { display: none; }
   .contact-grid        { gap: 36px; }
 

@@ -23,7 +23,7 @@
 - `SCRIPT_URL` = URL `/exec` du déploiement Apps Script. Si Marceau redéploie le script avec une nouvelle URL, il faut la changer ici.
 - `GET SCRIPT_URL?action=blocked_dates` renvoie `{ blocked: [{ from: "AAAA-MM-JJ", to: "AAAA-MM-JJ" }] }`. `to` est le **jour de départ** : le code retire 1 jour pour que la nuit de départ reste libre.
 - `POST SCRIPT_URL` (FormData) avec `date_arrivee` / `date_depart` au format **`JJ/MM/AAAA`**, réponse `{ success, message }`.
-- Tarifs codés en dur en haut du fichier : 58 €/nuit, ménage 30 €, +10 € par adulte au-delà de 2, +10 € animal. Max 4 voyageurs (adultes + enfants).
+- Tarifs codés en dur en haut du fichier : 58 €/nuit, ménage 30 €, +10 € par adulte au-delà de 2. Animaux non acceptés depuis octobre 2026 (sauf chiens guides et d'assistance) : le règlement de référence est la v2 d'octobre 2026, à garder identique sur `rules.html`, le portail, le contrat, Airbnb et Booking. Max 4 voyageurs (adultes + enfants).
 
 ## Pièges connus
 - **Dates Flatpickr** : trois formats coexistent (ISO `AAAA-MM-JJ` venant d'Apps Script, objets `Date` dans Flatpickr, `JJ/MM/AAAA` envoyé au script). Toujours créer les dates avec `'T00:00:00'` (heure locale) pour éviter un décalage d'un jour lié au fuseau. Tester sur un changement de mois.

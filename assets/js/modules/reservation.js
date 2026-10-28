@@ -7,7 +7,6 @@ const SCRIPT_URL     = 'https://script.google.com/macros/s/AKfycbw6aFGeNvbqPr7RL
 const TARIF_NUIT     = 58;
 const FRAIS_MENAGE   = 30;
 const SUPPL_VOYAGEUR = 10;
-const SUPPL_ANIMAL   = 10;
 
 export function initReservation() {
   const form      = document.getElementById('reservation-form');
@@ -19,7 +18,7 @@ export function initReservation() {
   const submitBtn = document.getElementById('resa-submit-btn');
   const status    = document.getElementById('resa-status');
 
-  let nbAdultes = 1, nbEnfants = 0, nbBebes = 0, animaux = false;
+  let nbAdultes = 1, nbEnfants = 0, nbBebes = 0;
   let fpArrivee = null, fpDepart = null;
   let selectedArrivee = null, selectedDepart = null;
 
@@ -106,14 +105,6 @@ export function initReservation() {
   makeCounter('enfant-minus','enfant-plus','enfant-count', ()=>nbEnfants, v=>nbEnfants=v, 0);
   makeCounter('bebe-minus',  'bebe-plus',  'bebe-count',   ()=>nbBebes,   v=>nbBebes=v,   0);
 
-  // ── Toggle animaux ──────────────────────────────────────
-  document.getElementById('animal-toggle').addEventListener('click', () => {
-    animaux = !animaux;
-    document.getElementById('animal-toggle').textContent = animaux ? 'Oui' : 'Non';
-    document.getElementById('animal-toggle').classList.toggle('active', animaux);
-    updateForm();
-  });
-
   // ── Calcul prix et affichage ────────────────────────────
   function updateForm() {
     if (!selectedArrivee || !selectedDepart || selectedDepart <= selectedArrivee) {
@@ -124,8 +115,7 @@ export function initReservation() {
     const nbNuits        = Math.round((selectedDepart - selectedArrivee) / 86400000);
     const prixNuits      = nbNuits * TARIF_NUIT;
     const supplVoyageurs = nbAdultes > 2 ? (nbAdultes - 2) * SUPPL_VOYAGEUR : 0;
-    const supplAnimaux   = animaux ? SUPPL_ANIMAL : 0;
-    const total          = prixNuits + FRAIS_MENAGE + supplVoyageurs + supplAnimaux;
+    const total          = prixNuits + FRAIS_MENAGE + supplVoyageurs;
 
     document.getElementById('price-nuits').textContent     = nbNuits + ' nuit' + (nbNuits > 1 ? 's' : '') + ' × ' + TARIF_NUIT + ' €';
     document.getElementById('price-nuits-val').textContent = prixNuits + ' €';
@@ -134,15 +124,10 @@ export function initReservation() {
     rowVoy.hidden = supplVoyageurs === 0;
     if (supplVoyageurs > 0) document.getElementById('price-voy-val').textContent = '+' + supplVoyageurs + ' €';
 
-    const rowAni = document.getElementById('price-row-ani');
-    rowAni.hidden = !animaux;
-    if (animaux) document.getElementById('price-ani-val').textContent = '+' + supplAnimaux + ' €';
-
     document.getElementById('price-total-val').textContent = total + ' €';
 
     document.getElementById('hidden-nuits').value     = nbNuits;
     document.getElementById('hidden-voyageurs').value = nbAdultes + nbEnfants + nbBebes;
-    document.getElementById('hidden-animaux').value   = animaux ? 'oui' : 'non';
     document.getElementById('hidden-arrivee').value   = formatDate(selectedArrivee);
     document.getElementById('hidden-depart').value    = formatDate(selectedDepart);
 
@@ -188,7 +173,6 @@ export function initReservation() {
     data.append('date_depart',  document.getElementById('hidden-depart').value);
     data.append('nb_nuits',     document.getElementById('hidden-nuits').value);
     data.append('nb_voyageurs', document.getElementById('hidden-voyageurs').value);
-    data.append('animaux',      animaux ? 'oui' : 'non');
     data.append('notes',        '');
 
     try {

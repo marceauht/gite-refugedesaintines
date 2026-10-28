@@ -35,7 +35,7 @@
     "address":{"@type":"PostalAddress","addressLocality":"Saintines","postalCode":"60410","addressCountry":"FR"},
     "geo":{"@type":"GeoCoordinates","latitude":49.30528567724818,"longitude":2.773693624035537},
     "priceRange":"À partir de 58€ / nuit","currenciesAccepted":"EUR",
-    "checkinTime":"16:00","checkoutTime":"11:00","maximumAttendeeCapacity":4,"petsAllowed":true,
+    "checkinTime":"16:00","checkoutTime":"11:00","maximumAttendeeCapacity":4,"petsAllowed":false,
     "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.94","reviewCount":"30","bestRating":"5","worstRating":"1"}
   }
   </script>
@@ -242,7 +242,6 @@
           <div class="equip-item">🧺 Lave-linge &amp; sèche-linge</div>
           <div class="equip-item">🔥 Barbecue privé</div>
           <div class="equip-item">🅿️ Parking gratuit</div>
-          <div class="equip-item">🐾 Animaux acceptés</div>
           <div class="equip-item">🔐 Arrivée autonome (boîte à clé)</div>
           <div class="equip-item">🚿 Salle de bain privée</div>
         </div>
@@ -307,7 +306,7 @@
             </div>
             <div class="info-card-title">Tarifs</div>
             <div class="info-row"><span class="info-dot"></span><span>Frais de ménage : 30 € par séjour</span></div>
-            <div class="info-row"><span class="info-dot"></span><span>Animaux : 10 € / animal / séjour</span></div>
+            <div class="info-row"><span class="info-dot"></span><span>Ménage en cours de séjour : 30 € (sur demande)</span></div>
             <div class="info-row"><span class="info-dot"></span><span>Au-delà de 2 pers. : 10 € / voyageur (gratuit &lt; 12 ans)</span></div>
             <div class="info-row"><span class="info-dot"></span><span>Lit parapluie : gratuit sur simple demande</span></div>
             <div class="info-row"><span class="info-dot"></span><span>Réductions pour séjours semaine / mois</span></div>
@@ -464,9 +463,9 @@
                 </div>
               </div>
 
-              <!-- Voyageurs & animaux -->
+              <!-- Voyageurs -->
               <div class="resa-section">
-                <span class="resa-section-label">Voyageurs &amp; options</span>
+                <span class="resa-section-label">Voyageurs</span>
                   <div class="resa-voyageurs-grid">
                     <div class="form-group">
                       <label>Adultes</label>
@@ -492,10 +491,6 @@
                           <button type="button" id="bebe-plus" aria-label="Plus">+</button>
                         </div>
                     </div>
-                    <div class="form-group">
-                      <label>Animal de compagnie <small class="form-label-note">2 animaux max</small></label>
-                      <button type="button" id="animal-toggle" class="resa-toggle-btn">Non</button>
-                    </div>
                   </div>
               </div>
 
@@ -512,10 +507,6 @@
                 <div class="resa-price-row" id="price-row-voy" hidden>
                   <span>Voyageur(s) supplémentaire(s)</span>
                   <span id="price-voy-val"></span>
-                </div>
-                <div class="resa-price-row" id="price-row-ani" hidden>
-                  <span>Animal de compagnie</span>
-                  <span id="price-ani-val"></span>
                 </div>
                 <div class="resa-price-total">
                   <span class="resa-price-total-label">Total du séjour</span>
@@ -568,7 +559,6 @@
               <!-- Champs cachés -->
               <input type="hidden" id="hidden-nuits"     name="nb_nuits" />
               <input type="hidden" id="hidden-voyageurs" name="nb_voyageurs" />
-              <input type="hidden" id="hidden-animaux"   name="animaux" />
               <input type="hidden" id="hidden-arrivee"   name="date_arrivee" />
               <input type="hidden" id="hidden-depart"    name="date_depart" />
 
