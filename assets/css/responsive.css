@@ -441,8 +441,6 @@
   /* Voyageurs en 2 colonnes, adultes sur toute la largeur */
   .resa-voyageurs-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .resa-voyageurs-grid .form-group:first-child { grid-column: 1 / -1; }
-  /* Masquer la note "(- 12 ans · gratuit)" superflue */
-  .resa-voyageurs-grid .form-group:nth-child(2) label .form-label-note { display: none; }
   .contact-grid        { gap: 36px; }
 
   /* ── FOOTER ─────────────────────────────────────────────── */

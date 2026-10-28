@@ -307,7 +307,7 @@
             <div class="info-card-title">Tarifs</div>
             <div class="info-row"><span class="info-dot"></span><span>Frais de ménage : 30 € par séjour</span></div>
             <div class="info-row"><span class="info-dot"></span><span>Ménage en cours de séjour : 30 € (sur demande)</span></div>
-            <div class="info-row"><span class="info-dot"></span><span>Au-delà de 2 pers. : 10 € / voyageur (gratuit &lt; 12 ans)</span></div>
+            <div class="info-row"><span class="info-dot"></span><span>Au-delà de 2 pers. : 10 € / nuit / voyageur<br>(gratuit &lt; 2 ans)</span></div>
             <div class="info-row"><span class="info-dot"></span><span>Lit parapluie : gratuit sur simple demande</span></div>
             <div class="info-row"><span class="info-dot"></span><span>Réductions pour séjours semaine / mois</span></div>
           </div>
@@ -476,7 +476,7 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label>Enfants <small class="form-label-note">- 12 ans · gratuit</small></label>
+                      <label>Enfants <small class="form-label-note">2 ans et +</small></label>
                         <div class="resa-counter">
                           <button type="button" id="enfant-minus" aria-label="Moins">−</button>
                           <span class="resa-counter-val" id="enfant-count">0</span>
@@ -484,7 +484,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                      <label>Bébés <small class="form-label-note">gratuit</small></label>
+                      <label>Bébés <small class="form-label-note">- 2 ans · gratuit</small></label>
                         <div class="resa-counter">
                           <button type="button" id="bebe-minus" aria-label="Moins">−</button>
                           <span class="resa-counter-val" id="bebe-count">0</span>
@@ -504,9 +504,17 @@
                   <span>Frais de ménage</span>
                   <span>30 €</span>
                 </div>
-                <div class="resa-price-row" id="price-row-voy" hidden>
-                  <span>Voyageur(s) supplémentaire(s)</span>
-                  <span id="price-voy-val"></span>
+                <div class="resa-price-row" id="price-row-adultes" hidden>
+                  <span id="price-adultes">Adulte(s) supplémentaire(s)</span>
+                  <span id="price-adultes-val"></span>
+                </div>
+                <div class="resa-price-row" id="price-row-enfants" hidden>
+                  <span id="price-enfants">Enfant(s) (2 ans et +)</span>
+                  <span id="price-enfants-val"></span>
+                </div>
+                <div class="resa-price-row" id="price-row-bebes" hidden>
+                  <span id="price-bebes">Bébé(s) (- 2 ans)</span>
+                  <span>Gratuit</span>
                 </div>
                 <div class="resa-price-total">
                   <span class="resa-price-total-label">Total du séjour</span>

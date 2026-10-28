@@ -6,7 +6,7 @@
 const SCRIPT_URL     = 'https://script.google.com/macros/s/AKfycbw6aFGeNvbqPr7RLyp4zthNr0xUPTOJdnPDed1HFZWOOk2HGvMyat_mHn4hUDTHSClAMA/exec';
 const TARIF_NUIT     = 58;
 const FRAIS_MENAGE   = 30;
-const SUPPL_VOYAGEUR = 10;
+const SUPPL_VOYAGEUR = 10;   // par nuit et par voyageur payant au-delà de 2 (bébés de moins de 2 ans gratuits)
 
 export function initReservation() {
   const form      = document.getElementById('reservation-form');
@@ -84,7 +84,8 @@ export function initReservation() {
   }
 
   // ── Compteurs voyageurs ─────────────────────────────────
-  function makeCounter(minusId, plusId, countId, get, set, min) {
+  // compteDansMax = false : le compteur n'est pas limité par les 4 voyageurs max (bébés)
+  function makeCounter(minusId, plusId, countId, get, set, min, compteDansMax = true) {
     document.getElementById(minusId).addEventListener('click', () => {
       if (get() > min) {
         set(get() - 1);
@@ -93,7 +94,7 @@ export function initReservation() {
       }
     });
     document.getElementById(plusId).addEventListener('click', () => {
-      if (nbAdultes + nbEnfants < 4) {
+      if (!compteDansMax || nbAdultes + nbEnfants < 4) {
         set(get() + 1);
         document.getElementById(countId).textContent = get();
         updateForm();
@@ -103,7 +104,7 @@ export function initReservation() {
 
   makeCounter('adulte-minus','adulte-plus','adulte-count', ()=>nbAdultes, v=>nbAdultes=v, 1);
   makeCounter('enfant-minus','enfant-plus','enfant-count', ()=>nbEnfants, v=>nbEnfants=v, 0);
-  makeCounter('bebe-minus',  'bebe-plus',  'bebe-count',   ()=>nbBebes,   v=>nbBebes=v,   0);
+  makeCounter('bebe-minus',  'bebe-plus',  'bebe-count',   ()=>nbBebes,   v=>nbBebes=v,   0, false);
 
   // ── Calcul prix et affichage ────────────────────────────
   function updateForm() {
@@ -114,20 +115,42 @@ export function initReservation() {
 
     const nbNuits        = Math.round((selectedDepart - selectedArrivee) / 86400000);
     const prixNuits      = nbNuits * TARIF_NUIT;
-    const supplVoyageurs = nbAdultes > 2 ? (nbAdultes - 2) * SUPPL_VOYAGEUR : 0;
-    const total          = prixNuits + FRAIS_MENAGE + supplVoyageurs;
+    const nbPayants      = nbAdultes + nbEnfants;
+    // Les 2 places incluses vont d'abord aux adultes, le reste est facturé (même tarif adulte / enfant)
+    const adultesSuppl   = Math.max(nbAdultes - 2, 0);
+    const enfantsSuppl   = Math.max(nbPayants - 2, 0) - adultesSuppl;
+    const supplAdultes   = adultesSuppl * SUPPL_VOYAGEUR * nbNuits;
+    const supplEnfants   = enfantsSuppl * SUPPL_VOYAGEUR * nbNuits;
+    const total          = prixNuits + FRAIS_MENAGE + supplAdultes + supplEnfants;
 
     document.getElementById('price-nuits').textContent     = nbNuits + ' nuit' + (nbNuits > 1 ? 's' : '') + ' × ' + TARIF_NUIT + ' €';
     document.getElementById('price-nuits-val').textContent = prixNuits + ' €';
 
-    const rowVoy = document.getElementById('price-row-voy');
-    rowVoy.hidden = supplVoyageurs === 0;
-    if (supplVoyageurs > 0) document.getElementById('price-voy-val').textContent = '+' + supplVoyageurs + ' €';
+    const rowAdultes = document.getElementById('price-row-adultes');
+    rowAdultes.hidden = adultesSuppl === 0;
+    // Supplément affiché par nuit (le nombre de nuits est rappelé dans l'intitulé)
+    const libNuits = ' × ' + nbNuits + ' nuit' + (nbNuits > 1 ? 's' : '');
+    if (adultesSuppl > 0) {
+      document.getElementById('price-adultes').textContent     = adultesSuppl + (adultesSuppl > 1 ? ' adultes supplémentaires' : ' adulte supplémentaire') + libNuits;
+      document.getElementById('price-adultes-val').textContent = '+' + (adultesSuppl * SUPPL_VOYAGEUR) + ' €/nuit';
+    }
+
+    const rowEnfants = document.getElementById('price-row-enfants');
+    rowEnfants.hidden = enfantsSuppl === 0;
+    if (enfantsSuppl > 0) {
+      document.getElementById('price-enfants').textContent     = enfantsSuppl + (enfantsSuppl > 1 ? ' enfants' : ' enfant') + ' (2 ans et +)' + libNuits;
+      document.getElementById('price-enfants-val').textContent = '+' + (enfantsSuppl * SUPPL_VOYAGEUR) + ' €/nuit';
+    }
+
+    const rowBebes = document.getElementById('price-row-bebes');
+    rowBebes.hidden = nbBebes === 0;
+    if (nbBebes > 0) document.getElementById('price-bebes').textContent = nbBebes + (nbBebes > 1 ? ' bébés' : ' bébé') + ' (- 2 ans)';
 
     document.getElementById('price-total-val').textContent = total + ' €';
 
     document.getElementById('hidden-nuits').value     = nbNuits;
-    document.getElementById('hidden-voyageurs').value = nbAdultes + nbEnfants + nbBebes;
+    // Seuls les voyageurs payants sont envoyés au script (il calcule le supplément dessus)
+    document.getElementById('hidden-voyageurs').value = nbPayants;
     document.getElementById('hidden-arrivee').value   = formatDate(selectedArrivee);
     document.getElementById('hidden-depart').value    = formatDate(selectedDepart);
 
