@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="icon" href="images/lrds-logo.png" type="image/png" />
+  <link rel="icon" href="images/logo-lrds.webp" type="image/webp" />
   <link rel="stylesheet" href="assets/css/main.css" />
   <style>
     .legal-hero { background:var(--bg); border-bottom:1px solid var(--glass-border); padding:140px 0 64px; }
@@ -45,7 +45,7 @@
   <header class="site-header" role="banner">
     <div class="header-inner">
       <a href="index.html" class="brand">
-        <img src="images/lrds-logo.png" alt="Logo Le Refuge de Saintines" class="brand-logo" loading="lazy" />
+        <img src="images/logo-lrds.webp" alt="Logo Le Refuge de Saintines" class="brand-logo" loading="lazy" />
         <div class="brand-text">
           <span class="brand-name">Le Refuge</span>
           <small class="brand-sub">de Saintines</small>
@@ -96,7 +96,7 @@
             <tr><td>Dates de séjour & montant</td><td>Gestion de la réservation et facturation</td><td>Exécution du contrat</td></tr>
           </tbody>
         </table>
-        <p>Aucune donnée bancaire n'est collectée ou stockée par le site. Le paiement s'effectue par virement bancaire direct. La caution est gérée par Swikly (voir leur <a href="https://www.swikly.com/politique-de-confidentialite" target="_blank" rel="noopener">politique de confidentialité</a>).</p>
+        <p>Aucune donnée bancaire n'est collectée ou stockée par le site. Le paiement et l'empreinte bancaire de caution sont traités par Stripe, sur sa propre page de paiement sécurisée (voir sa <a href="https://stripe.com/fr/privacy" target="_blank" rel="noopener">politique de confidentialité</a>).</p>
       </div>
 
       <div class="legal-section">
@@ -108,10 +108,10 @@
         <h2>Destinataires des données</h2>
         <p>Vos données sont transmises aux prestataires suivants dans le strict cadre de l'exécution de votre réservation :</p>
         <div class="legal-card">
-          <p><strong>Yousign</strong> — signature électronique du contrat (prestataire certifié eIDAS)</p>
-          <p><strong>Swikly</strong> — gestion de la caution par empreinte bancaire</p>
+          <p><strong>Stripe</strong> — paiement en ligne et empreinte bancaire de caution</p>
           <p><strong>Google</strong> — stockage des données de réservation via Google Sheets et Google Workspace</p>
-          <p><strong>Infomaniak</strong> — hébergement du site web (serveurs en Suisse)</p>
+          <p><strong>IGN (Géoplateforme) et Komoot (Photon)</strong> — suggestions d'adresse pendant la saisie : seul le texte tapé dans le champ « Adresse postale » leur est envoyé, sans votre nom ni vos autres coordonnées</p>
+          <p><strong>GitHub (GitHub Pages)</strong> — hébergement des pages du site web, sans accès à vos données de réservation</p>
         </div>
         <p>Aucune donnée n'est vendue, louée ou transmise à des tiers à des fins commerciales.</p>
       </div>
@@ -139,13 +139,13 @@
 
       <div class="legal-section">
         <h2>Hébergement des données</h2>
-        <p>Le site est hébergé par <strong>Infomaniak Network SA</strong> (26 avenue de la Gare, CH-1003 Lausanne, Suisse), dont les serveurs sont situés en Suisse et en Union Européenne. Ce pays bénéficie d'une décision d'adéquation de la Commission Européenne.</p>
+        <p>Les pages du site sont hébergées par <strong>GitHub, Inc.</strong> (service GitHub Pages, 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis). GitHub ne reçoit pas vos données de réservation : comme tout hébergeur, il peut seulement enregistrer des données techniques de connexion (adresse IP, navigateur) pour la sécurité du service. GitHub adhère au cadre de protection des données UE–États-Unis (Data Privacy Framework), reconnu par une décision d'adéquation de la Commission européenne.</p><p>Vos données de réservation sont enregistrées dans Google Sheets (Google) et vos paiements sont traités par Stripe, comme indiqué plus haut.</p>
       </div>
 
       <div class="legal-section">
         <h2>Modifications</h2>
         <p>Cette politique de confidentialité peut être mise à jour à tout moment. La date de dernière modification est indiquée ci-dessous.</p>
-        <p style="margin-top:16px;font-size:12px;color:var(--cream-faint);">Dernière mise à jour : mai 2026</p>
+        <p style="margin-top:16px;font-size:12px;color:var(--cream-faint);">Dernière mise à jour : novembre 2026</p>
       </div>
 
     </div>
@@ -155,7 +155,7 @@
     <div class="container">
       <div class="footer-bottom">
         <p>© 2026 Le Refuge de Saintines — Tous droits réservés</p>
-        <p><a href="rules.html" style="color:var(--cream-faint);margin-right:16px;">Règlement</a><a href="cgv.html" style="color:var(--cream-faint);margin-right:16px;">CGV</a><a href="mentions-legales.html" style="color:var(--cream-faint);margin-right:16px;">Mentions légales</a><a href="politique-confidentialite.html" style="color:var(--cream-faint);">Confidentialité</a></p>
+        <p><a href="rules.html" style="color:var(--cream-faint);margin-right:16px;">Règlement</a><a href="contrat.html" style="color:var(--cream-faint);margin-right:16px;">Contrat</a><a href="cgv.html" style="color:var(--cream-faint);margin-right:16px;">CGV</a><a href="mentions-legales.html" style="color:var(--cream-faint);margin-right:16px;">Mentions légales</a><a href="politique-confidentialite.html" style="color:var(--cream-faint);">Confidentialité</a></p>
       </div>
     </div>
   </footer>

@@ -1,0 +1,214 @@
+/* ============================================================
+   RESAATTENTE.CSS — Attentes et messages de la réservation
+   - dans le formulaire : chargement du calendrier, encadrés d'erreur, bandeau
+   - voile pleine page : préparation du paiement, retour de Stripe, confirmation
+   Même style que la page « Ma réservation » (fond animé, cercle qui tourne).
+   Réglage « réduire les animations » : fondus simples, rien ne bouge.
+   Le Refuge de Saintines
+   ============================================================ */
+
+:root {
+  --att-ease:    cubic-bezier(0.16, 1, 0.3, 1);
+  --att-ease-io: cubic-bezier(0.65, 0, 0.35, 1);
+  --att-danger:  #e7a08f;
+}
+
+/* Les éléments masqués le restent, même avec un display défini plus bas */
+.resa-voile[hidden], .resa-voile [hidden], .att-demo[hidden], .att-demo [hidden] { display: none !important; }
+
+/* ── Petit cercle qui tourne (prend la couleur du texte) ───── */
+.att-spin { width: 16px; height: 16px; flex: none; animation: attSpin 1.2s linear infinite; }
+.att-spin circle { fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 40 100; }
+@keyframes attSpin { to { transform: rotate(360deg); } }
+
+/* ── Chargement du calendrier ──────────────────────────────── */
+.resa-dates-grid.is-chargement input {
+  background-image: linear-gradient(100deg, transparent 20%, rgba(144, 190, 171, 0.14) 50%, transparent 80%) !important;
+  background-size: 200% 100% !important;
+  background-repeat: no-repeat !important;
+  animation: attReflet 1.5s ease-in-out infinite;
+}
+@keyframes attReflet { from { background-position: 150% 0; } to { background-position: -50% 0; } }
+
+.resa-cal-status.att-cal-msg {
+  display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px 10px;
+  color: var(--sage-light); font-size: 12.5px; font-weight: 500; margin-top: 10px;
+}
+.att-cal-test { flex-basis: 100%; font-size: 11px; color: var(--cream-faint); font-weight: 400; }
+
+.att-fantome {
+  display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px;
+  max-width: 340px; margin: 12px auto 0; padding: 12px;
+  border: 1px solid var(--glass-border); border-radius: 12px;
+  overflow: hidden; max-height: 260px; opacity: 1;
+  transition: max-height 0.6s var(--att-ease), opacity 0.4s ease, margin 0.6s var(--att-ease), padding 0.6s var(--att-ease), border-color 0.4s;
+}
+.att-fantome i { aspect-ratio: 1; border-radius: 6px; background: rgba(144, 190, 171, 0.08); animation: attPulse 1.4s ease-in-out infinite; animation-delay: calc(var(--d) * 40ms); }
+.att-fantome.is-fini { max-height: 0; opacity: 0; margin-top: 0; padding-block: 0; border-color: transparent; }
+@keyframes attPulse { 50% { opacity: 0.35; } }
+
+/* ── Encadrés d'erreur (calendrier et envoi) ───────────────── */
+.att-erreur {
+  border: 1px solid rgba(231, 160, 143, 0.32); background: rgba(231, 160, 143, 0.07);
+  border-radius: var(--r); padding: 18px 16px;
+  display: grid; justify-items: center; text-align: center; gap: 4px;
+  animation: attApparait 0.5s var(--att-ease) both;
+}
+.att-erreur > svg { width: 24px; height: 24px; color: var(--att-danger); margin-bottom: 4px; }
+.att-erreur strong { font-size: 14px; font-weight: 600; color: var(--cream); }
+.att-erreur p { margin: 0; font-size: 12.5px; line-height: 1.55; color: var(--cream-dim); max-width: 42ch; }
+.att-erreur-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 10px; }
+#resa-erreur { margin-top: 16px; }
+@media (max-width: 768px) { #resa-erreur { margin: 28px 0 18px; } }   /* plus d'air sur téléphone */
+#resa-erreur:empty { display: none; }
+.resa-cal-erreur { margin-top: 12px; }
+
+/* Boutons des encadrés et du voile (même style que les boutons du site) */
+.att-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 40px; padding: 10px 18px; border-radius: 60px;
+  font-family: var(--font-body); font-size: 10px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase;
+  text-decoration: none; cursor: pointer; transition: var(--tr);
+  border: 1px solid var(--glass-border); background: transparent; color: var(--cream);
+}
+.att-btn:hover { border-color: var(--sage); }
+.att-btn--primaire { background: var(--sage); border-color: var(--sage); color: var(--bg); box-shadow: 0 0 28px var(--sage-glow); }
+.att-btn--primaire:hover { background: var(--sage-light); border-color: var(--sage-light); }
+.att-btn.is-occupe { background: rgba(144, 190, 171, 0.55); border-color: transparent; box-shadow: none; pointer-events: none; }
+.att-btn:focus-visible, .att-lien:focus-visible { outline: 2px solid var(--sage-light); outline-offset: 3px; }
+.att-btn .att-spin { width: 14px; height: 14px; }
+
+/* Bouton « Payer et réserver » qui tourne une fraction de seconde avant le voile */
+.resa-submit-btn.is-occupe { background: rgba(144, 190, 171, 0.55); box-shadow: none; pointer-events: none; }
+.resa-submit-btn .att-spin { width: 14px; height: 14px; }
+
+/* ── Bandeau « Vos informations ont été conservées » ───────── */
+.att-bandeau {
+  display: flex; align-items: center; gap: 10px; width: fit-content; max-width: 100%;
+  margin: -16px auto 35px; padding: 10px 16px; border-radius: 12px;   /* même espace au-dessus et au-dessous */
+  border: 1px solid var(--glass-border); background: var(--bg-3);
+  font-size: 12.5px; color: var(--cream-dim);
+  animation: attApparait 0.5s var(--att-ease) both;
+}
+.att-bandeau svg { width: 18px; height: 18px; color: var(--sage); flex: none; }
+.att-flash { animation: attFlash 1.6s var(--att-ease); }
+@keyframes attFlash { 0%, 40% { border-color: var(--sage); box-shadow: 0 0 0 3px rgba(144, 190, 171, 0.18); } }
+
+@keyframes attApparait { from { opacity: 0; transform: translateY(8px); } }
+
+/* ── Voile pleine page ─────────────────────────────────────── */
+.resa-voile {
+  position: fixed; inset: 0; z-index: 3000;
+  display: grid; place-items: center;
+  padding: calc(28px + env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) calc(28px + env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
+  background: rgba(7, 16, 12, 0.92);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  overflow-y: auto; overflow-x: hidden;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.5s var(--att-ease), visibility 0.5s;
+}
+.resa-voile.is-ouvert { opacity: 1; visibility: visible; }
+.resa-voile-aurora { position: fixed; inset: -20%; filter: blur(60px); opacity: 0.55; pointer-events: none; z-index: -1; }
+.resa-voile-aurora i { position: absolute; border-radius: 50%; }
+.resa-voile-aurora i:nth-child(1) { width: 90%; height: 70%; top: -10%; left: -20%; background: radial-gradient(circle, rgba(16, 128, 110, 0.55), transparent 65%); animation: attFlotte1 16s var(--att-ease-io) infinite alternate; }
+.resa-voile-aurora i:nth-child(2) { width: 80%; height: 70%; bottom: -15%; right: -25%; background: radial-gradient(circle, rgba(144, 190, 171, 0.32), transparent 65%); animation: attFlotte2 20s var(--att-ease-io) infinite alternate; }
+@keyframes attFlotte1 { to { transform: translate(25%, 30%) scale(1.1); } }
+@keyframes attFlotte2 { to { transform: translate(-25%, -30%) scale(0.9); } }
+
+.resa-voile-contenu { display: flex; flex-direction: column; align-items: center; text-align: center; width: min(440px, 100%); }
+.resa-voile-icone { min-height: 72px; display: grid; place-items: center; margin-bottom: 14px; }
+
+/* La maison du logo qui se dessine, fenêtres qui s'allument */
+.att-maison { width: 116px; height: 116px; overflow: visible; }
+.att-maison .trait { fill: none; stroke: var(--sage); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 300; stroke-dashoffset: 300; }
+.att-maison .fenetre { fill: #f3d58a; opacity: 0; }
+.att-maison .fumee { fill: none; stroke: var(--cream-faint); stroke-width: 1.6; stroke-linecap: round; opacity: 0; }
+.att-maison.is-dessin .trait { animation: attDessin 2.4s var(--att-ease-io) infinite alternate; }
+.att-maison.is-dessin .fenetre { animation: attLueur 2.4s ease-in-out infinite alternate; }
+.att-maison.is-allumee .trait, .att-maison.is-calme .trait { stroke-dashoffset: 0; }
+.att-maison.is-allumee .fenetre { opacity: 1; filter: drop-shadow(0 0 8px rgba(243, 213, 138, 0.8)); transition: opacity 0.6s; }
+.att-maison.is-allumee .fumee { animation: attFumee 2.6s ease-out infinite; }
+@keyframes attDessin { 0% { stroke-dashoffset: 300; } 70%, 100% { stroke-dashoffset: 0; } }
+@keyframes attLueur { 0%, 60% { opacity: 0; } 100% { opacity: 0.9; } }
+@keyframes attFumee { 0% { opacity: 0; transform: translateY(4px); } 30% { opacity: 0.8; } 100% { opacity: 0; transform: translateY(-10px); } }
+
+/* Icônes « paiement annulé » et « paiement non abouti » */
+.att-icone { width: 72px; height: 72px; }
+.att-icone .trait { fill: none; stroke: var(--att-danger); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.att-icone .trace { stroke-dasharray: 120; stroke-dashoffset: 120; animation: attTrace 0.9s 0.2s var(--att-ease) forwards; }
+@keyframes attTrace { to { stroke-dashoffset: 0; } }
+
+.resa-voile-titre { font-family: var(--font-display); font-size: clamp(28px, 6vw, 34px); font-weight: 400; line-height: 1.15; color: var(--cream); margin: 0; text-wrap: balance; transition: opacity 0.5s ease; }
+.resa-voile-msg { font-size: 14px; line-height: 1.6; color: var(--cream-dim); max-width: 34ch; min-height: 46px; margin: 8px auto 0; transition: opacity 0.5s ease, transform 0.6s var(--att-ease), filter 0.5s ease; }
+.resa-voile-titre.is-sortie { opacity: 0; }
+.resa-voile-msg.is-sortie { opacity: 0; transform: translateY(-5px); filter: blur(3px); }
+
+/* Trois petits points qui sautillent après le titre */
+.att-points { display: inline-flex; gap: 1px; margin-left: 1px; }
+.att-points i { font-style: normal; animation: attPoint 1.4s ease-in-out infinite; }
+.att-points i:nth-child(2) { animation-delay: 0.2s; }
+.att-points i:nth-child(3) { animation-delay: 0.4s; }
+@keyframes attPoint { 0%, 60%, 100% { opacity: 0.2; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-3px); } }
+
+.resa-voile-carte {
+  margin: 16px auto 0; padding: 12px 18px; width: min(300px, 100%);
+  border: 1px solid var(--glass-border); background: var(--glass); border-radius: 14px;
+  display: grid; gap: 4px; font-size: 12.5px; color: var(--cream-dim); text-align: left;
+  animation: attApparait 0.5s var(--att-ease) both;
+}
+.resa-voile-carte div { display: flex; justify-content: space-between; gap: 12px; }
+.resa-voile-carte b { color: var(--cream); font-weight: 600; }
+
+.resa-voile-actions { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px; width: 100%; animation: attApparait 0.5s 0.1s var(--att-ease) both; }
+.resa-voile-actions .att-btn { min-width: 230px; max-width: 100%; min-height: 46px; }
+.att-lien { margin-top: 10px; background: none; border: 0; padding: 4px; cursor: pointer; font-family: var(--font-body); font-size: 12.5px; color: var(--sage-light); text-decoration: underline; text-underline-offset: 3px; }
+
+.resa-voile-note { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font-size: 11px; color: var(--cream-faint); }
+.resa-voile-note svg { width: 14px; height: 14px; }
+
+html.att-voile-ouvert { overflow: hidden; }
+/* Voile opaque : la page dessous est masquée (Safari iPhone la montrait derrière l'heure et la barre d'adresse) */
+html.att-voile-plein body > :not(.resa-voile):not(.att-demo-btn):not(.att-demo) { visibility: hidden; }
+
+@media (min-width: 769px) {
+  .resa-voile-actions { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+  .resa-voile-actions .att-btn { min-width: 200px; }
+  .resa-voile-actions .att-lien { flex-basis: 100%; }
+}
+
+/* ── Panneau de démonstration (mode test uniquement) ───────── */
+.att-demo-btn {
+  position: fixed; left: max(12px, env(safe-area-inset-left)); bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 3100;
+  font: 700 11px var(--font-body); letter-spacing: 1px; text-transform: uppercase;
+  padding: 10px 14px; border-radius: 30px; border: 1px dashed var(--sage); background: var(--bg-2); color: var(--sage-light); cursor: pointer;
+}
+.att-demo {
+  position: fixed; left: max(12px, env(safe-area-inset-left)); bottom: calc(60px + env(safe-area-inset-bottom)); z-index: 3100;
+  width: min(330px, calc(100vw - 24px)); max-height: min(70vh, 560px); overflow-y: auto;
+  padding: 14px; border-radius: 16px; border: 1px dashed var(--sage); background: var(--bg-2);
+  box-shadow: var(--shadow-md); font-size: 12px; color: var(--cream-dim);
+}
+.att-demo h3 { font: 600 11px var(--font-body); letter-spacing: 1.4px; text-transform: uppercase; color: var(--sage); margin: 12px 0 6px; }
+.att-demo h3:first-child { margin-top: 0; }
+.att-demo-liste { display: grid; gap: 6px; }
+.att-demo button.att-demo-item { text-align: left; font: 500 12.5px var(--font-body); color: var(--cream); background: var(--glass); border: 1px solid var(--glass-border); border-radius: 10px; padding: 8px 10px; cursor: pointer; }
+.att-demo button.att-demo-item:hover { border-color: var(--sage); }
+.att-demo select { width: 100%; font: 500 12.5px var(--font-body); color: var(--cream); background: var(--bg-3); border: 1px solid var(--glass-border); border-radius: 10px; padding: 7px 8px; }
+.att-demo-reglages { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.att-demo-reglages label { display: grid; gap: 4px; font-size: 11px; }
+.att-demo p { margin: 8px 0 0; font-size: 11px; color: var(--cream-faint); }
+
+/* ── Réduire les animations : fondus seulement ─────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .att-fantome i, .resa-voile-aurora i,
+  .resa-dates-grid.is-chargement input { animation: none; }
+  .att-maison.is-dessin .trait { animation: none; stroke-dashoffset: 0; }
+  .att-maison.is-dessin .fenetre, .att-maison.is-allumee .fumee { animation: none; }
+  .att-icone .trace { animation: none; stroke-dashoffset: 0; }
+  .att-erreur, .att-bandeau, .resa-voile-carte, .resa-voile-actions { animation-name: attFondu; }
+  .resa-voile-msg.is-sortie { transform: none; filter: none; }
+  .att-flash { animation: none; }
+  .att-points i { animation-name: attPointDoux; }   /* les points clignotent sans bouger */
+}
+@keyframes attPointDoux { 0%, 60%, 100% { opacity: 0.2; } 30% { opacity: 1; } }
+@keyframes attFondu { from { opacity: 0; } }

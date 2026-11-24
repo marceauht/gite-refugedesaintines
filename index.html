@@ -8,7 +8,7 @@
   <link rel="canonical" href="https://gite-refugedesaintines.com/" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#07100c" />
-  <link rel="icon" href="images/lrds-logo.png" type="image/png" />
+  <link rel="icon" href="images/logo-lrds.webp" type="image/webp" />
   <link rel="preload" as="image" href="images/hero.webp" type="image/webp" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -56,7 +56,7 @@
   <header class="site-header" role="banner">
     <div class="header-inner">
       <a href="#home" class="brand" aria-label="Le Refuge de Saintines — Accueil">
-        <img src="images/lrds-logo.png" alt="Logo Le Refuge de Saintines" class="brand-logo" loading="lazy" />
+        <img src="images/logo-lrds.webp" alt="Logo Le Refuge de Saintines" class="brand-logo" loading="lazy" />
         <div class="brand-text">
           <span class="brand-name">Le Refuge</span>
           <small class="brand-sub">de Saintines</small>
@@ -307,7 +307,7 @@
             <div class="info-card-title">Tarifs</div>
             <div class="info-row"><span class="info-dot"></span><span>Frais de ménage : 30 € par séjour</span></div>
             <div class="info-row"><span class="info-dot"></span><span>Ménage en cours de séjour : 30 € (sur demande)</span></div>
-            <div class="info-row"><span class="info-dot"></span><span>Au-delà de 2 pers. : 10 € / nuit / voyageur<br>(gratuit &lt; 2 ans)</span></div>
+            <div class="info-row"><span class="info-dot"></span><span>Linge supplémentaire dès 3 voyageurs : 10 € par séjour<br>(bébés de moins de 2 ans non comptés)</span></div>
             <div class="info-row"><span class="info-dot"></span><span>Lit parapluie : gratuit sur simple demande</span></div>
             <div class="info-row"><span class="info-dot"></span><span>Réductions pour séjours semaine / mois</span></div>
           </div>
@@ -338,10 +338,10 @@
             <span class="info-card-icon">🔑</span>
             <div class="info-card-title">Réserver en direct</div>
             <div class="info-row"><span class="info-dot"></span><span><strong>Meilleur tarif garanti</strong> — sans commission plateforme</span></div>
-            <div class="info-row"><span class="info-dot"></span><span>Paiement par <strong>virement SEPA instantané</strong></span></div>
-            <div class="info-row"><span class="info-dot"></span><span>Caution de 300€ via <strong>Swikly</strong> (empreinte bancaire, jamais débitée)</span></div>
-            <div class="info-row"><span class="info-dot"></span><span>Contrat de bail saisonnier envoyé par email</span></div>
-            <div class="info-row"><span class="info-dot"></span><span>Réservation <strong>non remboursable</strong> — dates libérées sous 48h sans paiement</span></div>
+            <div class="info-row"><span class="info-dot"></span><span><strong>Paiement sécurisé</strong> par carte, Apple Pay ou Google Pay</span></div>
+            <div class="info-row"><span class="info-dot"></span><span>Caution de 300€ par <strong>empreinte bancaire</strong> la veille de l'arrivée (jamais débitée sans dégât)</span></div>
+            <div class="info-row"><span class="info-dot"></span><span>Confirmation immédiate, contrat envoyé par email</span></div>
+            <div class="info-row"><span class="info-dot"></span><span><strong>Annulation gratuite</strong> jusqu'à 7 jours avant l'arrivée</span></div>
             <a href="#contact" class="btn btn-primary info-card-cta">Réserver maintenant →</a>
           </div>
 
@@ -492,6 +492,17 @@
                         </div>
                     </div>
                   </div>
+                  <!-- Lit parapluie : affiché seulement s'il y a au moins un bébé -->
+                  <label class="resa-lit" id="resa-lit-row" for="resa-lit" hidden>
+                    <input type="checkbox" id="resa-lit" />
+                    <span class="resa-lit-texte">
+                      <span class="resa-lit-titre">
+                        <svg viewBox="0 2 24 24" aria-hidden="true"><path d="M3 9h18M4 9v10M20 9v10M4 15h16M8 9v6M12 9v6M16 9v6M3 19h2M19 19h2"/></svg>
+                        J'ai besoin du lit parapluie
+                      </span>
+                      <span class="resa-lit-detail">Un seul disponible, gratuit, avec plaid, installé pour votre arrivée.</span>
+                    </span>
+                  </label>
               </div>
 
               <!-- Prix (affiché quand les deux dates sont remplies) -->
@@ -504,13 +515,9 @@
                   <span>Frais de ménage</span>
                   <span>30 €</span>
                 </div>
-                <div class="resa-price-row" id="price-row-adultes" hidden>
-                  <span id="price-adultes">Adulte(s) supplémentaire(s)</span>
-                  <span id="price-adultes-val"></span>
-                </div>
-                <div class="resa-price-row" id="price-row-enfants" hidden>
-                  <span id="price-enfants">Enfant(s) (2 ans et +)</span>
-                  <span id="price-enfants-val"></span>
+                <div class="resa-price-row" id="price-row-linge" hidden>
+                  <span>Frais de linge supplémentaire<small class="resa-price-note">dès 3 voyageurs, une fois par séjour</small></span>
+                  <span id="price-linge-val"></span>
                 </div>
                 <div class="resa-price-row" id="price-row-bebes" hidden>
                   <span id="price-bebes">Bébé(s) (- 2 ans)</span>
@@ -520,53 +527,116 @@
                   <span class="resa-price-total-label">Total du séjour</span>
                   <span class="resa-price-total-val" id="price-total-val"></span>
                 </div>
-                <p class="resa-price-warning">⚠️ Réservation non remboursable · Paiement par virement instantané SEPA</p>
+                <p class="resa-price-taxe" id="price-taxe"></p>
               </div>
 
               <!-- Coordonnées (affiché avec le prix) -->
               <div id="resa-contact" hidden>
                 <div class="resa-section">
                   <span class="resa-section-label">Vos coordonnées</span>
-                  <div class="form-group">
-                    <label for="resa-prenom">Prénom et nom</label>
-                    <input type="text" id="resa-prenom" name="prenom" autocomplete="name" placeholder="Marie DUPONT" required />
+                  <div class="resa-nom-grid">
+                    <div class="form-group">
+                      <label for="resa-prenom">Prénom</label>
+                      <input type="text" id="resa-prenom" name="prenom" autocomplete="given-name" placeholder="Marie" required />
+                    </div>
+                    <div class="form-group">
+                      <label for="resa-nom">Nom</label>
+                      <input type="text" id="resa-nom" name="nom" autocomplete="family-name" placeholder="DUPONT" required />
+                    </div>
                   </div>
                   <div class="form-group">
                     <label for="resa-email">Email</label>
                     <input type="email" id="resa-email" name="email" autocomplete="email" placeholder="votre@email.com" required />
                   </div>
                   <div class="form-group">
-                    <label for="resa-tel">Téléphone <small class="form-label-note">indicatif inclus</small></label>
-                    <input type="tel" id="resa-tel" name="telephone" autocomplete="tel" placeholder="+33 6 XX XX XX XX" required />
+                    <label for="resa-tel">Téléphone</label>
+                    <!-- Indicatif et format automatiques (module resaTelephone.js) -->
+                    <input type="tel" id="resa-tel" name="telephone" autocomplete="tel" required />
+                    <p class="resa-champ-aide" id="resa-tel-aide" aria-live="polite"></p>
                   </div>
-                  <div class="form-group">
-                    <label for="resa-adresse">Adresse postale <small class="form-label-note">requise pour le contrat</small></label>
-                    <input type="text" id="resa-adresse" name="adresse" autocomplete="street-address" placeholder="123 rue de la Paix, 75001 Paris" required />
+                  <div class="form-group resa-adresse">
+                    <label for="resa-adresse">Adresse postale</label>
+                    <!-- Adresses proposées pendant la saisie (module resaAdresse.js) -->
+                    <div class="resa-adresse-zone" id="resa-adresse-zone">
+                      <input type="text" id="resa-adresse" autocomplete="off" placeholder="12 rue des Lilas, 75011 Paris" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="resa-adresse-liste" required />
+                      <div class="resa-adresse-liste" id="resa-adresse-liste" role="listbox" hidden></div>
+                    </div>
+                    <div class="resa-adresse-ok" id="resa-adresse-ok" hidden>
+                      <span id="resa-adresse-texte"></span>
+                      <button type="button" class="resa-lien" id="resa-adresse-modifier">Modifier</button>
+                    </div>
+                    <div class="resa-adresse-manuelle" id="resa-adresse-manuelle" hidden>
+                      <input type="text" id="resa-adr-rue" autocomplete="address-line1" placeholder="N° et rue" aria-label="Numéro et rue" />
+                      <div class="resa-adresse-cp">
+                        <input type="text" id="resa-adr-cp" autocomplete="postal-code" placeholder="Code postal" aria-label="Code postal" />
+                        <input type="text" id="resa-adr-ville" autocomplete="address-level2" placeholder="Ville" aria-label="Ville" />
+                      </div>
+                      <input type="text" id="resa-adr-pays" autocomplete="country-name" value="France" placeholder="Pays" aria-label="Pays" />
+                      <button type="button" class="resa-lien" id="resa-adresse-recherche">← Revenir à la recherche</button>
+                    </div>
+                    <input type="hidden" name="adresse" id="resa-adresse-valeur" />
                   </div>
                 </div>
               </div>
 
               <!-- Submit -->
               <div id="resa-submit-wrap" hidden>
+                <!-- Case 1 : le contrat doit être ouvert et lu jusqu'en bas (module resaContrat.js) -->
                 <div class="consent-row">
-                  <input type="checkbox" id="consent-resa" required />
-                  <label for="consent-resa">
-                    J'ai lu et j'accepte le <a href="rules.html" target="_blank" rel="noopener">règlement intérieur</a>,
-                    les <a href="cgv.html">conditions générales de vente</a> et la
-                    <a href="politique-confidentialite.html">politique de confidentialité</a>.
-                    Je reconnais que cette réservation est <strong>non remboursable</strong>.
+                  <input type="checkbox" id="consent-contrat" aria-describedby="consent-contrat-aide" />
+                  <label for="consent-contrat">
+                    J'ai lu et j'accepte le <button type="button" class="resa-lien" id="ouvrir-contrat">contrat de location</button>
+                    et le règlement intérieur en annexe. Cette acceptation vaut signature du contrat, que vous recevrez en PDF après le paiement.
+                    <span class="consent-aide" id="consent-contrat-aide" hidden></span>
+                  </label>
+                </div>
+                <!-- Case 2 : CGV et confidentialité -->
+                <div class="consent-row">
+                  <input type="checkbox" id="consent-cgv" />
+                  <label for="consent-cgv">
+                    J'accepte les <a href="cgv.html" target="_blank" rel="noopener">conditions générales de vente</a> et la
+                    <a href="politique-confidentialite.html" target="_blank" rel="noopener">politique de confidentialité</a>.
                   </label>
                 </div>
                 <input type="text" name="website" class="honey-field" tabindex="-1" aria-hidden="true" autocomplete="off" />
+                <div id="resa-erreur" aria-live="polite"></div>
                 <button type="submit" class="btn btn-primary resa-submit-btn" id="resa-submit-btn">
-                  Confirmer la réservation →
+                  Payer et réserver →
                 </button>
                 <div class="form-status" id="resa-status" aria-live="polite"></div>
+                <!-- Annulation et moyens de paiement -->
+                <div class="resa-fin">
+                  <p>Annulation gratuite jusqu'à 7 jours avant l'arrivée.</p>
+                  <ul class="resa-paiements" aria-label="Moyens de paiement acceptés">
+                    <li><img src="images/paiement/cb.svg" alt="CB" width="24" height="24" /></li>
+                    <li><img src="images/paiement/visa.svg" alt="Visa" width="24" height="24" /></li>
+                    <li><img src="images/paiement/mastercard.svg" alt="Mastercard" width="24" height="24" /></li>
+                    <li><img src="images/paiement/amex.svg" alt="American Express" width="24" height="24" /></li>
+                    <li><img src="images/paiement/apple-pay.svg" alt="Apple Pay" width="24" height="24" /></li>
+                    <li><img src="images/paiement/google-pay.svg" alt="Google Pay" width="24" height="24" /></li>
+                  </ul>
+                  <p class="resa-stripe"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Paiement sécurisé par Stripe</p>
+                </div>
+              </div>
+
+              <!-- Contrat pré-rempli, ouvert par la case 1 -->
+              <div class="resa-contrat" id="resa-contrat" role="dialog" aria-modal="true" aria-labelledby="resa-contrat-titre" hidden>
+                <div class="resa-contrat-fond" data-fermer></div>
+                <div class="resa-contrat-panneau">
+                  <div class="resa-contrat-tete">
+                    <h3 id="resa-contrat-titre">Votre contrat de location</h3>
+                    <button type="button" class="resa-contrat-x" data-fermer aria-label="Fermer">×</button>
+                    <div class="resa-contrat-progres"><i id="resa-contrat-progres"></i></div>
+                  </div>
+                  <div class="resa-contrat-texte" id="resa-contrat-texte" tabindex="0"></div>
+                  <div class="resa-contrat-pied">
+                    <button type="button" class="btn btn-primary" id="resa-contrat-ok" disabled>Faites défiler jusqu'en bas</button>
+                  </div>
+                </div>
               </div>
 
               <!-- Champs cachés -->
               <input type="hidden" id="hidden-nuits"     name="nb_nuits" />
-              <input type="hidden" id="hidden-voyageurs" name="nb_voyageurs" />
               <input type="hidden" id="hidden-arrivee"   name="date_arrivee" />
               <input type="hidden" id="hidden-depart"    name="date_depart" />
 
@@ -583,7 +653,7 @@
             </a>
             <div class="contact-or"></div>
             <div class="phone-card">
-              <p>Un problème pour réserver / durant votre séjour ?</p>
+              <p>Un problème pour réserver ?</p>
               <a href="tel:+33673735318">06.73.73.53.18</a>
               <small>Marceau · Disponible 7j/7</small>
             </div>
@@ -609,7 +679,7 @@
         </div>
         <div>
           <p class="footer-col-title">Légal</p>
-          <p><a href="rules.html">Règlement intérieur</a><br><a href="mentions-legales.html">Mentions légales</a><br><a href="cgv.html">Conditions générales de vente</a><br><a href="politique-confidentialite.html">Politique de confidentialité</a><br><a href="https://www.infomaniak.com" target="_blank" rel="noopener">Hébergé par Infomaniak</a></p>
+          <p><a href="rules.html">Règlement intérieur</a><br><a href="contrat.html">Contrat de location</a><br><a href="mentions-legales.html">Mentions légales</a><br><a href="cgv.html">Conditions générales de vente</a><br><a href="politique-confidentialite.html">Politique de confidentialité</a><br><a href="https://pages.github.com" target="_blank" rel="noopener">Hébergé par GitHub Pages</a></p>
         </div>
       </div>
       <div class="footer-bottom">

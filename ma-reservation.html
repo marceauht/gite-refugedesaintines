@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Ma réservation</title>
+  <meta name="description" content="Gérer ou annuler votre séjour au Refuge de Saintines." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="referrer" content="no-referrer" />
+  <meta name="theme-color" content="#07100c" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="images/logo-lrds.webp" type="image/webp" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/pages/ma-reservation.css" />
+</head>
+<body class="sejour-page">
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Halo lumineux animé en fond -->
+  <div class="sj-aurora" aria-hidden="true">
+    <span class="sj-blob sj-blob--1"></span>
+    <span class="sj-blob sj-blob--2"></span>
+    <span class="sj-blob sj-blob--3"></span>
+  </div>
+
+  <!-- ══════════ EN-TÊTE (identique au site principal) ══════════ -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="#" class="brand" aria-label="Revenir en haut de la page">
+        <img src="images/logo-lrds.webp" alt="Logo Le Refuge de Saintines" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-name">Le Refuge</span>
+          <small class="brand-sub">de Saintines</small>
+        </div>
+      </a>
+      <span class="sj-status" data-statut="CONFIRMEE">
+        <span class="sj-status-dot" aria-hidden="true"></span>
+        <span data-f="statutLibelle">Confirmé</span>
+      </span>
+    </div>
+  </header>
+
+  <!-- Chargement -->
+  <div class="sj-loader" aria-live="polite">
+    <svg class="sj-spinner" viewBox="0 0 50 50" aria-hidden="true"><circle cx="25" cy="25" r="20" /></svg>
+    <p>Chargement de votre séjour…</p>
+  </div>
+
+  <main class="sj-main" id="contenu">
+    <div class="sj-layout">
+
+      <!-- ══════════ COLONNE 1 : HERO + BILLET ══════════ -->
+      <div class="sj-col sj-col--hero">
+
+        <section class="sj-hero" aria-labelledby="sj-titre">
+          <div class="sj-hero-media" aria-hidden="true">
+            <img src="images/hero.webp" alt="" class="sj-hero-img" fetchpriority="high" />
+          </div>
+          <div class="sj-hero-body">
+            <h1 class="sj-title" id="sj-titre">
+              <span class="sj-title-line"><span class="sj-split" data-f="bonjour">Bonjour,</span></span>
+              <span class="sj-title-line"><em class="sj-split" data-f="accroche">le Refuge vous attend.</em></span>
+            </h1>
+            <div class="sj-countdown" id="sj-countdown">
+              <p class="sj-countdown-label" data-f="compteurLibelle">Arrivée prévue dans</p>
+              <div class="sj-countdown-bar" role="timer" aria-live="off">
+                <div class="sj-cd"><span class="sj-flaps" data-cd="j"></span><span class="sj-cd-unit">jours</span></div>
+                <div class="sj-cd"><span class="sj-flaps" data-cd="h"></span><span class="sj-cd-unit">heures</span></div>
+                <div class="sj-cd"><span class="sj-flaps" data-cd="m"></span><span class="sj-cd-unit">minutes</span></div>
+                <div class="sj-cd"><span class="sj-flaps" data-cd="s"></span><span class="sj-cd-unit">secondes</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr class="sj-sep" />
+
+        <!-- Billet du séjour -->
+        <article class="sj-ticket sj-reveal" aria-label="Vos dates">
+          <div class="sj-ticket-band">
+            <img src="images/logo-lrds.webp" alt="" class="sj-ticket-logo" width="30" height="30" />
+            <span class="sj-ticket-brand">Le Refuge<small>de Saintines</small></span>
+            <span class="sj-ticket-type" lang="en">Boarding pass</span>
+          </div>
+          <div class="sj-ticket-top">
+            <div class="sj-ticket-leg">
+              <span class="sj-ticket-kicker">Arrivée</span>
+              <span class="sj-ticket-day" data-f="arriveeJour">00</span>
+              <span class="sj-ticket-month" data-f="arriveeMois">—</span>
+              <span class="sj-ticket-meta"><span data-f="arriveeSemaine">—</span> · dès 16h</span>
+            </div>
+            <div class="sj-ticket-path" aria-hidden="true">
+              <svg viewBox="0 0 200 56">
+                <path id="sj-trajet" d="M6 50 Q100 -12 194 50" />
+                <!-- Avion qui suit la trace (vu de dessus, nez vers la droite).
+                     Il sort par le bout « départ » et ressort par le bout « arrivée »,
+                     masqué au-delà des deux bouts : on dirait qu'il tourne en boucle. -->
+                <defs>
+                  <clipPath id="sj-ciel"><rect x="6" y="-30" width="188" height="110" /></clipPath>
+                  <path id="sj-vol" d="M-28.3 72.7L6 50Q100 -12 194 50L228.3 72.7" />
+                </defs>
+                <g clip-path="url(#sj-ciel)">
+                  <g class="sj-plane">
+                    <path transform="scale(1.5)" d="M-8 -1.3H-2L-4.5 -7H-2.3L1 -1.3H6.5C8.6 -1.3 8.6 1.3 6.5 1.3H1L-2.3 7H-4.5L-2 1.3H-8L-9.6 3.8H-11L-9.8 0L-11 -3.8H-9.6Z" />
+                    <animateMotion dur="5.3s" repeatCount="indefinite" rotate="auto">
+                      <mpath href="#sj-vol" />
+                    </animateMotion>
+                  </g>
+                </g>
+              </svg>
+              <span class="sj-ticket-nights"><span data-f="nuits">0</span> nuit<span data-f="nuitsS">s</span></span>
+            </div>
+            <div class="sj-ticket-leg sj-ticket-leg--end">
+              <span class="sj-ticket-kicker">Départ</span>
+              <span class="sj-ticket-day" data-f="departJour">00</span>
+              <span class="sj-ticket-month" data-f="departMois">—</span>
+              <span class="sj-ticket-meta"><span data-f="departSemaine">—</span> · avant 11h</span>
+            </div>
+          </div>
+          <div class="sj-ticket-tear" aria-hidden="true"></div>
+          <div class="sj-ticket-bottom">
+            <!-- Voyageurs : une case par type, comme « Siège / Porte » sur un billet d'avion -->
+            <div class="sj-ticket-pax">
+              <span class="sj-ticket-kicker">Voyageurs</span>
+              <div class="sj-pax-row">
+                <div class="sj-pax" data-pax="adultes"><span class="sj-pax-num">0</span><span class="sj-pax-label">Adultes</span></div>
+                <div class="sj-pax" data-pax="enfants"><span class="sj-pax-num">0</span><span class="sj-pax-label">Enfants</span></div>
+                <div class="sj-pax" data-pax="bebes"><span class="sj-pax-num">0</span><span class="sj-pax-label">Bébés</span></div>
+              </div>
+              <span class="sj-ticket-lit">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h12v1a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M4 9a6 6 0 0 1 6-6v6"/><path d="M16 9l2-5h2.5"/><path d="M7.6 14 7 16M12.6 14l1.2 2"/><circle cx="7" cy="18.5" r="2"/><circle cx="14.5" cy="18.5" r="2"/></svg>
+                Lit parapluie
+              </span>
+            </div>
+            <!-- Code-barres : un vrai Code 128 de la référence, dessiné par le script -->
+            <figure class="sj-ticket-code">
+              <svg class="sj-barcode" aria-hidden="true" preserveAspectRatio="none"></svg>
+              <figcaption data-f="id">—</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <!-- Actions rapides (défilement horizontal sur téléphone) -->
+        <div class="sj-quick sj-reveal" role="list">
+          <a role="listitem" class="sj-quick-item" id="sj-agenda" href="#">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+            <span>Ajouter à mon agenda</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ══════════ COLONNE 2 : DÉTAILS ══════════ -->
+      <div class="sj-col sj-col--details">
+
+        <hr class="sj-sep sj-sep--mobile" />
+
+        <!-- Frise -->
+        <section class="sj-card sj-timeline-card sj-reveal" aria-labelledby="sj-frise-titre">
+          <h2 class="sj-kicker" id="sj-frise-titre">Votre séjour en détail</h2>
+          <ol class="sj-timeline" id="sj-timeline">
+            <!-- Étapes du séjour + emails envoyés automatiquement (icône enveloppe).
+                 Les dates et l'avancement sont calculés par maReservation.js (data-etape). -->
+            <li class="sj-step" data-etape="resa"><span class="sj-step-dot"></span><span class="sj-step-label">Réservation confirmée</span><span class="sj-step-date">Le <span data-f="dateResaLong">—</span></span></li>
+            <li class="sj-step" data-etape="limite"><span class="sj-step-dot"></span><span class="sj-step-label">Annulation gratuite</span><span class="sj-step-date">jusqu'au <span data-f="dateLimite">—</span></span></li>
+            <li class="sj-step sj-step--mail" data-etape="mailAcces"><span class="sj-step-dot"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span class="sj-step-label">Envoi des informations d’accès<svg class="sj-step-sent" viewBox="0 0 24 24" aria-label="envoyé"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="sj-step-date" data-f="mailAccesLe">—</span></li>
+            <li class="sj-step" data-etape="arrivee"><span class="sj-step-dot"></span><span class="sj-step-label">Arrivée</span><span class="sj-step-date">Le <span data-f="arriveeLong">—</span> · à partir de 16h</span></li>
+            <li class="sj-step sj-step--mail" data-etape="mailDepart"><span class="sj-step-dot"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span class="sj-step-label">Envoi des informations de départ<svg class="sj-step-sent" viewBox="0 0 24 24" aria-label="envoyé"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="sj-step-date" data-f="mailDepartLe">—</span></li>
+            <li class="sj-step" data-etape="depart"><span class="sj-step-dot"></span><span class="sj-step-label">Départ</span><span class="sj-step-date">Le <span data-f="departLong">—</span> · avant 11h</span></li>
+            <li class="sj-step sj-step--mail" data-etape="mailAvis"><span class="sj-step-dot"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span class="sj-step-label">Racontez-nous votre séjour<svg class="sj-step-sent" viewBox="0 0 24 24" aria-label="envoyé"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="sj-step-date" data-f="mailAvisLe">—</span></li>
+            <li class="sj-timeline-track" aria-hidden="true"><span class="sj-timeline-fill"></span></li>
+          </ol>
+        </section>
+
+        <!-- Portail voyageurs : « porte d'embarquement », ouverte la veille de l'arrivée dès 10h
+             (même moment que l'email d'accès). Fermée avant et après le séjour (maReservation.js). -->
+        <a class="sj-gate sj-reveal" id="sj-portail" data-etat="ferme" aria-disabled="true">
+          <span class="sj-gate-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M4.2 13.2l2.4 2.3c.3.3.8.4 1.2.2l11.6-5.2c.9-.4 1.3-1.5.8-2.3-.4-.7-1.3-1-2.1-.7l-4 1.5L8 5.5l-1.8.7 3.4 4.6-3.4 1.4-2-1.1-1.4.6z"/></svg>
+          </span>
+          <span class="sj-gate-body">
+            <span class="sj-gate-kicker">Portail voyageurs</span>
+            <span class="sj-gate-desc">Accès au logement, stationnement, équipements et tutos…</span>
+            <span class="sj-gate-status"><span class="sj-gate-dot"></span><span data-f="portailStatut">—</span></span>
+          </span>
+          <span class="sj-gate-end" aria-hidden="true">
+            <svg class="sj-gate-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+            <svg class="sj-gate-go" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </span>
+        </a>
+
+        <div class="sj-duo">
+          <!-- Paiement -->
+          <section class="sj-card sj-reveal" aria-label="Paiement">
+            <h2 class="sj-kicker">Votre paiement</h2>
+            <p class="sj-amount"><span class="sj-amount-num" data-money="montant">0</span><span class="sj-amount-cur">€</span></p>
+            <p class="sj-small">dont taxe de séjour de <span data-f="taxe">—</span>.</p>
+            <p class="sj-paid"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg><span>Payé via Stripe</span></p>
+          </section>
+
+          <!-- Caution -->
+          <section class="sj-card sj-card--deposit sj-reveal" aria-label="Caution">
+            <h2 class="sj-kicker">Votre caution</h2>
+            <p class="sj-amount"><span class="sj-amount-num" data-money="caution">0</span><span class="sj-amount-cur">€</span></p>
+            <p class="sj-small" data-f="cautionTexte">—</p>                       <!-- phrase adaptée à l'état, écrite par le script -->
+            <!-- État réel chez Stripe : prévue / à valider / non validée (horloge) ; empreinte / libérée / encaissée (coche) -->
+            <p class="sj-paid" id="sj-caution-etat">
+              <svg class="sj-ico-prevue" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+              <svg class="sj-ico-faite" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
+              <span data-f="cautionLibelle">Prévue via Stripe</span>
+            </p>
+            <!-- La banque a demandé une validation : page Stripe sécurisée (lien aussi envoyé par email), qui ramène ici -->
+            <a class="sj-btn sj-btn--soft sj-caution-btn" id="sj-caution-lien" aria-label="Valider ma caution" hidden>
+              <svg class="sj-btn-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 15h4"/></svg>
+              <span class="sj-btn-label">Valider</span>
+            </a>
+          </section>
+        </div>
+
+        <!-- Contrat -->
+        <section class="sj-card sj-card--contract sj-reveal" aria-labelledby="sj-contrat-titre">
+          <div class="sj-doc" aria-hidden="true"><span></span><span></span><span></span><span></span><i>✓</i></div>
+          <div class="sj-contract-body">
+            <h2 class="sj-kicker" id="sj-contrat-titre">Votre contrat de location</h2>
+            <p class="sj-small">Accepté en ligne le <span data-f="contratLe">—</span>. Une copie PDF vous a été envoyée avec l’email de confirmation de réservation (pensez à vérifier vos spams).</p>
+            <button type="button" class="sj-btn sj-btn--soft" id="sj-renvoi" data-state="idle">
+              <svg class="sj-btn-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 10 14"/><path d="M21 3l-7 18-4-7-7-4z"/></svg>
+              <svg class="sj-btn-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
+              <span class="sj-btn-label">Recevoir une copie</span>
+            </button>
+            <p class="sj-small sj-renvoi-note" id="sj-renvoi-note" hidden>Elle arrive dans quelques minutes. Pensez à vérifier vos spams.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Lien invalide ou réservation introuvable (body.is-error) ; le texte change si la connexion a échoué -->
+    <section class="sj-closed sj-error" id="sj-error" aria-labelledby="sj-error-titre" hidden>
+      <div class="sj-card sj-closed-card">
+        <h1 class="sj-kicker" id="sj-error-titre">Lien introuvable</h1>
+        <p class="sj-sheet-text">Ce lien ne correspond à aucune réservation. Copiez-le en entier depuis votre email de confirmation, ou bien <button type="button" class="sj-lien" data-vers="aide">contactez-moi</button>.</p>
+        <a class="sj-btn sj-btn--soft" href="index.html"><span>Retour au site</span></a>
+      </div>
+    </section>
+
+    <!-- Séjour annulé : la page laisse place à cette seule carte (juste après l'annulation,
+         puis à chaque fois que le voyageur rouvre son lien) -->
+    <section class="sj-closed" id="sj-closed" aria-labelledby="sj-closed-titre" hidden>
+      <div class="sj-card sj-closed-card">
+        <svg class="sj-closed-ico" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24" /><path d="M15 27l7 7 15-16" /></svg>
+        <h1 class="sj-kicker" id="sj-closed-titre">Séjour annulé</h1>
+        <!-- Annulé à la main par Marceau : date ou remboursement absents, la phrase concernée disparaît -->
+        <p class="sj-sheet-text">Votre séjour du <span data-f="arriveeLong">—</span> au <span data-f="departLong">—</span> a été annulé<span id="sj-closed-le"> le <span data-f="annuleLe">—</span></span>.<span id="sj-closed-remb"> Un remboursement de <span data-f="rembourseTexte">—</span> est en chemin vers la carte utilisée lors du paiement : comptez 5 à 10 jours selon votre banque.</span></p>
+        <p class="sj-sheet-text">Annulé par erreur&nbsp;? Les dates ont été remises en vente : vous pouvez réserver à nouveau sur le site, si elles sont toujours libres.</p>
+        <a class="sj-btn sj-btn--soft" href="index.html#contact">
+          <svg class="sj-btn-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          <span>Réserver à nouveau</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ══════════ PIED DE PAGE ══════════ -->
+  <!-- Visible aussi sur la carte « Séjour annulé ». Pas d'adresse ni de téléphone : déjà dans la feuille d'aide -->
+  <footer class="sj-footer" role="contentinfo">
+    <!-- Le contrat n'est pas lié ici : le voyageur l'a en PDF dans son email de confirmation -->
+    <nav class="sj-footer-links" aria-label="Votre séjour">
+      <a href="rules.html">Règlement intérieur</a>
+    </nav>
+    <nav class="sj-footer-links" aria-label="Informations légales">
+      <a href="cgv.html">CGV</a><span aria-hidden="true">·</span><a href="mentions-legales.html">Mentions légales</a><span aria-hidden="true">·</span><a href="politique-confidentialite.html">Confidentialité</a>
+    </nav>
+    <p class="sj-footer-note">Ce lien est personnel, ne le partagez pas.</p>
+    <p class="sj-footer-copy">© 2026 <a href="index.html">Le Refuge de Saintines</a></p>
+  </footer>
+
+  <!-- ══════════ BARRE DU BAS ══════════ -->
+  <!-- Les deux actions importantes, toujours à portée de pouce. Au toucher, le bouton choisi
+       prend toute la largeur (l'autre glisse dehors) et sa feuille monte du bas.
+       « Besoin d'annuler ? » disparaît pendant / après le séjour et si le séjour est annulé. -->
+  <nav class="sj-dock" aria-label="Aide et annulation">
+    <button type="button" data-dock="aide" aria-expanded="false" aria-controls="sj-aide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5l1.3-3.8A8 8 0 1 1 8.4 18.6z"/><path d="M10 9.6a2.1 2.1 0 1 1 3 1.9c-.6.3-1 .8-1 1.5"/><path d="M12 15.6v.1"/></svg><span>Besoin d'aide&nbsp;?</span><svg class="sj-dock-fermer" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+    <button type="button" data-dock="annuler" aria-expanded="false" aria-controls="sj-annuler"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4M10 13.5l4 4M14 13.5l-4 4"/></svg><span>Besoin d'annuler&nbsp;?</span><svg class="sj-dock-fermer" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+  </nav>
+
+  <!-- ══════════ FEUILLE « BESOIN D'AIDE ? » ══════════ -->
+  <div class="sj-sheet" id="sj-aide" hidden>
+    <div class="sj-sheet-backdrop" data-close></div>
+    <div class="sj-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="sj-hote-titre">
+      <span class="sj-sheet-grip" aria-hidden="true"></span>
+      <div class="sj-sheet-contact">
+        <div class="sj-host">
+          <img class="sj-host-avatar" src="images/marceau.webp" alt="" width="52" height="52" loading="lazy">
+          <div>
+            <h2 class="sj-kicker" id="sj-hote-titre">Marceau, votre hôte</h2>
+            <p class="sj-text">Un horaire à ajuster, une question sur le logement ou un imprévu ? <span class="sj-nowrap">Contactez-moi</span>, on s'organise ensemble.</p>
+          </div>
+        </div>
+        <div class="sj-contact-grid">
+          <!-- Ligne 1 : messages écrits (SMS, WhatsApp) · ligne 2 : téléphone, email -->
+          <a class="sj-contact" href="sms:+33673735318"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg>SMS</a>
+          <a class="sj-contact" href="https://wa.me/33673735318" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1112 20a8 8 0 01-4-1z"/></svg>WhatsApp</a>
+          <a class="sj-contact" href="tel:+33673735318"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg>Téléphone</a>
+          <a class="sj-contact" id="sj-mail" href="mailto:contact@gite-refugedesaintines.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Email</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ FEUILLE « BESOIN D'ANNULER ? » ══════════ -->
+  <!-- data-mode : possible (avant J-7, remboursé) | late (après J-7, plus d'annulation gratuite) -->
+  <div class="sj-sheet" id="sj-annuler" data-mode="possible" hidden>
+    <div class="sj-sheet-backdrop" data-close></div>
+    <div class="sj-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="sj-annul-titre">
+      <span class="sj-sheet-grip" aria-hidden="true"></span>
+
+      <div class="sj-sheet-step" data-step="info">
+        <h2 class="sj-kicker sj-sheet-kicker" id="sj-annul-titre" data-f="annulTitre">Annuler mon séjour</h2>
+        <div class="sj-cancel-possible">
+          <p class="sj-sheet-text">Vous pouvez annuler gratuitement votre séjour jusqu'au <span data-f="dateLimite">—</span>, soit 7 jours avant votre arrivée. Les <span data-f="montantTexte">—</span> payés vous seront alors remboursés en totalité sur la carte utilisée lors de la réservation, sous 5 à 10 jours selon votre banque.</p>
+          <p class="sj-sheet-text">Passé cette date, l'annulation n'est plus possible en ligne et le séjour reste dû, comme prévu au contrat.</p>
+          <p class="sj-sheet-delai">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+            <span data-f="joursRestants">—</span>
+          </p>
+          <button type="button" class="sj-hold" id="sj-hold">
+            <span class="sj-hold-fill"></span>
+            <span class="sj-hold-label">Maintenir pour annuler</span>
+          </button>
+        </div>
+        <div class="sj-cancel-late">
+          <p class="sj-sheet-text">L'annulation gratuite était possible jusqu'au <span data-f="dateLimite">—</span>, soit 7 jours avant votre arrivée. Ce délai étant passé, le séjour reste dû, comme prévu au contrat de location.</p>
+          <p class="sj-sheet-text">En cas d'imprévu, <span class="sj-nowrap">contactez-moi&nbsp;:</span> nous regarderons ensemble ce qu'il est possible de faire.</p>
+          <button type="button" class="sj-btn sj-btn--soft" data-vers="aide">
+            <svg class="sj-btn-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5l1.3-3.8A8 8 0 1 1 8.4 18.6z"/></svg>
+            <span>Contacter Marceau</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="sj-sheet-step sj-sheet-step--center" data-step="loading" hidden>
+        <svg class="sj-spinner" viewBox="0 0 50 50" aria-hidden="true"><circle cx="25" cy="25" r="20" /></svg>
+        <p class="sj-sheet-text">Annulation et remboursement en cours…</p>
+      </div>
+
+      <div class="sj-sheet-step sj-sheet-step--center" data-step="done" hidden>
+        <svg class="sj-done" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24" /><path d="M15 27l7 7 15-16" /></svg>
+        <h2 class="sj-kicker sj-sheet-kicker">Séjour annulé</h2>
+        <p class="sj-sheet-text">Votre séjour du <span data-f="arriveeLong">—</span> au <span data-f="departLong">—</span> a bien été annulé. Un remboursement de <span data-f="rembourseTexte">—</span> est en chemin vers la carte utilisée lors du paiement : comptez 5 à 10 jours selon votre banque.</p>
+        <p class="sj-sheet-text">Un email de confirmation vient de vous être envoyé (pensez à vérifier vos spams).</p>
+        <button type="button" class="sj-btn sj-btn--soft" data-close>Fermer</button>
+      </div>
+
+      <!-- Le script a refusé ou n'a pas répondu : rien n'est annulé -->
+      <div class="sj-sheet-step sj-sheet-step--center" data-step="erreur" hidden>
+        <h2 class="sj-kicker sj-sheet-kicker">Annulation impossible</h2>
+        <p class="sj-sheet-text" data-f="annulErreur">—</p>
+        <button type="button" class="sj-btn sj-btn--soft" data-vers="aide">
+          <svg class="sj-btn-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5l1.3-3.8A8 8 0 1 1 8.4 18.6z"/></svg>
+          <span>Contacter Marceau</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js" type="module"></script>
+</body>
+</html>

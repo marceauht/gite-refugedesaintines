@@ -1,0 +1,966 @@
+/* ============================================================
+   MA-RESERVATION.CSS — Page « Mon séjour » (réservations directes)
+   Pensée d'abord pour le téléphone (styles de base = mobile),
+   puis enrichie pour tablette (≥ 768 px) et ordinateur (≥ 1024 px).
+   Chargée uniquement par ma-reservation.html.
+   ============================================================ */
+
+.sejour-page {
+  --sj-ease:    cubic-bezier(0.16, 1, 0.3, 1);
+  --sj-ease-io: cubic-bezier(0.65, 0, 0.35, 1);
+  --sj-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --sj-danger:  #e7a08f;
+  --sj-blue:    #8cc4ec;                                   /* séjour en cours */
+  --sj-radius:  24px;
+  --sj-gap:     12px;
+  --sj-pad:     16px;
+  --sj-dock-h:  64px;
+  --mx: 50%;
+  --my: 30%;
+  padding-bottom: calc(var(--sj-dock-h) + 28px + env(safe-area-inset-bottom));
+}
+.sejour-page :focus-visible { outline: 2px solid var(--sage); outline-offset: 3px; }
+
+/* ── Fond animé (aurora) ────────────────────────────────────── */
+.sj-aurora {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  filter: blur(60px);
+  opacity: 0.5;
+}
+.sj-blob { position: absolute; border-radius: 50%; will-change: transform; }
+.sj-blob--1 {
+  width: 120vw; height: 120vw;
+  top: -50vw; left: -40vw;
+  background: radial-gradient(circle, rgba(16, 128, 110, 0.5), transparent 65%);
+  animation: sjFloat1 20s var(--sj-ease-io) infinite alternate;
+}
+.sj-blob--2 {
+  width: 110vw; height: 110vw;
+  bottom: -50vw; right: -45vw;
+  background: radial-gradient(circle, rgba(144, 190, 171, 0.3), transparent 65%);
+  animation: sjFloat2 24s var(--sj-ease-io) infinite alternate;
+}
+.sj-blob--3 {
+  width: 40vmax; height: 40vmax;
+  left: var(--mx); top: var(--my);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(184, 216, 204, 0.16), transparent 65%);
+  transition: left 1.2s var(--sj-ease), top 1.2s var(--sj-ease);
+}
+@keyframes sjFloat1 { to { transform: translate(30vw, 40vh) scale(1.1); } }
+@keyframes sjFloat2 { to { transform: translate(-30vw, -40vh) scale(0.9); } }
+
+/* ── En-tête : celui du site principal (navigation.css) ───── */
+/* Pas de zoom au double tap ; l'en-tête est fixe, on laisse sa place */
+html { touch-action: manipulation; }
+.sejour-page { padding-top: 78px; }
+
+/* ── Chargement ─────────────────────────────────────────────── */
+.sj-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 16px;
+  background: var(--bg);
+  color: var(--cream-dim);
+  font-size: 13px;
+  transition: opacity 0.6s var(--sj-ease), visibility 0.6s;
+}
+.is-ready .sj-loader { opacity: 0; visibility: hidden; }
+.sj-spinner { width: 42px; height: 42px; animation: sjSpin 1.4s linear infinite; }
+.sj-spinner circle {
+  fill: none; stroke: var(--sage); stroke-width: 2.5; stroke-linecap: round;
+  animation: sjDash 1.4s var(--sj-ease-io) infinite;
+}
+@keyframes sjSpin { to { transform: rotate(360deg); } }
+@keyframes sjDash {
+  0%   { stroke-dasharray: 1 150;  stroke-dashoffset: 0; }
+  50%  { stroke-dasharray: 90 150; stroke-dashoffset: -35; }
+  100% { stroke-dasharray: 90 150; stroke-dashoffset: -124; }
+}
+
+/* ── Mise en page ───────────────────────────────────────────── */
+.sj-main { position: relative; z-index: 2; }
+.sj-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sj-gap);
+  padding: 12px var(--sj-pad) 0;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.sj-col { display: flex; flex-direction: column; gap: var(--sj-gap); min-width: 0; }
+
+/* ── Hero (carte photo) ─────────────────────────────────────── */
+.sj-hero {
+  position: relative;
+  min-height: min(65svh, 640px);
+  padding: 0;               /* annule le padding des <section> du site */
+  display: flex;
+  align-items: flex-end;
+  border-radius: 28px;
+  overflow: hidden;
+  isolation: isolate;
+  transform: scale(0.94);
+  opacity: 0;
+  transition: transform 1.2s var(--sj-ease), opacity 0.8s var(--sj-ease);
+}
+.is-ready .sj-hero { transform: none; opacity: 1; }
+.sj-hero-media { position: absolute; inset: 0; z-index: -1; }
+.sj-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.25);
+  transition: transform 2.2s var(--sj-ease);
+}
+.is-ready .sj-hero-img { transform: scale(1.06) translateY(var(--sj-parallax, 0px)); }
+.sj-hero-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7, 16, 12, 0.35) 0%, rgba(7, 16, 12, 0.45) 35%, rgba(7, 16, 12, 0.94) 78%),
+    radial-gradient(ellipse at 10% 100%, rgba(16, 128, 110, 0.35), transparent 60%);
+}
+.sj-hero-body { width: 100%; padding: 24px 18px 18px; }
+
+.sj-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px 8px 11px;
+  border-radius: 60px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--sage-light);
+  margin-right: 4px;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.7s var(--sj-ease) 0.4s, transform 0.7s var(--sj-ease) 0.4s;
+}
+.is-ready .sj-status { opacity: 1; transform: none; }
+.sj-status-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #5cffc1; box-shadow: 0 0 10px #5cffc1;
+  animation: sjGateDot 2s ease-in-out infinite;            /* respire en gardant sa couleur */
+}
+.sj-status[data-statut="EN_COURS"] .sj-status-dot { background: var(--sj-blue); box-shadow: 0 0 10px var(--sj-blue); }
+.sj-status[data-statut="TERMINE"] .sj-status-dot { background: var(--cream-faint); box-shadow: none; animation: none; }
+.sj-status[data-statut="ANNULEE"] { color: var(--sj-danger); }
+.sj-status[data-statut="ANNULEE"] .sj-status-dot { background: var(--sj-danger); box-shadow: 0 0 10px var(--sj-danger); animation: none; }
+
+.sj-title {
+  font-size: clamp(38px, 11vw, 64px);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0 0 22px;
+}
+.sj-title-line { display: block; overflow: hidden; padding-bottom: 0.1em; }
+.sj-title em { font-style: italic; color: var(--sage); }
+.sj-char {
+  display: inline-block;
+  transform: translateY(115%) rotate(8deg);
+  opacity: 0;
+  transition: transform 1s var(--sj-ease), opacity 1s var(--sj-ease);
+  transition-delay: calc(0.55s + var(--i) * 0.025s);
+}
+.sj-space { display: inline-block; width: 0.25em; }
+.is-ready .sj-char { transform: none; opacity: 1; }
+
+/* Compte à rebours : palettes qui basculent (façon aéroport), aux couleurs du site */
+.sj-countdown { opacity: 0; transform: translateY(14px); transition: opacity 0.9s var(--sj-ease) 1.1s, transform 0.9s var(--sj-ease) 1.1s; }
+.is-ready .sj-countdown { opacity: 1; transform: none; }
+.sj-countdown.is-hidden { display: none; }
+.sj-countdown-label { font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--sage); margin: 4px 0 6px; text-align: center; }
+.sj-countdown-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 14px 10px;
+  border-radius: 20px;
+  background: rgba(7, 16, 12, 0.5);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.sj-cd { display: flex; flex-direction: column; align-items: center; gap: 7px; }
+.sj-flaps { display: flex; gap: 4px; }
+.sj-cd-unit { font-size: 9px; font-weight: 600; letter-spacing: 1.8px; text-transform: uppercase; color: var(--cream-faint); }
+
+/* Une palette = 2 moitiés fixes + 2 moitiés qui basculent */
+.sj-flap {
+  --flap-h: 46px;
+  position: relative;
+  display: block;
+  width: 30px;
+  height: var(--flap-h);
+  font-family: var(--font-body);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--cream);
+  border-radius: 9px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(184, 216, 204, 0.1);
+}
+.sj-flap > span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  overflow: hidden;
+}
+.sj-flap b { display: block; height: var(--flap-h); line-height: var(--flap-h); text-align: center; font-weight: inherit; }
+.sj-flap-top, .sj-flap-fold {
+  top: 0;
+  border-radius: 8px 8px 0 0;
+  background: linear-gradient(180deg, #1a2f26, #142720);
+}
+.sj-flap-bottom, .sj-flap-unfold {
+  bottom: 0;
+  border-radius: 0 0 8px 8px;
+  background: linear-gradient(180deg, #10221b, #0d1a14);
+}
+.sj-flap-bottom b, .sj-flap-unfold b { margin-top: calc(var(--flap-h) / -2); }
+.sj-flap-fold   { z-index: 2; transform-origin: 50% 100%; }
+.sj-flap-unfold { z-index: 2; transform-origin: 50% 0; transform: scaleY(0); }
+/* Fente centrale, discrète */
+.sj-flap::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: calc(50% - 0.5px);
+  height: 1px;
+  background: rgba(7, 16, 12, 0.9);
+  box-shadow: 0 1px 0 rgba(144, 190, 171, 0.08);
+  z-index: 3;
+}
+.sj-flap.is-flipping .sj-flap-fold   { animation: sjFold 0.26s ease-in forwards; }
+.sj-flap.is-flipping .sj-flap-unfold { animation: sjUnfold 0.26s ease-out 0.26s forwards; }
+/* Mouvement en 2D (écrasement vertical) : même effet visuel que la 3D,
+   mais rendu fiable sur tous les téléphones (Safari iPhone compris) */
+@keyframes sjFold   { from { transform: scaleY(1); } to { transform: scaleY(0); } }
+@keyframes sjUnfold { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
+/* Séparateur entre deux sections (même trait que les pages CGV / règlement) */
+.sj-sep {
+  border: 0;
+  height: 1px;
+  margin: 14px 0;           /* + l'écart de la colonne = ~26px de chaque côté */
+  background: var(--glass-border);
+}
+
+/* ── Billet du séjour ───────────────────────────────────────── */
+.sj-ticket {
+  position: relative;
+  border-radius: var(--sj-radius);
+  background: linear-gradient(165deg, #f7f3eb, #e9e2d3);
+  color: var(--bg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+.sj-ticket::before {
+  /* reflet qui balaie le billet à l'apparition */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.65) 50%, transparent 65%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+.sj-ticket.visible::before { animation: sjSheen 1.6s var(--sj-ease) 0.4s; }
+@keyframes sjSheen { to { transform: translateX(120%); } }
+
+/* Bandeau du billet (comme un vrai titre de transport) */
+.sj-ticket-band {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 20px;
+  background: linear-gradient(100deg, var(--bg-3), #173a2f 60%, var(--sage-dark));
+  color: var(--cream);
+}
+.sj-ticket-logo { width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(244, 241, 234, 0.35); }
+.sj-ticket-brand { display: flex; flex-direction: column; font-family: var(--font-display); font-size: 15px; line-height: 1.1; }
+.sj-ticket-brand small { font-family: var(--font-body); font-size: 8px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--sage-light); }
+.sj-ticket-type { margin-left: auto; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--sage-light); }
+
+.sj-ticket-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  position: relative;
+  gap: 6px;
+  padding: 20px 20px 18px;
+}
+.sj-ticket-leg { display: flex; flex-direction: column; }
+.sj-ticket-leg--end { text-align: right; align-items: flex-end; }
+.sj-ticket-kicker { font-size: 9px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--sage-dark); }
+.sj-ticket-day { font-family: var(--font-display); font-size: 64px; font-weight: 400; line-height: 0.75; margin-top: 2px; }
+.sj-ticket-month { font-family: var(--font-display); font-style: italic; font-size: 20px; color: var(--sage-dark); }
+.sj-ticket-meta { font-size: 11px; color: rgba(7, 16, 12, 0.6); margin-top: 4px; }
+/* Trajet : posé par-dessus, entre les deux dates */
+.sj-ticket-path { position: absolute; left: 27%; right: 27%; top: 44px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.sj-ticket-path svg { width: 100%; height: auto; overflow: visible; }
+.sj-ticket-path path {
+  fill: none; stroke: var(--sage-dark); stroke-width: 1.5; stroke-dasharray: 3 4;
+  stroke-dashoffset: 0;
+}
+.sj-ticket.visible .sj-ticket-path path { animation: sjMarch 1.2s linear infinite; }
+@keyframes sjMarch { to { stroke-dashoffset: -14; } }
+.sj-ticket.visible .sj-ticket-path .sj-plane path, .sj-ticket-path .sj-plane path { fill: var(--sage-dark); stroke: none; animation: none; }
+.sj-ticket-nights { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+
+/* Découpe perforée */
+.sj-ticket-tear {
+  position: relative;
+  height: 0;
+  margin: 0 18px;
+  border-top: 2px dashed rgba(7, 16, 12, 0.18);
+}
+.sj-ticket-tear::before, .sj-ticket-tear::after {
+  content: '';
+  position: absolute;
+  top: -12px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--bg);
+}
+.sj-ticket-tear::before { left: -30px; }
+.sj-ticket-tear::after  { right: -30px; }
+
+.sj-ticket-bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; padding: 16px 20px 18px; }
+/* Voyageurs : cases façon billet d'avion */
+.sj-ticket-pax { flex: none; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.sj-ticket-pax > .sj-ticket-kicker { align-self: flex-start; }
+.sj-pax-row { display: flex; }
+.sj-pax { display: flex; flex-direction: column; align-items: center; padding: 0 11px; }
+.sj-pax:first-child { padding-left: 0; }
+.sj-pax + .sj-pax { border-left: 1px solid rgba(7, 16, 12, 0.12); }
+.sj-pax[hidden] { display: none; }
+.sj-pax-num { font-family: var(--font-display); font-size: 32px; line-height: 0.9; }
+.sj-pax-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(7, 16, 12, 0.5); margin-top: 4px; }
+.sj-ticket-lit {
+  margin-top: 10px;         /* 8px (écart) + 10px = 18px, comme l'espace sous l'étiquette */
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--sage-dark);
+  padding: 4px 9px 4px 7px;
+  border: 1px solid rgba(16, 128, 110, 0.35);
+  border-radius: 40px;
+  background: rgba(16, 128, 110, 0.06);
+}
+.sj-ticket-lit svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.sj-ticket-lit[hidden] { display: none; }
+/* Code-barres + référence en dessous, comme sur un ticket de caisse */
+.sj-ticket-code { flex: none; margin: 0; margin-bottom: 12px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.sj-barcode { display: block; width: 112px; height: 36px; fill: var(--bg); opacity: 0.85; }
+.sj-ticket-code figcaption {
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: rgba(7, 16, 12, 0.7);
+}
+
+/* ── Actions rapides ────────────────────────────────────────── */
+/* Bouton agenda : largeur ajustée au texte, centré, mis en valeur */
+.sj-quick { display: flex; justify-content: center; }
+.sj-quick .sj-quick-item {
+  padding: 12px 22px;
+  background: rgba(144, 190, 171, 0.12);
+  border-color: rgba(144, 190, 171, 0.45);
+  color: var(--sage-light);
+  font-weight: 600;
+  box-shadow: 0 0 22px rgba(144, 190, 171, 0.14);
+}
+.sj-quick .sj-quick-item svg { stroke: var(--sage-light); }
+.sj-quick-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: var(--cream);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.3;
+  text-decoration: none;
+  transition: transform 0.25s var(--sj-ease), background 0.3s, border-color 0.3s;
+  -webkit-tap-highlight-color: transparent;
+}
+.sj-quick-item svg { width: 22px; height: 22px; fill: none; stroke: var(--sage); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.sj-quick-item:active { transform: scale(0.95); background: var(--glass-hover); }
+
+/* ── Cartes ─────────────────────────────────────────────────── */
+.sj-card {
+  --spot-x: 50%;
+  --spot-y: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border-radius: var(--sj-radius);
+  background: linear-gradient(165deg, rgba(18, 31, 24, 0.85), rgba(7, 16, 12, 0.75));
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  overflow: hidden;
+  isolation: isolate;
+}
+.sj-kicker {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--sage);
+  line-height: 1.4;
+}
+.sj-text  { font-size: 14px; line-height: 1.65; color: var(--cream-dim); }
+.sj-text strong { color: var(--cream); font-weight: 600; }
+.sj-small { font-size: 12px; line-height: 1.5; color: var(--cream-dim); }
+
+.sj-duo { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sj-gap); }
+.sj-duo .sj-card { padding: 18px 16px; }
+/* Les deux cartes partagent les mêmes lignes : « Payé via Stripe » reste à la hauteur
+   de l'état de la caution, même quand le bouton « Valider » apparaît dessous */
+@supports (grid-template-rows: subgrid) {
+  .sj-duo { grid-template-rows: repeat(4, auto); row-gap: 0; }
+  .sj-duo:has(#sj-caution-lien:not([hidden])) { grid-template-rows: repeat(5, auto); }
+  .sj-duo .sj-card { display: grid; grid-row: 1 / -1; grid-template-rows: subgrid; row-gap: 10px; align-content: start; }
+}
+
+.sj-amount { display: flex; align-items: baseline; gap: 4px; }
+.sj-amount + .sj-small { margin-top: -6px; }              /* petit texte collé au montant */
+.sj-amount-num { font-family: var(--font-display); font-size: 40px; line-height: 1; font-variant-numeric: tabular-nums; }
+.sj-amount-cur { font-family: var(--font-display); font-size: 22px; color: var(--sage); }
+.sj-paid { display: flex; align-items: center; gap: 6px; margin-top: auto; font-size: 11px; font-weight: 600; color: var(--sage-light); }
+.sj-paid svg { flex: none; width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+#sj-caution-etat[data-etat="prevue"] .sj-ico-faite,
+#sj-caution-etat[data-etat="faite"] .sj-ico-prevue { display: none; }
+/* Bouton « Valider ma caution » : même style que « Recevoir une copie » */
+.sj-caution-btn { margin-top: 12px; white-space: nowrap; }   /* carte étroite : « Valider » seul, « À valider » est juste au-dessus */
+.sj-caution-btn[hidden] { display: none; }
+
+/* Apparition au défilement */
+.sj-reveal {
+  opacity: 0;
+  translate: 0 28px;
+  scale: 0.97;
+  transition: opacity 0.9s var(--sj-ease), translate 0.9s var(--sj-ease), scale 0.9s var(--sj-ease);
+}
+.sj-reveal.visible { opacity: 1; translate: none; scale: none; }
+
+/* ── Portail voyageurs : porte d'embarquement ────────────────── */
+.sj-gate {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: var(--sj-radius);
+  border: 1px solid rgba(144, 190, 171, 0.45);
+  background: linear-gradient(135deg, rgba(16, 128, 110, 0.22), rgba(7, 16, 12, 0.8));
+  box-shadow: 0 0 22px rgba(144, 190, 171, 0.12);
+  color: var(--cream);
+  text-decoration: none;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.3s var(--sj-ease), border-color 0.3s, box-shadow 0.3s;
+}
+.sj-gate-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: rgba(144, 190, 171, 0.14);
+}
+.sj-gate svg { fill: none; stroke: var(--sage-light); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.sj-gate-icon svg { width: 24px; height: 24px; }
+.sj-gate-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.sj-gate-kicker { font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--sage); }
+.sj-gate-desc   { font-size: 12px; line-height: 1.45; color: var(--cream-dim); }
+.sj-gate-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 4px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--sage);                                      /* même vert que « Portail voyageurs » */
+}
+/* Point qui « respire » comme celui de l'en-tête, en gardant la couleur du statut */
+.sj-gate-dot { flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--sage-light); box-shadow: 0 0 8px var(--sage); animation: sjGateDot 2s ease-in-out infinite; }
+@keyframes sjGateDot { 50% { opacity: 0.4; transform: scale(0.7); } }
+.sj-gate-end { flex: none; }
+.sj-gate-end svg { width: 20px; height: 20px; display: block; }
+.sj-gate-lock { display: none !important; }
+.sj-gate:active { transform: scale(0.98); }
+.sj-gate[data-etat="ouvert"]:hover .sj-gate-go { transform: translate(3px, -3px); }
+.sj-gate-go { transition: transform 0.4s var(--sj-ease); }
+
+/* Fermé : grisé, cadenas, pas de lien */
+.sj-gate:not([data-etat="ouvert"]) {
+  border-color: var(--glass-border);
+  background: var(--glass);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+.sj-gate:not([data-etat="ouvert"]) .sj-gate-icon,
+.sj-gate:not([data-etat="ouvert"]) .sj-gate-desc { opacity: 0.45; filter: grayscale(1); }
+.sj-gate:not([data-etat="ouvert"]) .sj-gate-kicker { color: var(--cream-faint); }
+.sj-gate:not([data-etat="ouvert"]) .sj-gate-status { color: var(--cream-dim); }
+.sj-gate:not([data-etat="ouvert"]) .sj-gate-dot { background: var(--cream-dim); box-shadow: 0 0 6px var(--cream-faint); }
+.sj-gate[data-etat="termine"] .sj-gate-dot { animation: none; }            /* séjour fini : le point ne bouge plus */
+.sj-gate:not([data-etat="ouvert"]) .sj-gate-end svg { stroke: var(--cream-faint); }
+.sj-gate:not([data-etat="ouvert"]) .sj-gate-lock { display: block !important; }
+.sj-gate:not([data-etat="ouvert"]) .sj-gate-go { display: none; }
+.sj-gate:not([data-etat="ouvert"]):active { transform: none; }
+/* « Non » de la tête, en 3D : la carte pivote à gauche puis à droite, de moins en moins
+   (porte d'embarquement fermée, et billet quand on le touche) */
+.sj-gate.is-refus, .sj-ticket.is-refus { animation: sjRefus 0.7s ease-in-out; }
+.sj-ticket { -webkit-tap-highlight-color: transparent; }
+@keyframes sjRefus {
+  0%, 100% { transform: perspective(700px) rotateY(0); }
+  18% { transform: perspective(700px) rotateY(-16deg); }
+  42% { transform: perspective(700px) rotateY(12deg); }
+  64% { transform: perspective(700px) rotateY(-7deg); }
+  84% { transform: perspective(700px) rotateY(3deg); }
+}
+
+/* ── Frise ──────────────────────────────────────────────────── */
+.sj-timeline {
+  position: relative;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 6px 0 2px 32px;
+}
+.sj-timeline-track { position: absolute; left: 8px; top: 12px; height: 0; width: 2px; border-radius: 2px; background: var(--glass-border); overflow: hidden; }
+.sj-timeline-fill {
+  position: absolute; inset: 0;
+  transform-origin: top;
+  transform: scaleY(0);
+  background: linear-gradient(180deg, var(--sage-dark), var(--sage), var(--sage-light));
+  transition: transform 1.6s var(--sj-ease) 0.3s;
+}
+.sj-timeline.visible .sj-timeline-fill { transform: scaleY(var(--progress, 0)); }
+.sj-step { position: relative; display: flex; flex-direction: column; }
+.sj-step-dot {
+  position: absolute;
+  left: -32px;
+  top: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--glass-border);
+  z-index: 1;
+  transition: background 0.5s, border-color 0.5s, box-shadow 0.5s;
+  transition-delay: calc(0.4s + var(--d, 0) * 0.3s);
+}
+.sj-step.done .sj-step-dot { background: var(--sage); border-color: var(--sage); }
+.sj-step.current .sj-step-dot { border-color: var(--sage-light); box-shadow: 0 0 0 5px var(--sage-glow), 0 0 18px var(--sage); animation: sjBeat 2.2s ease-in-out 2s infinite; }
+@keyframes sjBeat { 50% { box-shadow: 0 0 0 9px rgba(144, 190, 171, 0.05), 0 0 26px var(--sage); } }
+.sj-step-label { font-size: 14px; font-weight: 600; }
+.sj-step-date  { font-size: 12px; color: var(--cream-dim); }
+.sj-step.muted .sj-step-label { color: var(--cream-faint); text-decoration: line-through; }
+.sj-step[hidden] { display: none; }
+
+/* Emails automatiques : étapes plus discrètes, pastille enveloppe */
+.sj-step--mail .sj-step-dot { display: grid; place-items: center; border-width: 1px; }
+.sj-step--mail .sj-step-dot svg { width: 10px; height: 10px; fill: none; stroke: var(--cream-faint); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.5s; transition-delay: inherit; }
+.sj-step--mail.done .sj-step-dot svg { stroke: var(--bg); }
+.sj-step--mail .sj-step-label { font-size: 13px; font-weight: 500; color: var(--cream-dim); }
+/* Coche « envoyé » au bout de l'intitulé, quand la frise a passé l'étape */
+.sj-step-sent { display: none; width: 13px; height: 13px; margin-left: 6px; vertical-align: -2px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 24; stroke-dashoffset: 24; }
+.sj-step--mail.done .sj-step-sent { display: inline-block; animation: sjDraw 0.6s var(--sj-ease) 0.4s forwards; }
+.sj-step--mail .sj-step-date  { font-size: 11.5px; color: var(--cream-faint); }
+
+/* ── Contrat ────────────────────────────────────────────────── */
+.sj-card--contract { flex-direction: row; align-items: center; gap: 24px; }
+.sj-contract-body { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; min-width: 0; }
+.sj-doc {
+  position: relative;
+  flex: none;
+  width: 70px;
+  height: 92px;
+  padding: 14px 10px;
+  border-radius: 8px;
+  background: var(--cream);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transform: rotate(-6deg) translateY(8px);
+  transition: transform 1s var(--sj-spring) 0.3s;
+}
+.sj-card.visible .sj-doc { transform: rotate(-4deg); }
+.sj-doc span { height: 4px; border-radius: 2px; background: rgba(7, 16, 12, 0.14); }
+.sj-doc span:first-child { width: 70%; background: rgba(16, 128, 110, 0.55); }
+.sj-doc span:nth-child(4) { width: 55%; }
+.sj-doc i {
+  position: absolute; right: -10px; bottom: -10px;
+  width: 30px; height: 30px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-style: normal; font-size: 14px; font-weight: 700;
+  background: var(--sage-dark); color: var(--cream);
+  box-shadow: 0 0 0 3px var(--bg-2);
+  transform: scale(0);
+  transition: transform 0.6s var(--sj-spring) 0.9s;
+}
+.sj-card.visible .sj-doc i { transform: scale(1); }
+
+/* ── Boutons ────────────────────────────────────────────────── */
+.sj-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 12px 20px;
+  border-radius: 60px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.3s, border-color 0.3s, color 0.3s, transform 0.25s var(--sj-ease);
+}
+.sj-btn:active { transform: scale(0.96); }
+/* Bouton doux, même style que le bouton agenda (teinte sauge, icône à gauche) */
+.sj-btn--soft {
+  min-height: 0;
+  padding: 10px 16px;
+  background: rgba(144, 190, 171, 0.12);
+  border-color: rgba(144, 190, 171, 0.45);
+  color: var(--sage-light);
+}
+.sj-contract-body .sj-btn { align-self: center; }   /* bouton centré, à distance du visuel */
+.sj-renvoi-note { align-self: center; text-align: center; }
+.sj-renvoi-note[hidden] { display: none; }
+.sj-btn-ico { flex: none; width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.sj-btn[data-state="loading"] .sj-btn-ico, .sj-btn[data-state="done"] .sj-btn-ico { display: none; }
+.sj-btn-check { flex: none; width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 24; stroke-dashoffset: 24; display: none; }
+.sj-btn[data-state="loading"] { pointer-events: none; color: var(--cream-dim); }
+.sj-btn[data-state="loading"]::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(144, 190, 171, 0.25), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 1.1s linear infinite;
+}
+.sj-btn[data-state="done"] { background: var(--sage); border-color: var(--sage); color: var(--bg); }
+.sj-btn[data-state="done"] .sj-btn-check { display: block; animation: sjDraw 0.5s var(--sj-ease) forwards; }
+@keyframes sjDraw { to { stroke-dashoffset: 0; } }
+
+/* ── Hôte ───────────────────────────────────────────────────── */
+.sj-nowrap { white-space: nowrap; }                       /* évite « Contactez- / moi » coupé en deux */
+.sj-host { display: flex; gap: 12px; align-items: flex-start; }
+.sj-host-avatar {
+  flex: none;
+  width: 52px; height: 52px; border-radius: 50%;
+  object-fit: cover;
+  object-position: center 30%;     /* recadrage : 2e valeur plus petite = on voit plus le haut, plus grande = plus le bas */
+  border: 2px solid var(--sage);
+  background: var(--bg-3);
+}
+.sj-contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
+.sj-contact {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 46px; padding: 10px 12px;
+  border-radius: 14px;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  color: var(--cream); font-size: 13px; font-weight: 600; text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.25s var(--sj-ease), background 0.3s, border-color 0.3s;
+}
+.sj-contact svg { width: 18px; height: 18px; fill: none; stroke: var(--sage); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.sj-contact:active { transform: scale(0.96); background: var(--glass-hover); }
+
+/* ── Feuille d'annulation : contenu ────────────────────────── */
+.sj-cancel-late { display: none; }
+#sj-annuler[data-mode="late"] .sj-cancel-possible { display: none; }
+#sj-annuler[data-mode="late"] .sj-cancel-late { display: block; }
+.sj-cancel-late .sj-btn { width: 100%; }
+/* Jours restants : même style que « Payé via Stripe » (icône + texte sauge) */
+.sj-sheet-delai { display: flex; align-items: flex-start; gap: 8px; margin-top: -6px; font-size: 14px; line-height: 1.5; color: var(--sage); }
+.sj-sheet-delai svg { flex: none; width: 17px; height: 17px; margin-top: 1px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.sj-cancel-possible .sj-hold { margin-top: 28px; }
+
+/* ── Feuille d'aide : contenu ───────────────────────────────── */
+.sj-sheet-contact { display: flex; flex-direction: column; gap: 16px; }
+
+/* ── Pied de page : même séparateur que le site principal ───── */
+.sj-footer {
+  position: relative; z-index: 2;
+  max-width: 560px;
+  margin: 48px auto 0;
+  padding: 28px 0 0;
+  border-top: 1px solid var(--glass-border);              /* ligne qui s'arrête avant les bords */
+  width: calc(100% - 2 * var(--sj-pad));
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  text-align: center;
+  font-size: 12px; line-height: 1.6; color: var(--cream-faint);
+}
+.sj-footer a { color: var(--cream-faint); text-decoration: none; transition: color 0.3s; }
+.sj-footer a:hover, .sj-footer a:focus-visible { color: var(--sage); }
+.sj-footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 8px; }
+.sj-footer-note { margin-top: 10px; }
+.sj-footer-copy { margin-top: 10px; font-size: 11px; }
+.is-error .sj-footer-note { display: none; }
+
+/* ── Séjour annulé : une seule carte au centre ──────────────── */
+.is-annulee .sj-layout { display: none; }
+.sj-layout.is-leaving { opacity: 0; transform: scale(0.97); filter: blur(6px); transition: opacity 0.6s var(--sj-ease), transform 0.6s var(--sj-ease), filter 0.6s; }
+.sj-closed {
+  min-height: calc(100svh - 160px);
+  display: grid; place-items: center;
+  padding: 40px var(--sj-pad) 0;
+}
+.sj-closed[hidden] { display: none; }
+.sj-closed-card { max-width: 440px; align-items: center; text-align: center; padding: 32px 24px; animation: sjClosedIn 0.9s var(--sj-ease) both; }
+.sj-closed-card .sj-sheet-text { margin-bottom: 0; }
+.sj-closed-card .sj-btn { margin-top: 12px; }
+.sj-closed-ico { width: 56px; height: 56px; margin-bottom: 6px; }
+.sj-closed-ico circle, .sj-closed-ico path { fill: none; stroke: var(--sage); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+@keyframes sjClosedIn { from { opacity: 0; transform: translateY(18px) scale(0.98); } }
+
+/* ── Lien invalide ──────────────────────────────────────────── */
+/* Même carte centrée que « Séjour annulé » (classes .sj-closed) */
+.sj-error a:not(.sj-btn) { color: var(--sage); }
+/* « contactez-moi » : bouton dans la phrase, mis en avant par la couleur (ouvre la feuille de contact) */
+.sj-lien { display: inline; padding: 0; border: 0; background: none; font: inherit; font-weight: 600; color: var(--sage); cursor: pointer; text-decoration: underline; text-decoration-color: rgba(144, 190, 171, 0.4); text-underline-offset: 3px; }
+.sj-lien:hover, .sj-lien:focus-visible { color: var(--sage-light); }
+/* Pas de barre du bas sur cette carte : la feuille de contact n'a pas à lui laisser de place */
+.is-error .sj-sheet-panel { padding-bottom: calc(36px + env(safe-area-inset-bottom)); }
+.is-error .sj-layout, .is-error .sj-dock, .is-error .sj-status { display: none; }
+
+/* ── Barre du bas (aide / annulation) ───────────────────────── */
+.sj-dock {
+  position: fixed;
+  left: 50%;
+  bottom: calc(12px + env(safe-area-inset-bottom));
+  z-index: 9100;                       /* reste au-dessus des feuilles */
+  display: flex;
+  width: calc(100% - 32px);
+  max-width: 460px;
+  height: var(--sj-dock-h);
+  padding: 6px;
+  border-radius: 22px;
+  overflow: hidden;
+  /* même style que les boutons agenda et contrat : teinte sauge, contour, léger halo (sur fond sombre pour rester lisible) */
+  background: linear-gradient(rgba(144, 190, 171, 0.12), rgba(144, 190, 171, 0.12)), rgba(13, 26, 20, 0.85);
+  border: 1px solid rgba(144, 190, 171, 0.45);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  box-shadow: 0 0 22px rgba(144, 190, 171, 0.14), var(--shadow-md);
+  transform: translate(-50%, 140%);
+  transition: transform 0.8s var(--sj-spring) 1.4s;
+}
+.is-ready .sj-dock { transform: translate(-50%, 0); }
+.sj-dock button {
+  position: relative;
+  flex: none;
+  width: 50%;
+  height: 100%;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 16px;
+  background: none;
+  overflow: hidden;
+  color: var(--sage-light); font-family: var(--font-body); font-size: 12.5px; font-weight: 600; white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: width 1s var(--sj-ease), opacity 0.7s, transform 1s var(--sj-ease), background 0.3s;
+}
+.sj-dock svg { flex: none; width: 21px; height: 21px; fill: none; stroke: var(--sage-light); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.sj-dock button:active { background: var(--glass-hover); }
+.sj-dock button[hidden]:not(.is-actif) { display: none; }
+/* Petit séparateur vertical entre les deux boutons (ne touche ni le haut ni le bas) */
+.sj-dock button + button::before { content: ''; position: absolute; left: 0; top: 6%; bottom: 6%; width: 1px; background: rgba(144, 190, 171, 0.3); transition: opacity 0.6s; }
+/* Un seul bouton (pendant / après le séjour, ou séjour annulé) */
+.sj-dock.is-solo button { width: 100%; }
+/* Feuille ouverte : le bouton choisi prend toute la largeur, l'autre est poussé dehors */
+.sj-dock[data-ouvert] button { width: 0; opacity: 0; }
+.sj-dock[data-ouvert="aide"] button:not(.is-actif)    { transform: translateX(60%); }
+.sj-dock[data-ouvert="annuler"] button:not(.is-actif) { transform: translateX(-60%); }
+.sj-dock[data-ouvert] button.is-actif { display: flex; width: 100%; opacity: 1; transform: none; }
+.sj-dock[data-ouvert] button + button::before { opacity: 0; }
+/* Flèche « refermer » qui apparaît sur le bouton choisi */
+.sj-dock .sj-dock-fermer {
+  position: absolute; right: 16px; top: 50%;
+  width: 18px; height: 18px; margin-top: -9px;
+  opacity: 0; transform: translateY(-6px);
+  transition: opacity 0.6s, transform 0.8s var(--sj-ease);
+}
+.sj-dock button.is-actif .sj-dock-fermer { opacity: 1; transform: none; transition-delay: 0.5s; }
+
+/* ── Feuilles (montent du bas sur téléphone) ─────────────────── */
+.sj-sheet { position: fixed; inset: 0; z-index: 9000; display: flex; align-items: flex-end; }
+.sj-sheet[hidden] { display: none; }
+.sj-sheet-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(3, 8, 6, 0.7);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.7s var(--sj-ease);
+}
+.sj-sheet.is-open .sj-sheet-backdrop { opacity: 1; }
+.sj-sheet-panel {
+  position: relative;
+  width: 100%;
+  max-height: 90svh;
+  overflow-y: auto;
+  padding: 12px 20px calc(var(--sj-dock-h) + 36px + env(safe-area-inset-bottom));   /* place pour la barre */
+  border-radius: 28px 28px 0 0;
+  background: linear-gradient(175deg, var(--bg-3), var(--bg));
+  border: 1px solid var(--glass-border);
+  border-bottom: none;
+  box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.5);
+  transform: translateY(100%);
+  transition: transform 1s var(--sj-ease);
+  touch-action: pan-y;
+}
+.sj-sheet.is-open .sj-sheet-panel { transform: none; }
+.sj-sheet.is-closing .sj-sheet-panel { transition-duration: 0.68s; }
+.sj-sheet-grip { display: block; width: 40px; height: 5px; margin: 0 auto 18px; border-radius: 5px; background: var(--glass-border); transition: background 0.3s, width 0.3s; }
+/* Dès que le doigt se pose sur la feuille : la poignée s'allume (puis la feuille suit le doigt) */
+.sj-sheet.is-touch .sj-sheet-grip { width: 52px; background: var(--sage); }
+.sj-sheet-kicker { margin-bottom: 10px; }               /* même titre que « Marceau, votre hôte » */
+.sj-sheet-text { font-size: 14px; line-height: 1.65; color: var(--cream-dim); margin-bottom: 20px; }
+.sj-sheet-text:has(+ .sj-sheet-text) { margin-bottom: 10px; }   /* deux paragraphes qui se suivent : plus rapprochés */
+.sj-sheet-step--center { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; padding: 16px 0 8px; }
+.sj-sheet-step[hidden] { display: none; }
+
+.sj-hold {
+  position: relative;
+  width: 100%;
+  height: 58px;
+  border-radius: 60px;
+  border: 1px solid rgba(231, 160, 143, 0.5);
+  background: rgba(231, 160, 143, 0.08);
+  color: var(--sj-danger);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.2s var(--sj-ease);
+}
+.sj-hold.is-holding { transform: scale(0.98); }
+.sj-hold-fill {
+  position: absolute; inset: 0;
+  transform-origin: left; transform: scaleX(var(--hold, 0));
+  background: rgba(231, 160, 143, 0.22);               /* rouge de la palette, discret : on voit juste la barre avancer */
+}
+.sj-hold-label { position: relative; }
+
+.sj-done { width: 72px; height: 72px; margin-bottom: 12px; }
+.sj-done circle, .sj-done path { fill: none; stroke: var(--sage); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.sj-done circle { stroke-dasharray: 160; stroke-dashoffset: 160; animation: sjDraw 1.2s var(--sj-ease) forwards; }
+.sj-done path { stroke-dasharray: 40; stroke-dashoffset: 40; animation: sjDraw 0.8s var(--sj-ease) 0.9s forwards; }
+
+/* ============================================================
+   TABLETTE (≥ 768 px)
+   ============================================================ */
+@media (min-width: 768px) {
+  .sejour-page { --sj-pad: 28px; --sj-gap: 16px; }
+  .sj-layout { max-width: 640px; padding-top: 20px; }
+  .sj-hero { min-height: 520px; }
+  .sj-hero-body { padding: 28px; }
+  .sj-title { font-size: 64px; }
+  .sj-ticket-day { font-size: 80px; }
+  .sj-card { padding: 26px; }
+}
+
+/* ============================================================
+   ORDINATEUR (≥ 1024 px) : deux colonnes, la première reste fixe
+   ============================================================ */
+@media (min-width: 1024px) {
+  .sejour-page { padding-bottom: calc(var(--sj-dock-h) + 40px); }   /* la barre du bas reste visible sur ordinateur */
+  .sj-layout {
+    max-width: 1180px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 24px;
+    padding-top: 24px;
+  }
+  .sj-col--hero { position: sticky; top: 84px; }
+  .sj-sep--mobile { display: none; }   /* deux colonnes : pas de trait en haut de la 2e */
+  .sj-hero { min-height: 470px; }
+  .sj-title { font-size: 68px; }
+
+  /* Effets à la souris */
+  .sj-card::before {
+    content: '';
+    position: absolute; inset: 0; z-index: -1;
+    background: radial-gradient(360px circle at var(--spot-x) var(--spot-y), rgba(144, 190, 171, 0.13), transparent 45%);
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .sj-card:hover::before { opacity: 1; }
+  .sj-card:hover { border-color: rgba(144, 190, 171, 0.26); }
+  .sj-quick-item:hover, .sj-contact:hover { background: var(--glass-hover); border-color: var(--sage); transform: translateY(-2px); }
+  .sj-btn:hover { border-color: var(--sage); background: var(--glass-hover); }
+  .sj-ticket { transition: transform 0.6s var(--sj-ease); }
+  .sj-ticket:hover { transform: perspective(900px) rotateX(4deg) translateY(-3px); }
+
+  /* La feuille devient une fenêtre centrée */
+  .sj-sheet { align-items: center; justify-content: center; padding: 16px; }
+  .sj-sheet-panel { width: min(460px, 100%); border-radius: 26px; border-bottom: 1px solid var(--glass-border); padding: 32px; opacity: 0; transform: translateY(24px) scale(0.95); transition: opacity 0.4s, transform 0.5s var(--sj-ease); }
+  .sj-sheet.is-open .sj-sheet-panel { opacity: 1; transform: none; }
+  .sj-sheet-grip { display: none; }
+}
+
+/* ── Animations réduites ────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .sejour-page *, .sejour-page *::before, .sejour-page *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+  .sj-aurora { display: none; }
+}
+
+/* Carte masquée par le script (pendant / après le séjour) */
+.sj-card[hidden] { display: none !important; }

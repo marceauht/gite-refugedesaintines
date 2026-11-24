@@ -1,0 +1,278 @@
+/* ============================================================
+   RESERVATION.CSS — Formulaire de réservation (compléments)
+   Lit parapluie, coordonnées (nom, téléphone, adresse),
+   cases d'acceptation, contrat pré-rempli, moyens de paiement.
+   Le reste du formulaire est dans equipments.css.
+   Le Refuge de Saintines
+   ============================================================ */
+
+/* ── Lien en forme de texte (bouton) ── */
+.resa-lien {
+  background: none; border: 0; padding: 0;
+  font: inherit; color: var(--sage);
+  text-decoration: underline; text-decoration-color: rgba(144,190,171,.4);
+  cursor: pointer;
+}
+.resa-lien:hover { color: var(--sage-light); }
+
+/* ============================================================
+   LIT PARAPLUIE — encadré mis en avant (seulement avec un bébé)
+   ============================================================ */
+.resa-lit {
+  display: flex; align-items: center; gap: 14px;
+  margin-top: 16px; padding: 14px 16px;
+  background: rgba(144,190,171,.1);
+  border: 1px solid var(--sage);
+  border-radius: 12px;
+  cursor: pointer;
+  animation: resaLitIn .6s ease-out both;
+}
+.resa-lit[hidden] { display: none; }
+/* Case à cocher du site (lit parapluie, contrat, CGV) */
+.resa-lit input,
+.consent-row input[type="checkbox"] {
+  appearance: none; -webkit-appearance: none;
+  flex-shrink: 0; width: 24px; height: 24px; margin: 0;
+  border: 2px solid var(--sage); border-radius: 6px; background: transparent;
+  display: grid; place-items: center;
+  cursor: pointer; transition: background var(--tr), box-shadow var(--tr);
+}
+.resa-lit input:checked,
+.consent-row input[type="checkbox"]:checked { background: var(--sage); }
+.resa-lit input:checked::after,
+.consent-row input[type="checkbox"]:checked::after {
+  content: ""; width: 6px; height: 11px;
+  border: solid var(--bg); border-width: 0 3px 3px 0;
+  transform: translateY(-1px) rotate(45deg);
+}
+.resa-lit input:focus-visible,
+.consent-row input[type="checkbox"]:focus-visible { outline: 2px solid var(--sage-light); outline-offset: 2px; }
+.consent-row input[type="checkbox"]:hover { box-shadow: 0 0 0 4px rgba(144,190,171,.12); }
+.consent-row label { padding-top: 2px; }
+.resa-lit-texte  { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.resa-lit-titre  { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; line-height: 20px; color: var(--cream); }
+.resa-lit-titre svg { display: block; width: 20px; height: 20px; flex-shrink: 0; fill: none; stroke: var(--sage); stroke-width: 1.6; stroke-linecap: round; }
+.resa-lit-detail { font-size: 12px; color: var(--cream-dim); line-height: 1.45; }
+
+@keyframes resaLitIn {
+  0%   { opacity: 0; transform: translateY(-6px); box-shadow: 0 0 0 0 var(--sage-glow); }
+  60%  { opacity: 1; transform: none; box-shadow: 0 0 0 10px rgba(144,190,171,0); }
+  100% { opacity: 1; transform: none; }
+}
+
+/* ── Récap prix : précision sous l'intitulé ── */
+.resa-price-note { display: block; font-size: 11px; color: var(--cream-faint); }
+#price-linge-val { white-space: nowrap; }
+
+/* ============================================================
+   COORDONNÉES
+   ============================================================ */
+.resa-nom-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+.resa-nom-grid input { width: 100%; min-width: 0; }
+.resa-champ-aide { font-size: 11px; color: var(--cream-faint); min-height: 0; }
+.resa-champ-aide:empty { display: none; }
+.resa-champ-aide.is-erreur { color: #f44336; }
+
+/* ── Champ manquant à l'envoi : contour rouge, tremblement, message dessous ── */
+.form-group input.champ-invalide,
+.resa-adresse-manuelle input.champ-invalide,
+.iti input.champ-invalide {
+  border-color: #f44336 !important;
+  box-shadow: 0 0 0 3px rgba(244,67,54,.15) !important;
+}
+.consent-row input[type="checkbox"].champ-invalide { border-color: #f44336; box-shadow: 0 0 0 3px rgba(244,67,54,.15); }
+.champ-erreur { margin: 6px 0 0; font-size: 11px; color: #f44336; }
+.champ-tremble { animation: champTremble .42s ease-in-out; }
+@keyframes champTremble {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-7px); }
+  40% { transform: translateX(7px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+@media (prefers-reduced-motion: reduce) { .champ-tremble { animation: none; } }
+
+/* ── Téléphone (bibliothèque intl-tel-input, aux couleurs du site) ── */
+.form-group .iti { width: 100%; }
+.form-group .iti input[type="tel"] { width: 100%; }
+.iti {
+  --iti-hover-color: rgba(144,190,171,.14);
+  --iti-border-color: var(--glass-border);
+  --iti-country-selector-bg: var(--bg-2);
+  --iti-icon-color: var(--sage);
+  --iti-spacer-horizontal: 14px;
+}
+/* Partie cliquable (drapeau + indicatif) séparée du numéro par un trait vertical,
+   mise en valeur d'un seul bloc au survol */
+/* (« .iti .iti__… » : plus précis que les règles de la bibliothèque, chargées après celles du site) */
+.iti .iti__country-container { --iti-hover-color: transparent; }
+.iti .iti__selected-country {
+  border-radius: var(--rs) 0 0 var(--rs);
+  border-right: 1px solid var(--glass-border);
+  padding-right: 14px;
+  transition: background var(--tr);
+}
+.iti .iti__selected-country:hover,
+.iti .iti__selected-country[aria-expanded="true"] { background: rgba(144,190,171,.1); }
+.iti .iti__selected-dial-code { color: var(--cream); font-size: 13px; }
+.iti .iti__arrow { border-top-color: var(--sage); }
+.iti .iti__arrow--up { border-bottom-color: var(--sage); }
+/* Liste des pays (sous le champ sur ordinateur, plein écran sur téléphone) */
+.iti .iti__country-selector {
+  background: var(--bg-2); color: var(--cream);
+  border: 1px solid var(--glass-border); border-radius: 10px;
+  box-shadow: 0 16px 40px rgba(0,0,0,.5); overflow: hidden;
+}
+.iti .iti__search-input,
+.iti .iti__search-input:focus {
+  background: var(--glass); color: var(--cream); border: 0; outline: none; box-shadow: none;
+  border-radius: 0; font: 300 16px var(--font-body);
+  padding: 12px 42px 12px 44px;
+}
+.iti .iti__search-input::placeholder { color: var(--cream-faint); }
+.iti .iti__country { font-size: 14px; color: var(--cream); }
+.iti .iti__country.iti__highlight { background: rgba(144,190,171,.14); }
+.iti .iti__dial-code { color: var(--cream-faint); }
+.iti .iti__no-results { color: var(--cream-faint); font-size: 13px; }
+.iti--fullscreen-popup.iti--detached-country-selector { background: rgba(0,0,0,.65); }
+
+/* Barres de défilement aux couleurs du site (liste des pays, contrat) */
+.iti .iti__country-list,
+.resa-contrat-texte { scrollbar-width: thin; scrollbar-color: rgba(144,190,171,.45) transparent; }
+.iti .iti__country-list::-webkit-scrollbar,
+.resa-contrat-texte::-webkit-scrollbar { width: 8px; }
+.iti .iti__country-list::-webkit-scrollbar-track,
+.resa-contrat-texte::-webkit-scrollbar-track { background: transparent; }
+.iti .iti__country-list::-webkit-scrollbar-thumb,
+.resa-contrat-texte::-webkit-scrollbar-thumb {
+  background: rgba(144,190,171,.35); border-radius: 8px;
+  border: 2px solid transparent; background-clip: padding-box;
+}
+.iti .iti__country-list::-webkit-scrollbar-thumb:hover,
+.resa-contrat-texte::-webkit-scrollbar-thumb:hover { background-color: rgba(144,190,171,.6); }
+
+/* ── Adresse : suggestions, adresse choisie, saisie manuelle ── */
+.resa-adresse-zone { position: relative; }
+.resa-adresse-zone input { width: 100%; }
+.resa-adresse-zone[hidden], .resa-adresse-ok[hidden], .resa-adresse-manuelle[hidden] { display: none; }
+.resa-adresse-liste {
+  position: absolute; left: 0; right: 0; top: calc(100% + 4px); z-index: 20;
+  background: var(--bg-3); border: 1px solid var(--glass-border); border-radius: 10px;
+  overflow: hidden; box-shadow: 0 16px 40px rgba(0,0,0,.5);
+}
+.resa-adresse-liste[hidden] { display: none; }
+.resa-adresse-liste button {
+  display: block; width: 100%; text-align: left;
+  background: none; border: 0; border-bottom: 1px solid rgba(144,190,171,.08);
+  padding: 10px 14px; color: var(--cream); font: 400 13px var(--font-body); cursor: pointer;
+}
+.resa-adresse-liste button small { display: block; font-size: 11px; color: var(--cream-faint); }
+.resa-adresse-liste button:hover,
+.resa-adresse-liste button.is-actif { background: var(--glass-hover); }
+.resa-adresse-liste .resa-adresse-manuel { color: var(--sage); font-weight: 500; border-bottom: 0; }
+.resa-adresse-liste .resa-adresse-info { padding: 10px 14px; font-size: 12px; color: var(--cream-faint); }
+.resa-adresse-ok {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  background: rgba(144,190,171,.1); border: 1px solid var(--sage); border-radius: var(--rs);
+  padding: 13px 16px; font-size: 13px; color: var(--cream);
+}
+.resa-adresse-ok .resa-lien { font-size: 12px; white-space: nowrap; }
+.resa-adresse-manuelle { display: flex; flex-direction: column; gap: 8px; }
+.resa-adresse-cp { display: grid; grid-template-columns: 120px 1fr; gap: 8px; }
+.resa-adresse-manuelle input { width: 100%; }
+.resa-adresse-manuelle .resa-lien { align-self: flex-start; font-size: 12px; margin-top: 2px; }
+
+/* ============================================================
+   CASES D'ACCEPTATION ET BAS DU FORMULAIRE
+   ============================================================ */
+#resa-submit-wrap .consent-row + .consent-row { margin-top: 14px; }
+.consent-aide { display: block; margin-top: 4px; font-size: 11px; color: #e6c27a; }
+.consent-aide[hidden] { display: none; }
+.resa-submit-btn:disabled { opacity: .45; cursor: not-allowed; }
+
+.resa-fin {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  margin-top: 16px; text-align: center; font-size: 11px; color: var(--cream-faint);
+}
+.resa-stripe { display: inline-flex; align-items: center; gap: 6px; }
+.resa-stripe svg { width: 16px; height: 16px; flex: none; fill: none; stroke: var(--sage); stroke-width: 2; stroke-linecap: round; }
+.resa-stripe svg rect { fill: var(--sage); }   /* corps du cadenas plein */
+.resa-paiements { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; list-style: none; padding: 0; margin: 0; }
+.resa-paiements li {
+  width: 44px; height: 28px; border-radius: 5px;
+  background: var(--cream); display: grid; place-items: center;
+}
+.resa-paiements img { width: 26px; height: 26px; }
+
+/* ============================================================
+   CONTRAT PRÉ-REMPLI — panneau plein écran (par le bas sur téléphone)
+   ============================================================ */
+.resa-contrat { position: fixed; inset: 0; z-index: 5000; display: flex; align-items: flex-end; justify-content: center; }
+.resa-contrat[hidden] { display: none; }
+.resa-contrat-fond { position: absolute; inset: 0; background: rgba(0,0,0,.6); animation: resaFondIn .25s ease both; }
+.resa-contrat-panneau {
+  position: relative; width: 100%; max-width: 760px; height: 92vh; height: 92dvh;
+  display: flex; flex-direction: column;
+  background: var(--bg-2); border: 1px solid var(--glass-border); border-bottom: 0;
+  border-radius: 18px 18px 0 0; box-shadow: 0 -20px 60px rgba(0,0,0,.5);
+  animation: resaPanneauIn .35s cubic-bezier(.2,.8,.2,1) both;
+}
+.resa-contrat-tete { position: relative; padding: 18px 56px 14px 22px; border-bottom: 1px solid var(--glass-border); }
+.resa-contrat-tete h3 { font-family: var(--font-display); font-size: 26px; font-weight: 400; color: var(--cream); }
+.resa-contrat-x {
+  position: absolute; top: 12px; right: 12px; width: 38px; height: 38px; border-radius: 50%;
+  background: var(--glass); border: 1px solid var(--glass-border); color: var(--cream);
+  font-size: 22px; line-height: 1; cursor: pointer;
+}
+.resa-contrat-progres { position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: rgba(144,190,171,.12); }
+.resa-contrat-progres i { display: block; height: 100%; width: 0; background: var(--sage); transition: width .15s; }
+.resa-contrat-texte { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 8px 22px 24px; outline: none; }
+.resa-contrat-pied {
+  padding: 14px 22px calc(14px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--glass-border);
+}
+.resa-contrat-pied .btn { width: 100%; justify-content: center; }
+.resa-contrat-pied .btn:disabled { opacity: .45; cursor: default; transform: none; box-shadow: none; }
+
+/* Texte du contrat (mêmes styles que contrat.html, en plus compact) */
+.resa-contrat-texte .legal-section { padding: 18px 0; border-bottom: 1px solid var(--glass-border); }
+.resa-contrat-texte .legal-section:last-child { border-bottom: 0; }
+.resa-contrat-texte h2 { font-family: var(--font-display); font-size: 21px; font-weight: 400; color: var(--cream); margin-bottom: 10px; }
+.resa-contrat-texte h3 { font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--cream); margin: 16px 0 4px; }
+.resa-contrat-texte p, .resa-contrat-texte li { font-size: 13px; line-height: 1.75; color: var(--cream-dim); margin-bottom: 8px; }
+.resa-contrat-texte ul, .resa-contrat-texte ol { padding-left: 20px; margin-bottom: 8px; }
+.resa-contrat-texte ul { list-style: disc; }
+.resa-contrat-texte ol { list-style: decimal; }
+.resa-contrat-texte li::marker { color: var(--sage); }
+.resa-contrat-texte strong { color: var(--sage-light); font-weight: 600; }
+.resa-contrat-texte .rempli { color: var(--sage-light); }
+.resa-contrat-texte a { color: var(--sage); }
+
+@keyframes resaFondIn     { from { opacity: 0; } }
+@keyframes resaPanneauIn  { from { transform: translateY(100%); } }
+
+/* Ordinateur : panneau centré, coins arrondis partout */
+@media (min-width: 769px) {
+  .resa-contrat { align-items: center; padding: 24px; }
+  .resa-contrat-panneau { height: min(86vh, 900px); border-radius: 18px; border-bottom: 1px solid var(--glass-border); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resa-lit, .resa-contrat-fond, .resa-contrat-panneau { animation: none; }
+}
+
+/* Pas de place réservée sous le bouton quand il n'y a aucun message */
+#resa-status:empty { display: none; }
+
+/* Téléphone et tablette : texte des champs à 16 px minimum,
+   sinon l'iPhone zoome tout seul sur le champ touché (et le calendrier sort de l'écran) */
+@media (max-width: 1024px), (pointer: coarse) {
+  #reservation-form input:not([type="checkbox"]),
+  #reservation-form textarea,
+  #reservation-form select,
+  .flatpickr-current-month .flatpickr-monthDropdown-months,
+  .flatpickr-current-month .resa-cal-annee { font-size: 16px !important; }
+}
+
+/* Bouton de paiement tant que les deux cases ne sont pas cochées (reste cliquable : il explique ce qui manque) */
+.resa-submit-btn.is-inactif { opacity: .45; box-shadow: none; }

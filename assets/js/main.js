@@ -22,4 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initEquipExpand();
   initReco();
   initInfoSheet();
+
+  // Page « Mon séjour » : son module n'est téléchargé que sur cette page
+  if (document.body.classList.contains('sejour-page')) {
+    import('./modules/maReservation.js').then(m => m.initMaReservation());
+  }
 });

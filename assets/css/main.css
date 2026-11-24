@@ -11,4 +11,6 @@
 @import url('./components/logement.css');
 @import url('./components/gallery.css');
 @import url('./components/equipments.css');
+@import url('./components/reservation.css');
+@import url('./components/resaAttente.css');
 @import url('./responsive.css');
