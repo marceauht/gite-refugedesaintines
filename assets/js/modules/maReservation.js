@@ -232,12 +232,12 @@ function frise(r, { maintenant, arrivee, depart, limite }) {
     limite,
     mailAcces:  ouverturePortail(r),                                     // la veille dès 10h (ou le jour même si réservé tard)
     arrivee,
-    mailDepart: new Date(Math.max(a(r.depart, -1, 16), resa)),           // la veille du départ dès 16h
+    mailDepart: new Date(Math.max(a(r.depart, -1, 20), resa)),           // la veille du départ dès 20h
     depart,
-    mailAvis:   a(r.depart, 1, 10)                                       // le lendemain du départ dès 10h
+    mailAvis:   a(r.depart, 0, 16)                                       // le jour du départ dès 16h
   };
   Object.entries(TYPE_EMAIL).forEach(([cle, type]) => { if (r.emails[type]) dates[cle] = r.emails[type]; });
-  const heures = { mailAcces: 10, mailDepart: 16, mailAvis: 10 };
+  const heures = { mailAcces: 10, mailDepart: 20, mailAvis: 16 };
 
   // Réservé à moins de 7 jours : pas d'annulation gratuite, l'étape disparaît
   $('[data-etape="limite"]').hidden = limite < resa;

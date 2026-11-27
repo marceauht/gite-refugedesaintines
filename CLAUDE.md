@@ -19,6 +19,7 @@
 - `index.html` : page unique (sections `#home`, `#logement`, `#galerie`, `#equipements`, `#localisation`, `#infos`, `#avis`, `#reco`, `#contact`).
 - `cgv.html`, `rules.html` (règlement), `contrat.html` (contrat de location accepté en ligne), `mentions-legales.html`, `politique-confidentialite.html`.
 - `images/` : photos en `.webp` (`p1` à `p23`, `hero.webp`).
+- `images/email/` (JPG/PNG, pas de webp) et `contact.vcf` : utilisés par les **emails automatiques** du script (bannière, photo, icônes `ico-<nom>-<couleur>.png`, bouton « Ajouter aux contacts »). Ne pas renommer ni supprimer : les emails déjà envoyés pointent dessus.
 - `sitemap.xml`, `robots.txt`, `googleb7cd1898ebe68c89.html` (vérification Google Search Console, ne pas supprimer).
 
 ## Réservation (`assets/js/modules/reservation.js`)
